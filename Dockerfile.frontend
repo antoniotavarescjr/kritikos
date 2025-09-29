@@ -1,0 +1,17 @@
+# ATUALIZADO para a versão 24 do Node
+FROM node:24-alpine
+
+# Define o diretório de trabalho
+WORKDIR /app
+
+# Copia os arquivos de definição de dependência
+COPY ./frontend/package*.json ./
+
+# Instala as dependências
+RUN npm install
+
+# Copia o restante do código da aplicação
+COPY ./frontend /app
+
+# Define o comando padrão para iniciar o servidor de desenvolvimento
+CMD ["npm", "start"]
