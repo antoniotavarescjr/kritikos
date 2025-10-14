@@ -3,6 +3,6 @@ agent_class: SequentialAgent
 name: KritikosRootAgent
 description: Orquestra o fluxo de análise de propostas, primeiro resumindo, depois filtrando e finalmente analisando as relevantes.
 sub_agents:
-  - config_path: summarizer_agent.yaml
-  - config_path: trivial_filter_agent.yaml
-  - config_path: par_analyzer_agent.yaml
+  - config_path: C:\kritikos\agents\configs\summarizer_agent.yaml
+  - config_path: C:\kritikos\agents\configs\trivial_filter_agent.yaml
+  - config_path: C:\kritikos\agents\configs\par_analyzer_agent.yaml
