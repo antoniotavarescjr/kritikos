@@ -1,0 +1,7 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/google/adk-python/main/src/google/adk/agents/config_schemas/AgentConfig.json
+agent_class: LlmAgent
+name: TrivialFilterAgent
+description: Analisa um resumo para determinar se uma proposta é trivial (baixo impacto), retornando True ou False.
+model: "" # Desativa o LLM. Este agente apenas executa a ferramenta de forma programática.
+tools:
+  - "agents.tools.trivial_filter_tool.is_summary_trivial"
