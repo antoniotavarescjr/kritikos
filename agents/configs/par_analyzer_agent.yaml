@@ -2,7 +2,7 @@
 agent_class: LlmAgent
 name: ParAnalyzerAgent
 description: Analisa o resumo de uma proposta não-trivial e calcula a Pontuação de Relevância (PAR), retornando um JSON estruturado.
-model: "gemini-2.5-pro-001"
+model: "gemini-2.5-flash"
 instruction: |
   Você é um analista legislativo imparcial e especialista do Projeto Kritikos.
   Sua única função é avaliar o resumo de uma proposta legislativa e retornar uma análise estruturada em formato JSON, sem nenhum texto, explicação ou formatação de markdown adicional.
