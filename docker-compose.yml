@@ -1,52 +1,19 @@
+# /docker-compose.yml
+
 version: '3.8'
 
 services:
-  # 1. SERVIÇO DE BANCO DE DADOS
   db:
-    # IMAGEM ATUALIZADA PARA POSTGRESQL 17
-    image: postgres:17-alpine
-    container_name: kritikos_db
-    restart: unless-stopped
-    env_file:
-      - .env
+    image: postgres:17
+    container_name: kritikos-db
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
     ports:
-      - "5432:5432"
+      - "${POSTGRES_PORT}:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql/data/
-
-  # 2. SERVIÇO DE BACKEND (FASTAPI)
-  backend:
-    build:
-      context: .
-      dockerfile: Dockerfile.backend
-    container_name: kritikos_backend
-    restart: unless-stopped
-    command: sh -c "uvicorn main:app --host 0.0.0.0 --port 8000 --reload"
-    env_file:
-      - .env
-    ports:
-      - "8000:8000"
-    volumes:
-      - ./backend:/app
-    depends_on:
-      - db
-
-  # 3. SERVIÇO DE FRONTEND (REACT)
-  frontend:
-    # A imagem Node não muda, apenas a referência ao Dockerfile
-    build:
-      context: .
-      dockerfile: Dockerfile.frontend
-    container_name: kritikos_frontend
-    restart: unless-stopped
-    command: npm run start
-    ports:
-      - "3000:3000"
-    volumes:
-      - ./frontend:/app
-      - /app/node_modules
-    depends_on:
-      - backend
+      - kritikos-db-data:/var/lib/postgresql/data
 
 volumes:
-  postgres_data:
+  kritikos-db-data:
