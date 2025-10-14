@@ -1,0 +1,10 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/google/adk-python/main/src/google/adk/agents/config_schemas/AgentConfig.json
+agent_class: LlmAgent
+name: SummarizerAgent
+description: Recebe o texto completo de uma proposta e usa o Gemini Flash via Vertex AI para criar um resumo focado na Metodologia Kritikos.
+model: "gemini-2.5-flash-001"
+instruction: |
+  Sua única tarefa é resumir o texto completo de uma proposta legislativa.
+  Para isso, use a ferramenta 'summarize_proposal_text' imediatamente.
+tools:
+  - "agents.tools.document_summarizer_tool.summarize_proposal_text"
