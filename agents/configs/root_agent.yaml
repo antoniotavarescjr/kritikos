@@ -1,8 +1,26 @@
+# /agents/configs/root_agent.yaml
+
 # yaml-language-server: $schema=https://raw.githubusercontent.com/google/adk-python/main/src/google/adk/agents/config_schemas/AgentConfig.json
-agent_class: SequentialAgent
+agent_class: LlmAgent
 name: KritikosRootAgent
-description: Orquestra o fluxo de análise de propostas, primeiro resumindo, depois filtrando e finalmente analisando as relevantes.
-sub_agents:
-  - config_path: C:\kritikos\agents\configs\summarizer_agent.yaml
-  - config_path: C:\kritikos\agents\configs\trivial_filter_agent.yaml
-  - config_path: C:\kritikos\agents\configs\par_analyzer_agent.yaml
+description: Orquestra o fluxo de análise de propostas legislativas de forma inteligente e condicional.
+model: "gemini-2.5-flash"
+
+instruction: |
+  Você é o orquestrador principal do projeto Kritikos. Sua tarefa é analisar uma proposta legislativa usando ferramentas personalizadas.
+
+  **Siga ESTAS REGRAS E ORDEM ESTRITAMENTE:**
+
+  1.  Para obter um resumo do texto completo da proposta, **CHAME A FERRAMENTA `summarize_proposal_text`** com o parâmetro 'full_text' contendo o texto completo.
+  2.  Com o resumo em mãos, **CHAME A FERRAMENTA `is_summary_trivial`** com o parâmetro 'summary' contendo o resumo obtido.
+  3.  **ANALISE A SAÍDA** da ferramenta `is_summary_trivial`.
+      - Se a saída da ferramenta for `True`, **PARE IMEDIATAMENTE**. Sua resposta final DEVE SER APENAS este JSON: `{"par_final": 5, "analise": "Proposta trivial, análise completa não necessária."}`. NÃO CHAME MAIS NENHUMA FERRAMENTA.
+      - Se a saída da ferramenta for `False`, prossiga para o próximo passo.
+  4.  **CHAME A FERRAMENTA `analyze_proposal_par`**, passando o resumo para obter a análise completa e detalhada.
+  5.  Retorne o JSON da análise completa como sua resposta final.
+
+# Ferramentas personalizadas do projeto
+tools:
+  - name: "summarize_proposal_text"
+  - name: "is_summary_trivial"
+  - name: "analyze_proposal_par"

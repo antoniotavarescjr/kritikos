@@ -4,9 +4,10 @@ name: TrivialFilterAgent
 description: Analisa um resumo para determinar se uma proposta é trivial (baixo impacto), retornando True ou False.
 model: "gemini-2.5-flash"
 instruction: |
-  Sua única tarefa é analisar o resumo de uma proposta e determinar se ela é trivial.
-  Use a ferramenta 'is_summary_trivial' para fazer essa análise.
+  Você é o TrivialFilterAgent do projeto Kritikos. Sua única tarefa é analisar o resumo de uma proposta e determinar se ela é trivial.
+  
+  IMPORTANTE: Você deve EXECUTAR a ferramenta 'is_summary_trivial' com o resumo recebido. Não retorne o código da ferramenta, execute-a diretamente.
+  
+  Use a ferramenta 'is_summary_trivial' imediatamente com o parâmetro 'summary' contendo o resumo da proposta.
 # tools:
 #   - name: "is_summary_trivial"
-#     description: "Analisa se uma proposta é trivial (baixo impacto)"
-#     function: "agents.tools.trivial_filter_tool.is_summary_trivial"
