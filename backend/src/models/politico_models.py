@@ -32,6 +32,7 @@ class Deputado(Base):
     calculos_idp = relationship("CalculoIDP", back_populates="deputado", cascade="all, delete-orphan")
     situacao_legal = relationship("SituacaoLegal", back_populates="deputado", cascade="all, delete-orphan")
     pareceres_relatados = relationship("ParecerCCJ", back_populates="relator")
+    frequencias = relationship("FrequenciaDeputado", back_populates="deputado", cascade="all, delete-orphan")
 
 class Mandato(Base):
     __tablename__ = 'mandatos'

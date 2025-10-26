@@ -1,0 +1,10 @@
+RELATÓRIO FINAL - COLETA COMPLETA DE EMENDAS CORRIGIDA
+============================================================
+Data/Hora: 24/10/2025 15:11:07
+Total deputados: 513
+Deputados processados: 2052
+Total emendas encontradas: 0
+Total emendas salvas: 0
+Com autor identificado: 0
+Valor total geral: R$ 0.00
+Total erros: 0

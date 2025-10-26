@@ -1,0 +1,18 @@
+{
+  "metadata": {
+    "inicio": "2025-10-22T22:03:19.620163",
+    "fim": "2025-10-22T22:03:47.612670",
+    "duracao_total": 27.992508,
+    "versao": "hackathon-2025-v1.0"
+  },
+  "resultados": {
+    "limpeza_banco": {
+      "status": "erro",
+      "duracao_segundos": 2.039888,
+      "inicio": "2025-10-22T22:03:45.567221",
+      "fim": "2025-10-22T22:03:47.607109",
+      "codigo_saida": 1,
+      "stderr": "Traceback (most recent call last):\n  File \"C:\\kritikos\\backend\\testes\\limpar_banco.py\", line 226, in <module>\n    main()\n    ~~~~^^\n  File \"C:\\kritikos\\backend\\testes\\limpar_banco.py\", line 171, in main\n    print(f\"\\U0001f4c5 Data/Hora: {datetime.now().strftime('%d/%m/%Y %H:%M:%S')}\")\n    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Tony\\.pyenv\\pyenv-win\\versions\\3.13.5\\Lib\\encodings\\cp1252.py\", line 19, in encode\n    return codecs.charmap_encode(input,"
+    }
+  }
+}

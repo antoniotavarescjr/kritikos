@@ -1,0 +1,39 @@
+📊 RELATÓRIO DE VALIDAÇÃO DAS COLETAS
+============================================================
+
+📅 Data do Relatório: 2025-10-25T14:30:44.770992
+📅 Período Validado: 2025-06-01 até hoje
+🔧 Tipos Habilitados: referencia, gastos, emendas, votacoes
+
+📋 RESUMO GERAL
+------------------------------
+✅ Sucessos: 4
+⚠️ Alertas: 1
+❌ Erros: 0
+📊 Total Validado: 5
+
+📋 STATUS POR TIPO DE COLETA
+----------------------------------------
+✅ REFERENCIA: FUNCIONANDO
+   👥 Deputados ativos: 513
+   🏛️ Partidos ativos: 20
+
+✅ GASTOS: FUNCIONANDO
+   💰 Registros: 66623
+   💸 Valor total: R$ 76,994,281.28
+
+✅ EMENDAS: FUNCIONANDO
+   📝 Registros: 779
+   💸 Valor total: R$ 9,957,179,652.32
+
+⚠️ VOTACOES: COM ALERTAS
+   🗳️ Registros: 0
+      ⚠️ Poucas votações encontradas: 0
+
+🎯 CONCLUSÃO
+--------------------
+👍 MAIORIA DAS COLETAS ESTÃO FUNCIONANDO BEM!
+✅ 80.0% de sucesso no período 2025-06-01 até hoje
+
+============================================================
+📅 Relatório gerado em: 25/10/2025 14:30:45

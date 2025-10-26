@@ -1,0 +1,224 @@
+{
+  "metadata": {
+    "data_geracao": "2025-10-22T23:01:45.645564",
+    "versao": "hackathon-2025-v1.0",
+    "descricao": "Relatório completo dos dados coletados para o hackathon Kritikos 2025"
+  },
+  "dados": {
+    "gerais": {
+      "deputados": {
+        "total": 513,
+        "em_exercicio": 513
+      },
+      "partidos": {
+        "total": 20
+      },
+      "mandatos": {
+        "total": 513
+      },
+      "gastos": {
+        "total": 86297
+      },
+      "votacoes": {
+        "proposicoes": 0,
+        "votos_deputados": 0,
+        "emendas": 0
+      },
+      "proposicoes": {
+        "total": 3358
+      },
+      "emendas": {
+        "total": 0
+      }
+    },
+    "deputados": {
+      "por_estado": {
+        "SP": 70,
+        "MG": 53,
+        "RJ": 46,
+        "BA": 39,
+        "RS": 31,
+        "PR": 30,
+        "PE": 25,
+        "CE": 22,
+        "MA": 18,
+        "GO": 17
+      },
+      "por_partido": {
+        "PL": 88,
+        "PT": 67,
+        "UNIÃO": 59,
+        "PP": 50,
+        "PSD": 45,
+        "REPUBLICANOS": 45,
+        "MDB": 42,
+        "PODE": 17,
+        "PSB": 16,
+        "PDT": 16
+      },
+      "por_genero": {
+        "M": 424,
+        "F": 89
+      },
+      "por_escolaridade": {
+        "Superior": 294,
+        "Pós-Graduação": 75,
+        "Superior Incompleto": 38,
+        "Mestrado": 34,
+        "Ensino Médio": 25
+      },
+      "top_gastos": [
+        {
+          "nome": "Merlong Solano",
+          "total_gastos": 313756.0
+        },
+        {
+          "nome": "Átila Lins",
+          "total_gastos": 311307.95
+        },
+        {
+          "nome": "Luizianne Lins",
+          "total_gastos": 293955.02
+        },
+        {
+          "nome": "Zé Adriano",
+          "total_gastos": 287931.95
+        },
+        {
+          "nome": "Paulo Pimenta",
+          "total_gastos": 281380.96
+        },
+        {
+          "nome": "Ruy Carneiro",
+          "total_gastos": 278931.13
+        },
+        {
+          "nome": "Márcio Marinho",
+          "total_gastos": 276192.06
+        },
+        {
+          "nome": "Cristiane Lopes",
+          "total_gastos": 276046.61
+        },
+        {
+          "nome": "Josenildo",
+          "total_gastos": 271530.66
+        },
+        {
+          "nome": "Messias Donato",
+          "total_gastos": 271435.73
+        }
+      ]
+    },
+    "gastos": {
+      "total_geral": 98201797.19,
+      "por_mes": {
+        "2025-05": 21279490.57,
+        "2025-06": 20882073.41,
+        "2025-07": 21779130.45,
+        "2025-08": 17072956.54,
+        "2025-09": 15090149.24,
+        "2025-10": 2097996.98
+      },
+      "por_categoria": {
+        "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.": {
+          "total": 40013750.93,
+          "quantidade": 7577
+        },
+        "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES": {
+          "total": 17018193.47,
+          "quantidade": 2883
+        },
+        "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR": {
+          "total": 13993406.88,
+          "quantidade": 8486
+        },
+        "PASSAGEM AÉREA - SIGEPA": {
+          "total": 11050454.02,
+          "quantidade": 14564
+        },
+        "COMBUSTÍVEIS E LUBRIFICANTES.": {
+          "total": 10227400.59,
+          "quantidade": 33150
+        },
+        "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.": {
+          "total": 1903609.64,
+          "quantidade": 4145
+        },
+        "TELEFONIA": {
+          "total": 862157.8,
+          "quantidade": 2202
+        },
+        "LOCAÇÃO OU FRETAMENTO DE AERONAVES": {
+          "total": 795860.0,
+          "quantidade": 37
+        },
+        "SERVIÇO DE SEGURANÇA PRESTADO POR EMPRESA ESPECIALIZADA.": {
+          "total": 531828.28,
+          "quantidade": 202
+        },
+        "PASSAGEM AÉREA - REEMBOLSO": {
+          "total": 470929.91,
+          "quantidade": 141
+        }
+      },
+      "por_partido": {},
+      "estatisticas": {
+        "media": 1137.9514605374463,
+        "maximo": 128000.0,
+        "minimo": -6252.04
+      }
+    },
+    "votacoes": {
+      "proposicoes": {
+        "total_votacoes": 0,
+        "total_votos": 0
+      },
+      "emendas": {
+        "total_votacoes": 0
+      },
+      "resultados": {},
+      "participacao": {
+        "top_participantes": []
+      }
+    },
+    "insights": [
+      "👥 100.0% dos deputados estão em exercício ativo, representando 513 parlamentares",
+      "💰 Gasto médio por deputado: R$ 191,426.51, com total de R$ 98,201,797.19",
+      "🗺️ SP é o estado com mais deputados (70), representando 13.6% do total",
+      "🏛️ PL é o maior partido (88 deputados), com 17.2% da representação",
+      "📊 'DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.' é a maior categoria de gastos, com R$ 40,013,750.93 (40.7% do total)"
+    ],
+    "recomendacoes": [
+      "📊 Análise de padrões de gastos por partido e estado",
+      "🗳️ Análise de alinhamento partidário nas votações",
+      "💰 Correlação entre gastos e participação em votações",
+      "👥 Análise demográfica dos deputados vs desempenho",
+      "🏛️ Comparação de gastos entre diferentes categorias",
+      "📈 Tendências de gastos ao longo do tempo",
+      "🎯 Identificação de deputados mais ativos em votações",
+      "🗺️ Análise regional de padrões comportamentais",
+      "📊 Análise de dispersão de gastos dentro de partidos",
+      "🔍 Detecção de outliers em padrões de votação"
+    ]
+  },
+  "insights": [
+    "👥 100.0% dos deputados estão em exercício ativo, representando 513 parlamentares",
+    "💰 Gasto médio por deputado: R$ 191,426.51, com total de R$ 98,201,797.19",
+    "🗺️ SP é o estado com mais deputados (70), representando 13.6% do total",
+    "🏛️ PL é o maior partido (88 deputados), com 17.2% da representação",
+    "📊 'DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.' é a maior categoria de gastos, com R$ 40,013,750.93 (40.7% do total)"
+  ],
+  "recomendacoes": [
+    "📊 Análise de padrões de gastos por partido e estado",
+    "🗳️ Análise de alinhamento partidário nas votações",
+    "💰 Correlação entre gastos e participação em votações",
+    "👥 Análise demográfica dos deputados vs desempenho",
+    "🏛️ Comparação de gastos entre diferentes categorias",
+    "📈 Tendências de gastos ao longo do tempo",
+    "🎯 Identificação de deputados mais ativos em votações",
+    "🗺️ Análise regional de padrões comportamentais",
+    "📊 Análise de dispersão de gastos dentro de partidos",
+    "🔍 Detecção de outliers em padrões de votação"
+  ]
+}

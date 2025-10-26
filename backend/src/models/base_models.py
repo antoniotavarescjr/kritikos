@@ -7,7 +7,7 @@ from .database import Base
 class Partido(Base):
     __tablename__ = 'partidos'
     id = Column(Integer, primary_key=True, index=True)
-    sigla = Column(String(10), unique=True, nullable=False)
+    sigla = Column(String(20), unique=True, nullable=False)
     nome = Column(String(255), nullable=False)
     numero = Column(Integer)
     fundacao = Column(Date)
@@ -46,3 +46,13 @@ class ODS(Base):
     cor_oficial = Column(CHAR(7))
     icone_url = Column(String)
     ativo = Column(Boolean, default=True)
+
+class BlocoPartidario(Base):
+    __tablename__ = 'blocos_partidarios'
+    id = Column(Integer, primary_key=True, index=True)
+    nome = Column(String(255), nullable=False)
+    sigla = Column(String(20), unique=True, nullable=False)
+    data_criacao = Column(Date)
+    ativo = Column(Boolean, default=True)
+    created_at = Column(TIMESTAMP, server_default=func.now())
+    updated_at = Column(TIMESTAMP, server_default=func.now(), onupdate=func.now())

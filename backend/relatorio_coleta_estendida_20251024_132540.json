@@ -1,0 +1,54 @@
+{
+  "data_coleta": "2025-10-24T13:25:21.540722",
+  "periodo": "06/2025 a 10/2025",
+  "configuracoes": {
+    "limite_por_ano": 2000,
+    "timeout_requisicao": 60,
+    "delay_entre_requisicoes": 1.0,
+    "max_tentativas": 3,
+    "pagina_maxima": 200
+  },
+  "resultados_por_ano": {
+    "2025": {
+      "encontradas": 0,
+      "salvas": 0,
+      "valor_total": 0.0,
+      "erros": 0,
+      "status": "vazio"
+    },
+    "2024": {
+      "encontradas": 15,
+      "salvas": 15,
+      "valor_total": 100583.25,
+      "erros": 0,
+      "status": "sucesso"
+    },
+    "2023": {
+      "encontradas": 15,
+      "salvas": 15,
+      "valor_total": 632546.99,
+      "erros": 0,
+      "status": "sucesso"
+    },
+    "2022": {
+      "encontradas": 15,
+      "salvas": 15,
+      "valor_total": 459430.86000000004,
+      "erros": 0,
+      "status": "sucesso"
+    },
+    "2021": {
+      "encontradas": 15,
+      "salvas": 15,
+      "valor_total": 517491.48,
+      "erros": 0,
+      "status": "sucesso"
+    }
+  },
+  "total_geral": {
+    "emendas_encontradas": 60,
+    "emendas_salvas": 60,
+    "valor_total": 1710052.58,
+    "erros": 0
+  }
+}
