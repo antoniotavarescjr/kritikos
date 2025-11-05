@@ -214,3 +214,6 @@ backend/deprecated
 
 # Scripts manutenção
 backend/scripts/manutencao/
+
+#storage json
+backend/src/service-account-key.json
