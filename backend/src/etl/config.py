@@ -51,41 +51,19 @@ HACKATHON_CONFIG = {
         'data_inicio': '2025-07-01'  # Início do período
     },
     
-    # Configurações de proposições (HABILITADO - ABORDAGEM JSON)
+    # Configurações de proposições (HABILITADO - Integração Completa)
     'proposicoes': {
-        'habilitado': True,  # HABILITADO - Nova abordagem JSON
-        'data_inicio': '2025-07-01',  # Início do período do hackathon
-        'data_fim': '2025-12-31',
-        'meses_foco': [7, 8, 9, 10, 11, 12],  # Meses do hackathon
-        'json_url': 'https://dadosabertos.camara.leg.br/arquivos/proposicoes/json/proposicoes-2025.json',
-        'tipos_prioritarios': ['PL', 'PEC', 'PLP', 'MPV', 'PDC', 'PLV', 'PRC', 'SUG', 'REQ', 'RIC'],
-        'tipos_para_coletar': ['PL', 'PEC', 'PLP', 'MPV', 'PDC', 'PLV', 'PRC', 'SUG', 'REQ', 'RIC'],
-        'anos_para_coletar': [2025],
-        'limite_total': 15000,  # Aumentado para capturar mais proposições
-        'prioridade_tipos': {'PL': 1, 'PEC': 2, 'PLP': 3, 'MPV': 4, 'PDC': 5, 'PLV': 6, 'PRC': 7, 'SUG': 8, 'REQ': 9, 'RIC': 10},
-        'baixar_documentos': True,  # Habilitar download de documentos
-        'documentos_tipos_foco': ['PL', 'PEC', 'PLP', 'MPV'],  # Apenas tipos prioritários
-        'gcs_estrutura': {
-            'metadados': 'proposicoes/metadata/',
-            'documents': 'proposicoes/documents/'
-        },
-        'json_download_timeout': 300,  # 5 minutos para download do JSON completo
-        'document_download_timeout': 30,  # Timeout para cada documento
-        'max_downloads_paralelos': 10,  # Downloads simultâneos de documentos
-        'usar_abordagem_json': True,  # Nova abordagem JSON
-        'dias_recentes': 30  # Mantido para compatibilidade
+        'habilitado': True,  # HABILITADO - Integração com GCS
+        'ano_coleta': 2025,  # Foco em dados de 2025
+        'data_inicio': '2025-06-01',  # Período do hackathon
+        'salvar_gcs': True,  # Garantir salvamento no storage
+        'tipos_relevantes': ['PEC', 'PLP', 'PL', 'MPV', 'PLV', 'SUG'],
+        'limite_deputados_api': 50,  # Limite para coleta por API
+        'descricao': 'Proposições Legislativas com GCS'
     },
     
-    # Configurações de votações (NOVO - HABILITADO)
-    'votacoes': {
-        'habilitado': True,  # HABILITADO para hackathon
-        'data_inicio': '2025-07-01',  # Início do período do hackathon
-        'data_fim': '2025-12-31',
-        'tipos_votacao': ['Plenário', 'Comissão'],  # Tipos de votação a coletar
-        'limite_total': 5000,  # Limite de votações a coletar
-        'buscar_votos_deputados': True,  # Coletar votos individuais dos deputados
-        'apenas_votacoes_recentes': True  # Foco em votações recentes
-    },
+    # Configurações de votações (REMOVIDO - Evolução Futura)
+    # MOVIDO PARA deprecated/ - será implementado em versão futura
     
     # Configurações de emendas (DESLIGADAS PARA FOCO EM DEPUTADOS)
     'emendas': {
@@ -162,26 +140,12 @@ def get_config(tipo: str, chave: str = None) -> Any:
     
     return config
 
-def get_data_inicio_fim() -> tuple:
-    """
-    Retorna as datas de início e fim para a coleta baseada nas configurações
-    """
-    config = get_config('hackathon', 'proposicoes')
-    return config['data_inicio'], config['data_fim']
-
 def get_meses_para_coletar() -> list:
     """
     Retorna a lista de meses para coleta de gastos baseada nas configurações
     """
     config = get_config('hackathon', 'gastos')
     return config['meses_para_coletar']
-
-def get_tipos_proposicoes() -> list:
-    """
-    Retorna a lista de tipos de proposições para coletar
-    """
-    config = get_config('hackathon', 'proposicoes')
-    return config['tipos_para_coletar']
 
 # Configurações de validação
 VALIDATION_CONFIG = {
@@ -219,21 +183,23 @@ COLETA_CONFIG = {
     'emendas': {
         'habilitado': True,
         'respeitar_data_inicio': True,
-        'descricao': 'Emendas Parlamentares'
+        'descricao': 'Emendas Parlamentares',
+        'ano_inicio_legislatura': 2023,  # Início da legislatura atual
+        'apenas_legislatura_atual': True,  # Filtro principal
+        'descricao_filtro': 'Apenas legislatura atual (2023+)'
     },
     
-    'votacoes': {
+    # Votações removidas - Evolução Futura
+    # MOVIDO PARA deprecated/ - será implementado em versão futura
+    
+    # Proposições habilitadas com integração GCS
+    'proposicoes': {
         'habilitado': True,
         'respeitar_data_inicio': True,
-        'descricao': 'Votações (Plenário e Comissões)'
+        'descricao': 'Proposições Legislativas com GCS',
+        'ano_coleta': 2025,
+        'data_inicio': '2025-06-01'
     },
-    
-    # Proposições explicitamente desabilitadas conforme requisito
-    'proposicoes': {
-        'habilitado': False,
-        'respeitar_data_inicio': True,
-        'descricao': 'Proposições Legislativas (DESABILITADO)'
-    }
 }
 
 def get_coleta_config(tipo_coleta: str = None) -> dict:
@@ -311,67 +277,129 @@ def get_tipos_coleta_habilitados() -> list:
             habilitados.append(tipo)
     return habilitados
 
-# Configurações do Fallback de Votações
-VOTACOES_FALLBACK_CONFIG = {
-    'habilitado': True,  # Habilitar fallback quando API falhar
-    'anos_para_coletar': [2024, 2023, 2022],  # Anos com dados completos
-    'limite_registros': 10000,  # Limite de registros por arquivo
-    'formato_preferido': 'json',  # Formato dos arquivos
-    'base_url': 'http://dadosabertos.camara.leg.br/arquivos',
-    'cache_dir': 'cache/votacoes',
-    'tipos_arquivos': [
-        'votacoes',           # Dados principais das votações
-        'votacoesVotos',      # Votos individuais dos deputados
-        'votacoesObjetos',    # Proposições objeto da votação
-        'votacoesProposicoes', # Proposições afetadas
-        'votacoesOrientacoes'  # Orientações de bancada
-    ],
-    'rate_limit_delay': 1.0,  # Delay entre downloads
-    'timeout_download': 60,  # Timeout por download
-    'usar_cache_local': True,  # Usar arquivos em cache
-    'upload_gcs': True,  # Fazer upload dos dados completos
-    'processar_relacionamentos': True,  # Processar todos os relacionamentos
-    'validar_integridade': True  # Validar integridade dos dados
+# Configurações do Fallback de Votações (REMOVIDO - Evolução Futura)
+# MOVIDO PARA deprecated/ - será implementado em versão futura
+
+def get_ano_inicio_legislatura_emendas() -> int:
+    """
+    Retorna o ano de início da legislatura para emendas
+    
+    Returns:
+        int: Ano de início (2023 para legislatura atual)
+    """
+    config = get_coleta_config('emendas')
+    return config.get('ano_inicio_legislatura', 2023)
+
+def deve_apenas_legislatura_atual_emendas() -> bool:
+    """
+    Verifica se deve coletar apenas emendas da legislatura atual
+    
+    Returns:
+        bool: True se deve filtrar por legislatura atual
+    """
+    config = get_coleta_config('emendas')
+    return config.get('apenas_legislatura_atual', True)
+
+def get_descricao_filtro_emendas() -> str:
+    """
+    Retorna descrição do filtro temporal para emendas
+    
+    Returns:
+        str: Descrição do filtro configurado
+    """
+    config = get_coleta_config('emendas')
+    return config.get('descricao_filtro', 'Emendas Parlamentares')
+
+# Configurações de Emendas Parlamentares (Portal da Transparência)
+EMENDAS_CONFIG = {
+    'ano_coleta': 2025,  # Ano principal para coleta (configurável)
+    'habilitado': True,
+    'data_inicio': '2025-01-01',  # Data início do ano configurado
+    'data_fim': '2025-12-31',    # Data fim do ano configurado
+    'descricao': 'Emendas Parlamentares - Portal da Transparência',
+    'download_url': 'https://portaldatransparencia.gov.br/download-de-dados/emendas-parlamentares/UNICO',
+    'temp_dir': 'backend/temp',
+    'arquivo_csv_esperado': 'EmendasParlamentares.csv',
+    'colunas_obrigatorias': ['Nome do Autor da Emenda', 'Ano da Emenda'],
+    'valor_minimo': 0.01,  # Valor mínimo para considerar emenda
+    'ignorar_bancadas': True,  # Ignorar emendas de "BANCADA"
+    'normalizar_nomes': True,  # Aplicar normalização de nomes
+    'gerar_ranking': True,  # Gerar ranking automático
+    'batch_size': 50,  # Tamanho do lote para commits
+    'mostrar_progresso': True  # Mostrar progresso detalhado
 }
 
-def get_votacoes_fallback_config(chave: str = None) -> Any:
+def get_emendas_config(chave: str = None) -> any:
     """
-    Obtém configurações do fallback de votações
+    Obtém configurações de emendas de forma centralizada
     
     Args:
         chave: Chave específica (opcional)
     
     Returns:
-        Valor da configuração solicitada
+        Valor da configuração solicitada ou dicionário completo
     """
     if chave:
-        return VOTACOES_FALLBACK_CONFIG.get(chave)
+        return EMENDAS_CONFIG.get(chave)
     
-    return VOTACOES_FALLBACK_CONFIG
+    return EMENDAS_CONFIG
 
-def deve_usar_fallback_votacoes() -> bool:
+def get_ano_emendas() -> int:
     """
-    Verifica se deve usar fallback de votações
+    Retorna o ano configurado para coleta de emendas
     
     Returns:
-        bool: True se fallback está habilitado
+        int: Ano configurado para coleta
     """
-    return VOTACOES_FALLBACK_CONFIG.get('habilitado', False)
+    return EMENDAS_CONFIG.get('ano_coleta', 2025)
 
-def get_anos_fallback_votacoes() -> list:
+def get_descricao_emendas() -> str:
     """
-    Retorna lista de anos para coleta fallback
+    Retorna descrição configurada para emendas
     
     Returns:
-        list: Anos configurados para coleta
+        str: Descrição da coleta de emendas
     """
-    return VOTACOES_FALLBACK_CONFIG.get('anos_para_coletar', [])
+    return EMENDAS_CONFIG.get('descricao', 'Emendas Parlamentares')
 
-def get_tipos_arquivos_votacoes() -> list:
+def get_url_download_emendas() -> str:
     """
-    Retorna lista de tipos de arquivos para coleta
+    Retorna URL de download configurada para emendas
     
     Returns:
-        list: Tipos de arquivos configurados
+        str: URL de download do arquivo de emendas
     """
-    return VOTACOES_FALLBACK_CONFIG.get('tipos_arquivos', [])
+    return EMENDAS_CONFIG.get('download_url')
+
+def emendas_habilitadas() -> bool:
+    """
+    Verifica se coleta de emendas está habilitada
+    
+    Returns:
+        bool: True se estiver habilitada
+    """
+    return EMENDAS_CONFIG.get('habilitado', False)
+
+def get_periodo_emendas() -> tuple:
+    """
+    Retorna o período configurado para coleta de emendas
+    
+    Returns:
+        tuple: (data_inicio, data_fim) no formato YYYY-MM-DD
+    """
+    ano = get_ano_emendas()
+    data_inicio = EMENDAS_CONFIG.get('data_inicio', f'{ano}-01-01')
+    data_fim = EMENDAS_CONFIG.get('data_fim', f'{ano}-12-31')
+    
+    return data_inicio, data_fim
+
+def atualizar_ano_emendas(novo_ano: int) -> None:
+    """
+    Atualiza o ano de coleta de emendas e ajusta as datas
+    
+    Args:
+        novo_ano: Novo ano para coleta
+    """
+    EMENDAS_CONFIG['ano_coleta'] = novo_ano
+    EMENDAS_CONFIG['data_inicio'] = f'{novo_ano}-01-01'
+    EMENDAS_CONFIG['data_fim'] = f'{novo_ano}-12-31'

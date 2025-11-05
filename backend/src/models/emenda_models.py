@@ -39,8 +39,12 @@ class EmendaParlamentar(Base):
     # Beneficiários
     beneficiario_principal = Column(Text)  # Município/Estado/Entidade principal
     beneficiarios_secundarios = Column(Text)  # Outros beneficiários
-    uf_beneficiario = Column(String(2))
+    uf_beneficiario = Column(String(50))
     municipio_beneficiario = Column(String(255))
+    
+    # Campos de rastreio geográfico (cidade + estado)
+    cidade_destino = Column(String(255), index=True)  # Cidade específica de destino
+    estado_destino = Column(String(50), index=True)    # Estado (UF) de destino
     
     # Situação
     situacao = Column(String(100), index=True)
@@ -51,11 +55,25 @@ class EmendaParlamentar(Base):
     # Autoria
     autor = Column(String(255))
     partido_autor = Column(String(20))
-    uf_autor = Column(String(2))
+    uf_autor = Column(String(50))
     
     # Metadados
     url_documento = Column(String(500))
     gcs_url = Column(String(500))  # URL do arquivo completo no GCS
+    
+    # Campos financeiros adicionais do Portal da Transparência
+    valor_resto_inscrito = Column(Numeric(15, 2), nullable=True)
+    valor_resto_cancelado = Column(Numeric(15, 2), nullable=True)
+    valor_resto_pago = Column(Numeric(15, 2), nullable=True)
+    
+    # Campos de otimização com códigos da API
+    codigo_funcao_api = Column(String(20), nullable=True, index=True)
+    codigo_subfuncao_api = Column(String(20), nullable=True, index=True)
+    
+    # Campos de documentação
+    documentos_url = Column(Text, nullable=True)
+    quantidade_documentos = Column(Integer, default=0)
+    
     created_at = Column(TIMESTAMP, server_default=func.now())
     updated_at = Column(TIMESTAMP, server_default=func.now(), onupdate=func.now())
     

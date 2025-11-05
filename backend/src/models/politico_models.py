@@ -10,6 +10,7 @@ class Deputado(Base):
     api_camara_id = Column(Integer, unique=True, index=True)
     nome = Column(String(255), nullable=False)
     nome_civil = Column(String(255))
+    codigo_autor_emenda = Column(Integer, nullable=True, index=True)
     cpf = Column(String(14), unique=True)
     sexo = Column(CHAR(1))
     data_nascimento = Column(Date)

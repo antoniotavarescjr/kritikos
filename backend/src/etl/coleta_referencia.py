@@ -21,9 +21,8 @@ sys.path.append(str(SRC_DIR))
 sys.path.append(str(Path(__file__).parent))
 from config import get_config, HACKATHON_CONFIG, DEDUPLICATION_CONFIG, get_coleta_config, get_data_inicio_coleta, deve_respeitar_data_inicio, coleta_habilitada
 
-# Importar novos coletores
-from .coleta_proposicoes import ColetorProposicoes
-from .coleta_frequencia import ColetorFrequencia
+# Coletores de proposições e frequência removidos - Evolução Futura
+# MOVIDO PARA deprecated/ - será implementado em versão futura
 
 # Importar modelos
 import models
@@ -473,62 +472,14 @@ class ColetorDadosCamara(ETLBase):
         meses_historico = self.config['gastos']['meses_historico']
         resultados['gastos'] = self.buscar_e_salvar_gastos(db, meses_historico=meses_historico)
         
-        # 3. Coletar proposições de alto impacto
-        print("\n📄 ETAPA 3: PROPOSIÇÕES DE ALTO IMPACTO")
-        try:
-            coletor_proposicoes = ColetorProposicoes()
-            ano_atual = datetime.now().year
-            
-            # Coletar proposições do ano atual
-            resultados_proposicoes = coletor_proposicoes.coletar_proposicoes_periodo(ano_atual, db)
-            resultados['proposicoes'] = resultados_proposicoes.get('proposicoes_salvas', 0)
-            resultados['autores_mapeados'] = resultados_proposicoes.get('autores_mapeados', 0)
-            resultados['uploads_gcs'] = resultados_proposicoes.get('uploads_gcs', 0)
-            
-            # Gerar resumo
-            coletor_proposicoes.gerar_resumo_coleta(ano_atual, db)
-            
-        except Exception as e:
-            print(f"❌ Erro na coleta de proposições: {e}")
-            resultados['proposicoes'] = 0
-            resultados['autores_mapeados'] = 0
-            resultados['uploads_gcs'] = 0
-        
-        # 4. Coletar dados de frequência
-        print("\n📅 ETAPA 4: DADOS DE FREQUÊNCIA")
-        try:
-            coletor_frequencia = ColetorFrequencia()
-            
-            # Coletar para os últimos 2 meses
-            data_atual = datetime.now()
-            meses_para_coletar = []
-            
-            for i in range(2):
-                data_ref = data_atual - timedelta(days=30 * i)
-                meses_para_coletar.append((data_ref.year, data_ref.month))
-            
-            # Ordenar do mais antigo para o mais recente
-            meses_para_coletar.reverse()
-            
-            total_frequencias = 0
-            total_detalhes = 0
-            
-            for ano, mes in meses_para_coletar:
-                resultados_frequencia = coletor_frequencia.coletar_frequencia_periodo(ano, mes, db)
-                if resultados_frequencia.get('status') != 'ja_coletado':
-                    total_frequencias += resultados_frequencia.get('frequencias_salvas', 0)
-                    total_detalhes += resultados_frequencia.get('detalhes_salvos', 0)
-                    
-                    # Gerar ranking
-                    coletor_frequencia.gerar_ranking_mensal(ano, mes, db)
-            
-            resultados['frequencias'] = total_frequencias
-            resultados['detalhes_frequencia'] = total_detalhes
-            
-        except Exception as e:
-            print(f"❌ Erro na coleta de frequência: {e}")
-            resultados['frequencias'] = 0
-            resultados['detalhes_frequencia'] = 0
+        # 3. Proposições e Frequência removidos - Evolução Futura
+        print("\n📄 ETAPA 3: PROPOSIÇÕES E FREQUÊNCIA (REMOVIDOS)")
+        print("   ❌ Proposições e Frequência foram removidos - evolução futura")
+        resultados['proposicoes'] = 0
+        resultados['autores_mapeados'] = 0
+        resultados['uploads_gcs'] = 0
+        resultados['frequencias'] = 0
+        resultados['detalhes_frequencia'] = 0
         
         # Resumo final
         print("\n📋 RESUMO COMPLETO DA COLETA")

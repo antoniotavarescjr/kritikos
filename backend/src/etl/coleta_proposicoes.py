@@ -1,726 +1,839 @@
-#!/usr/bin/env python3
 """
-Coletor de Proposições Parlamentares de Alto Impacto
-Focus em PEC, PL, PLP, MPV e outros tipos relevantes
-Integração com Google Cloud Storage para armazenamento completo
-Refatorado para usar ETL Utils - elimina redundâncias e padroniza operações
+Coletor de Proposições para Ranking de Deputados
+
+Implementa abordagem híbrida: JSON para carga inicial + API para atualizações
+Foco em proposições de alto impacto legislativo para hackathon.
 """
 
-import sys
-from pathlib import Path
-from datetime import datetime, timedelta
-from typing import Optional, Dict, List, Any
-from sqlalchemy.orm import Session
-from sqlalchemy import and_, or_
-
-# --- Bloco de Configuração de Caminho ---
-SRC_DIR = Path(__file__).resolve().parent.parent
-sys.path.append(str(SRC_DIR))
-# --- Fim do Bloco ---
-
-# Importar configurações
-sys.path.append(str(Path(__file__).parent))
-from config import get_config
-
-# Importar utilitários
-from utils.gcs_utils import get_gcs_manager
-from utils.cache_utils import get_cache_manager
-
-# Importar modelos
-import models
-from models.database import get_db
-from models.politico_models import Deputado
+import logging
+import requests
+import json
+import os
+from datetime import datetime, date
+from typing import List, Dict, Any, Optional, Tuple
+from sqlalchemy import text
+from models.db_utils import get_db_session
 from models.proposicao_models import Proposicao, Autoria
+from models.politico_models import Deputado
+from utils.common_utils import setup_logging
+from utils.cache_utils import CacheManager
+from utils.gcs_utils import get_gcs_manager
 
-# Importar ETL utils
-from .etl_utils import ETLBase, DateParser, ProgressLogger, GCSUploader
+logger = logging.getLogger(__name__)
 
-class ColetorProposicoes(ETLBase):
+
+class ColetorProposicoes:
     """
-    Classe responsável por coletar proposições de alto impacto
-    Herda de ETLBase para usar funcionalidades comuns e eliminar redundâncias
+    Coletor de proposições dos deputados para sistema de ranking.
+    
+    Abordagem híbrida:
+    1. Download JSON para carga inicial rápida
+    2. API para atualizações específicas
+    3. Foco em proposições de alto impacto
     """
-
+    
     def __init__(self):
-        """Inicializa o coletor usando ETLBase"""
-        super().__init__()
+        self.cache = CacheManager('coletorproposicoes')
+        self.base_url = "https://dadosabertos.camara.leg.br/api/v2"
+        
+        # Tipos de proposições relevantes para ranking (excluídos acessórios)
+        self.tipos_relevantes = ['PEC', 'PLP', 'PL', 'MPV', 'PLV', 'SUG']
+        
+        # Sistema de pontuação por tipo
+        self.pontuacao_tipos = {
+            'PEC': 10,    # Proposta de Emenda à Constituição - Maior impacto
+            'MPV': 8,     # Medida Provisória - Urgência e impacto
+            'PLP': 7,     # Projeto de Lei Complementar - Alta relevância
+            'PL': 5,      # Projeto de Lei - Relevância média-alta
+            'PDC': 3,     # Projeto de Decreto Legislativo - Relevância média
+            'PRC': 2      # Projeto de Resolução - Relevância variável
+        }
+        
+        # Multiplicadores por status
+        self.multiplicadores = {
+            'aprovada': 1.5,      # Proposições aprovadas valem mais
+            'em tramitação': 1.0,   # Em andamento normal
+            'arquivada': 0.5,      # Arquivadas valem menos
+            'rejeitada': 0.3,      # Rejeitadas valem pouco
+        }
+        
+        self.session = get_db_session()
         
         # Inicializar GCS Manager
         self.gcs_manager = get_gcs_manager()
-        self.gcs_disponivel = self.gcs_manager.is_available()
+        self.gcs_disponivel = self.gcs_manager is not None and self.gcs_manager.is_available()
         
-        # Inicializar Cache Manager
-        self.cache_manager = get_cache_manager(cache_dir="cache/proposicoes", ttl_hours=6)
+        if self.gcs_disponivel:
+            logger.info("✅ GCS disponível para armazenamento")
+        else:
+            logger.warning("⚠️ GCS não disponível - usando apenas banco de dados local")
         
-        # Carregar configurações específicas
-        self.config = get_config('hackathon', 'proposicoes')
-        self.tipos_prioritarios = self._get_tipos_prioritarios()
-        
-        print(f"✅ Coletor de proposições inicializado")
-        print(f"   📁 GCS disponível: {self.gcs_disponivel}")
-        print(f"   🗄️ Cache ativo: {self.cache_manager.cache_dir}")
-        print(f"    Tipos prioritários: {', '.join(self.tipos_prioritarios)}")
-
-    def _get_tipos_prioritarios(self) -> List[str]:
+    def baixar_json_proposicoes(self, tipo: str, ano: int) -> Optional[List[Dict]]:
         """
-        Obtém lista de tipos de proposições prioritárias baseado na configuração
-        
-        Returns:
-            List[str]: Lista de tipos SIGLA ordenados por prioridade
-        """
-        config_proposicoes = get_config('hackathon', 'proposicoes')
-        tipos_config = config_proposicoes.get('tipos_para_coletar', [])
-        prioridade_tipos = config_proposicoes.get('prioridade_tipos', {})
-        
-        # Ordenar tipos por prioridade
-        tipos_ordenados = sorted(tipos_config, key=lambda x: prioridade_tipos.get(x, 999))
-        
-        print(f"   📋 Tipos prioritários (em ordem): {', '.join(tipos_ordenados)}")
-        return tipos_ordenados
-
-    def _fazer_requisicao(self, url: str, params: Optional[Dict] = None, use_cache: bool = True) -> Optional[Dict]:
-        """
-        Faz requisição à API com cache e tratamento de erros
-        
-        Args:
-            url: URL da API
-            params: Parâmetros da requisição
-            use_cache: Se deve usar cache
-            
-        Returns:
-            Dict: Resposta da API ou None
-        """
-        # Verificar cache primeiro
-        if use_cache:
-            cached_response = self.cache_manager.get_cached_api_response(url, params or {})
-            if cached_response:
-                print(f"      📦 Cache hit: {url}")
-                return cached_response
-        
-        try:
-            time.sleep(self.rate_limit_delay)
-            response = self.session.get(url, params=params, timeout=15)
-            response.raise_for_status()
-            data = response.json()
-            
-            # Salvar no cache
-            if use_cache and data:
-                self.cache_manager.cache_api_response(url, params or {}, data, ttl_hours=2)
-            
-            return data
-            
-        except requests.exceptions.RequestException as e:
-            print(f"❌ Erro na requisição para {url}: {e}")
-            return None
-
-    def buscar_proposicoes_por_tipo(self, tipo: str, anos: List[int], limite: int = 100) -> List[Dict]:
-        """
-        Busca proposições por tipo usando estratégia definitiva de janelas otimizadas
-        BASEADO NAS DESCOBERTAS DOS TESTES EXTENSIVOS
+        Baixa arquivo JSON de proposições por tipo e ano usando ARQUIVO OFICIAL COMPLETO.
         
         Args:
             tipo: Tipo da proposição (PEC, PL, etc.)
-            anos: Lista de anos para buscar
-            limite: Limite de resultados
+            ano: Ano das proposições
             
         Returns:
-            List[Dict]: Lista de proposições
+            Lista de proposições ou None em caso de erro
         """
-        print(f"   🎯 BUSCA ESTRATÉGICA {tipo}/anos {anos} (limite: {limite})")
+        try:
+            # Usar ARQUIVO OFICIAL COMPLETO da Câmara (não API limitada)
+            url = f"https://dadosabertos.camara.leg.br/arquivos/proposicoes/json/proposicoes-{ano}.json"
+            
+            logger.info(f"📥 Baixando JSON COMPLETO de proposições de {ano}...")
+            
+            response = requests.get(url, timeout=60)  # Timeout maior para arquivo grande
+            response.raise_for_status()
+            
+            dados = response.json()
+            proposicoes = dados.get('dados', [])
+            
+            # Filtrar por tipo e ano
+            props_filtradas = [
+                p for p in proposicoes 
+                if p.get('siglaTipo') == tipo and p.get('ano') == ano
+            ]
+            
+            logger.info(f"✅ Download {tipo}: {len(props_filtradas)} proposições (de {len(proposicoes)} totais)")
+            return props_filtradas
+            
+        except Exception as e:
+            logger.error(f"❌ Erro ao baixar JSON de {tipo}s: {e}")
+            return None
+    
+    def buscar_proposicoes_deputado_api(self, deputado_id: int) -> Optional[List[Dict]]:
+        """
+        Busca proposições de um deputado específico via API.
         
-        # Estratégia definitiva baseada nas descobertas
-        estrategias_janelas = self._definir_estrategia_janelas(tipo)
+        Args:
+            deputado_id: ID do deputado na API da Câmara
+            
+        Returns:
+            Lista de proposições ou None em caso de erro
+        """
+        try:
+            url = f"{self.base_url}/deputados/{deputado_id}/proposicoes"
+            
+            # Cache para evitar requisições repetidas
+            cache_key = f"deputado_{deputado_id}_proposicoes"
+            cached_data = self.cache.get(cache_key)
+            if cached_data:
+                logger.info(f"📦 Cache hit: proposições do deputado {deputado_id}")
+                return cached_data
+            
+            logger.info(f"🔍 Buscando proposições do deputado {deputado_id}...")
+            
+            response = requests.get(url, timeout=30)
+            response.raise_for_status()
+            
+            dados = response.json()
+            proposicoes = dados.get('dados', [])
+            
+            # Filtrar apenas tipos relevantes
+            props_filtradas = [
+                p for p in proposicoes 
+                if p.get('siglaTipo') in self.tipos_relevantes
+            ]
+            
+            # Salvar no cache por 1 hora
+            self.cache.set(cache_key, props_filtradas, ttl=3600)
+            
+            logger.info(f"✅ API deputado {deputado_id}: {len(props_filtradas)} proposições relevantes")
+            return props_filtradas
+            
+        except Exception as e:
+            logger.error(f"❌ Erro ao buscar proposições do deputado {deputado_id}: {e}")
+            return None
+    
+    def calcular_pontos_proposicao(self, proposicao: Dict) -> float:
+        """
+        Calcula pontos de uma proposição baseado no tipo e status.
         
-        todas_proposicoes = []
-        ids_encontrados = set()
+        Args:
+            proposicao: Dicionário com dados da proposição
+            
+        Returns:
+            Pontuação calculada
+        """
+        tipo = proposicao.get('siglaTipo', '')
+        pontos_base = self.pontuacao_tipos.get(tipo, 1)
         
-        for i, janela in enumerate(estrategias_janelas):
-            print(f"\n   📅 Janela {i+1}/{len(estrategias_janelas)}: {janela['descricao']}")
-            print(f"      Período: {janela['data_inicio']} a {janela['data_fim']}")
+        # Verificar status para multiplicador
+        status = proposicao.get('statusProposicao', {}).get('descricao', '').lower()
+        multiplicador = 1.0
+        
+        if 'aprov' in status:
+            multiplicador = self.multiplicadores['aprovada']
+        elif 'tramit' in status:
+            multiplicador = self.multiplicadores['em tramitação']
+        elif 'arquiv' in status:
+            multiplicador = self.multiplicadores['arquivada']
+        elif 'rejeit' in status:
+            multiplicador = self.multiplicadores['rejeitada']
+        
+        return pontos_base * multiplicador
+    
+    def salvar_proposicao(self, dados_proposicao: Dict, salvar_gcs: bool = True, autores_dict: Optional[Dict] = None) -> Optional[int]:
+        """
+        Salva uma proposição no banco de dados e opcionalmente no GCS.
+        
+        Args:
+            dados_proposicao: Dicionário com dados da proposição
+            salvar_gcs: Se deve salvar no GCS (padrão: True)
+            autores_dict: Dicionário de autores pré-carregado (otimização)
             
-            # Coleta com paginação para esta janela
-            proposicoes_janela = []
-            pagina = 1
-            max_paginas_janela = 20  # Limite por janela para não sobrecarregar
+        Returns:
+            ID da proposição salva ou None em caso de erro
+        """
+        try:
+            # Verificar se já existe
+            api_id = dados_proposicao.get('id')
+            existente = self.session.execute(
+                text("SELECT id FROM proposicoes WHERE api_camara_id = :api_id"),
+                {'api_id': api_id}
+            ).scalar()
             
-            while len(proposicoes_janela) < 1000 and pagina <= max_paginas_janela:  # Máximo 1000 por janela
-                url = f"{API_CONFIG['base_url']}/proposicoes"
-                params = {
-                    'siglaTipo': tipo,
-                    'ano': janela.get('anos', anos),
-                    'dataApresentacaoInicio': janela['data_inicio'],
-                    'dataApresentacaoFim': janela['data_fim'],
-                    'pagina': pagina,
-                    'itens': 100,
-                    'ordenarPor': 'id',
-                    'ordem': 'DESC'
-                }
-                
-                print(f"      📄 Página {pagina}...")
-                data = self.make_request(url, params)
-                
-                if not data:
-                    break
-                
-                itens = data.get('dados', [])
-                if not itens:
-                    print(f"      📄 Página {pagina} vazia")
-                    break
-                
-                # Filtrar duplicatas por ID
-                novos_itens = []
-                for item in itens:
-                    item_id = item.get('id')
-                    if item_id and item_id not in ids_encontrados:
-                        ids_encontrados.add(item_id)
-                        novos_itens.append(item)
-                
-                proposicoes_janela.extend(novos_itens)
-                print(f"      📊 Página {pagina}: +{len(novos_itens)} {tipo}s (total janela: {len(proposicoes_janela)})")
-                
-                if len(novos_itens) == 0:  # Se não encontrou novos itens, parar
-                    break
-                
-                pagina += 1
+            if existente:
+                return existente
             
-            # Adicionar proposições desta janela ao total
-            todas_proposicoes.extend(proposicoes_janela)
-            
-            # Estatísticas da janela
-            if proposicoes_janela:
-                anos_janela = {}
-                for prop in proposicoes_janela:
-                    ano = prop.get('ano', 'N/A')
-                    anos_janela[ano] = anos_janela.get(ano, 0) + 1
-                
-                print(f"      ✅ Janela concluída: {len(proposicoes_janela)} {tipo}s")
-                print(f"      📅 Distribuição: {dict(sorted(anos_janela.items()))}")
+            # Usar autores do dicionário pré-carregado (OTIMIZAÇÃO)
+            autores = []
+            if autores_dict and api_id in autores_dict:
+                autores = autores_dict[api_id]
             else:
-                print(f"      ❌ Nenhuma {tipo} encontrada nesta janela")
+                # Fallback: buscar via API (apenas se necessário)
+                autores = self._buscar_autores_proposicao(api_id)
             
-            # Parar se já encontrou suficientes
-            if len(todas_proposicoes) >= limite:
-                print(f"      🎯 Limite desejado alcançado: {len(todas_proposicoes)} {tipo}s")
-                break
-        
-        # Filtrar pelos anos desejados e ordenar
-        proposicoes_filtradas = [
-            prop for prop in todas_proposicoes 
-            if prop.get('ano') in anos
-        ]
-        
-        # Ordenar por ID (mais recentes primeiro) e limitar
-        proposicoes_filtradas.sort(key=lambda x: x.get('id', 0), reverse=True)
-        proposicoes = proposicoes_filtradas[:limite]
-        
-        # Estatísticas finais
-        anos_encontrados = {}
-        for prop in proposicoes:
-            ano = prop.get('ano', 'N/A')
-            anos_encontrados[ano] = anos_encontrados.get(ano, 0) + 1
+            # Desabilitar download de documentos (muitos erros 403)
+            documento_html = None
+            url_inteiro_teor = dados_proposicao.get('urlInteiroTeor', '')
+            # if url_inteiro_teor and salvar_gcs:
+            #     documento_html = self._baixar_documento_proposicao(url_inteiro_teor)
             
-        print(f"\n   📈 RESULTADO FINAL {tipo}:")
-        print(f"      📄 Encontradas: {len(proposicoes)} {tipo}s (de {len(todas_proposicoes)} totais)")
-        print(f"      📅 Distribuição: {dict(sorted(anos_encontrados.items()))}")
-        
-        return proposicoes
-
-    def _definir_estrategia_janelas(self, tipo: str) -> List[Dict]:
+            # Desabilitar GCS temporariamente para evitar rate limiting
+            gcs_url = None
+            # if salvar_gcs:
+            #     gcs_url = self._salvar_proposicao_gcs(dados_proposicao, autores, documento_html)
+            
+            # Mapear campos com tratamento de encoding
+            proposicao = Proposicao(
+                api_camara_id=api_id,
+                tipo=dados_proposicao.get('siglaTipo', ''),
+                numero=dados_proposicao.get('numero', 0),
+                ano=dados_proposicao.get('ano', 2025),
+                ementa=self._clean_text(dados_proposicao.get('ementa', '')),
+                explicacao=self._clean_text(dados_proposicao.get('descricao', '')),
+                data_apresentacao=self._parse_data(dados_proposicao.get('dataApresentacao')) or datetime.now().date(),
+                situacao=self._clean_text(dados_proposicao.get('statusProposicao', {}).get('descricao', '')),
+                link_inteiro_teor=dados_proposicao.get('uri', ''),
+                keywords=self._clean_text(dados_proposicao.get('keywords', '')),
+                gcs_url=gcs_url or dados_proposicao.get('urlInteiroTeor', '')
+            )
+            
+            self.session.add(proposicao)
+            self.session.flush()  # Obter ID sem commit
+            
+            # Salvar autoria no banco (OTIMIZADO)
+            self._salvar_autoria_otimizado(proposicao.id, autores)
+            
+            logger.info(f"💾 Salva proposição {proposicao.tipo} {proposicao.numero}/{proposicao.ano}")
+            if gcs_url:
+                logger.info(f"📁 GCS: {gcs_url}")
+            
+            return proposicao.id
+            
+        except Exception as e:
+            logger.error(f"❌ Erro ao salvar proposição: {e}")
+            self.session.rollback()
+            return None
+    
+    def _buscar_autores_proposicao(self, proposicao_id: int) -> List[Dict]:
         """
-        Define janelas otimizadas baseadas nas descobertas extensivas
+        Busca autores de uma proposição específica via API.
         
         Args:
-            tipo: Tipo da proposição
+            proposicao_id: ID da proposição na API da Câmara
             
         Returns:
-            List[Dict]: Lista de janelas configuradas
+            Lista de autores ou lista vazia em caso de erro
         """
-        if tipo == 'PEC':
-            # Estratégia PECs baseada nas descobertas: 17 PECs em 2025, nenhuma em 2024
-            return [
-                {
-                    'data_inicio': '2025-01-24',
-                    'data_fim': '2025-04-24',
-                    'descricao': 'PECs - Pico 1: Jan-Abr 2025 (8 PECs)',
-                    'anos': [2025]
-                },
-                {
-                    'data_inicio': '2025-04-24',
-                    'data_fim': '2025-07-23',
-                    'descricao': 'PECs - Pico 2: Abr-Jul 2025 (4 PECs)',
-                    'anos': [2025]
-                },
-                {
-                    'data_inicio': '2025-07-23',
-                    'data_fim': '2025-10-21',
-                    'descricao': 'PECs - Pico 3: Jul-Out 2025 (5 PECs)',
-                    'anos': [2025]
-                }
-            ]
-        
-        elif tipo == 'PL':
-            # Estratégia PLs baseada nas descobertas: 4000+ PLs encontradas
-            return [
-                {
-                    'data_inicio': '2025-07-21',
-                    'data_fim': '2025-10-21',
-                    'descricao': 'PLs - Últimos 3 meses (1000+ PLs)',
-                    'anos': [2024, 2025]
-                },
-                {
-                    'data_inicio': '2025-04-22',
-                    'data_fim': '2025-07-21',
-                    'descricao': 'PLs - Trimestre anterior (1000+ PLs)',
-                    'anos': [2024, 2025]
-                },
-                {
-                    'data_inicio': '2025-01-21',
-                    'data_fim': '2025-04-22',
-                    'descricao': 'PLs - Primeiro trimestre (1000+ PLs)',
-                    'anos': [2024, 2025]
-                },
-                {
-                    'data_inicio': '2024-10-01',
-                    'data_fim': '2025-01-21',
-                    'descricao': 'PLs - Final 2024 (1000+ PLs)',
-                    'anos': [2024, 2025]
-                }
-            ]
-        
-        else:
-            # Estratégia genérica para outros tipos (PLP, MPV, etc.)
-            return [
-                {
-                    'data_inicio': '2025-01-01',
-                    'data_fim': '2025-12-31',
-                    'descricao': f'{tipo}s - Ano completo 2025',
-                    'anos': [2025]
-                },
-                {
-                    'data_inicio': '2024-01-01',
-                    'data_fim': '2024-12-31',
-                    'descricao': f'{tipo}s - Ano completo 2024',
-                    'anos': [2024]
-                }
-            ]
-
-    def buscar_detalhes_proposicao(self, proposicao_id: int) -> Optional[Dict]:
-        """
-        Busca detalhes completos de uma proposição
-        
-        Args:
-            proposicao_id: ID da proposição na API
+        try:
+            url = f"{self.base_url}/proposicoes/{proposicao_id}/autores"
             
-        Returns:
-            Dict: Detalhes completos ou None
-        """
-        url = f"{self.api_config['base_url']}/proposicoes/{proposicao_id}"
-        return self.make_request(url)
-
-    def buscar_autores_proposicao(self, proposicao_id: int) -> List[Dict]:
-        """
-        Busca autores de uma proposição
-        
-        Args:
-            proposicao_id: ID da proposição
+            response = requests.get(url, timeout=30)
+            response.raise_for_status()
             
-        Returns:
-            List[Dict]: Lista de autores
-        """
-        url = f"{self.api_config['base_url']}/proposicoes/{proposicao_id}/autores"
-        params = {'itens': 50}
-        
-        data = self.make_request(url, params)
-        if not data:
+            dados = response.json()
+            autores = dados.get('dados', [])
+            
+            logger.info(f"👥 Encontrados {len(autores)} autores para proposição {proposicao_id}")
+            return autores
+            
+        except Exception as e:
+            logger.error(f"❌ Erro ao buscar autores da proposição {proposicao_id}: {e}")
             return []
-        
-        return data.get('dados', [])
-
-    def buscar_votacoes_proposicao(self, proposicao_id: int) -> List[Dict]:
+    
+    def baixar_json_autores(self, ano: int) -> Optional[Dict[int, List[Dict]]]:
         """
-        Busca votações de uma proposição
+        Baixa arquivo JSON COMPLETO de autores de proposições por ano.
         
         Args:
-            proposicao_id: ID da proposição
+            ano: Ano das proposições
             
         Returns:
-            List[Dict]: Lista de votações
+            Dicionário mapeando ID da proposição -> lista de autores
         """
-        url = f"{self.api_config['base_url']}/proposicoes/{proposicao_id}/votacoes"
-        params = {'itens': 20}
-        
-        data = self.make_request(url, params)
-        if not data:
-            return []
-        
-        return data.get('dados', [])
-
-    def baixar_texto_completo(self, url_inteiro_teor: str) -> Optional[str]:
+        try:
+            # Usar ARQUIVO OFICIAL COMPLETO da Câmara
+            url = f"https://dadosabertos.camara.leg.br/arquivos/proposicoesAutores/json/proposicoesAutores-{ano}.json"
+            
+            logger.info(f"📥 Baixando JSON COMPLETO de autores de {ano}...")
+            
+            response = requests.get(url, timeout=60)  # Timeout maior para arquivo grande
+            response.raise_for_status()
+            
+            dados = response.json()
+            autores_data = dados.get('dados', [])
+            
+            # Criar dicionário: id_proposicao -> lista de autores
+            autores_dict = {}
+            for autor_info in autores_data:
+                prop_id = autor_info.get('idProposicao')
+                if prop_id not in autores_dict:
+                    autores_dict[prop_id] = []
+                autores_dict[prop_id].append(autor_info)
+            
+            logger.info(f"✅ Download autores: {len(autores_data)} registros para {len(autores_dict)} proposições")
+            return autores_dict
+            
+        except Exception as e:
+            logger.error(f"❌ Erro ao baixar JSON de autores: {e}")
+            return None
+    
+    def _salvar_autoria_otimizado(self, proposicao_id: int, autores: List[Dict]):
         """
-        Baixa o texto completo de uma proposição usando a URL do inteiro teor
+        Salva autoria da proposição usando lista de autores pré-carregada (OTIMIZADO).
         
         Args:
-            url_inteiro_teor: URL para download do texto completo
+            proposicao_id: ID da proposição salva
+            autores: Lista de autores da proposição (do arquivo JSON completo)
+        """
+        try:
+            for autor in autores:
+                # Usar ID direto do autor (mais confiável que URI)
+                deputado_api_id = autor.get('idDeputadoAutor')
+                if deputado_api_id:
+                    
+                    # Buscar deputado pelo ID da API
+                    deputado = self.session.execute(
+                        text("SELECT id FROM deputados WHERE api_camara_id = :api_id"),
+                        {'api_id': int(deputado_api_id)}
+                    ).scalar()
+                    
+                    if deputado:
+                        # Criar e salvar autoria imediatamente
+                        autoria = Autoria(
+                            proposicao_id=proposicao_id,
+                            deputado_id=deputado,
+                            tipo_autoria=autor.get('tipoAutor', 'Autor'),
+                            ordem=int(autor.get('ordemAssinatura', 1))
+                        )
+                        self.session.add(autoria)
+                        self.session.flush()
+                        logger.info(f"   👤 Autoria: {autor.get('nomeAutor')} ({autor.get('tipoAutor')})")
+                    else:
+                        # Criar deputado se não existir (para autores de legislaturas anteriores)
+                        logger.info(f"   🆕 Criando deputado: {autor.get('nomeAutor')} (ID: {deputado_api_id})")
+                        
+                        novo_deputado = Deputado(
+                            api_camara_id=int(deputado_api_id),
+                            nome=autor.get('nomeAutor', ''),
+                            uf_nascimento=None,  # Não disponível neste endpoint
+                            situacao='Fora de Exercício',  # Provavelmente não está mais em exercício
+                            data_nascimento=None,
+                            escolaridade=None,
+                            email=None
+                        )
+                        self.session.add(novo_deputado)
+                        self.session.flush()  # Obter ID sem commit
+                        
+                        # Criar autoria com o novo deputado
+                        autoria = Autoria(
+                            proposicao_id=proposicao_id,
+                            deputado_id=novo_deputado.id,
+                            tipo_autoria=autor.get('tipoAutor', 'Autor'),
+                            ordem=int(autor.get('ordemAssinatura', 1))
+                        )
+                        self.session.add(autoria)
+                        self.session.flush()  # Garantir persistência
+                        logger.info(f"   👤 Autoria criada: {autor.get('nomeAutor')} ({autor.get('tipoAutor')})")
+                else:
+                    # Outro tipo de autor (sem ID de deputado)
+                    logger.info(f"   📝 Autoria: {autor.get('nomeAutor')} ({autor.get('tipoAutor')}) - Sem ID deputado")
+            
+        except Exception as e:
+            logger.error(f"❌ Erro ao salvar autoria otimizada: {e}")
+            raise  # Propagar erro para debug
+    
+    def _salvar_autoria(self, proposicao_id: int, dados_proposicao: Dict):
+        """
+        Salva autoria da proposição.
+        
+        Args:
+            proposicao_id: ID da proposição salva
+            dados_proposicao: Dicionário com dados da proposição
+        """
+        try:
+            # Buscar autores separadamente via API
+            api_prop_id = dados_proposicao.get('id')
+            autores = self._buscar_autores_proposicao(api_prop_id)
+            
+            for autor in autores:
+                # Extrair ID do deputado da URI
+                uri = autor.get('uri', '')
+                if '/deputados/' in uri:
+                    deputado_api_id = uri.split('/deputados/')[1].split('/')[0]
+                    
+                    # Buscar deputado pelo ID da API
+                    deputado = self.session.execute(
+                        text("SELECT id FROM deputados WHERE api_camara_id = :api_id"),
+                        {'api_id': int(deputado_api_id)}
+                    ).scalar()
+                    
+                    if deputado:
+                        autoria = Autoria(
+                            proposicao_id=proposicao_id,
+                            deputado_id=deputado,
+                            tipo_autoria=autor.get('tipo', 'Autor'),
+                            ordem=autor.get('ordemAssinatura', 1)
+                        )
+                        self.session.add(autoria)
+                        logger.info(f"   👤 Autoria: {autor.get('nome')} ({autor.get('tipo')})")
+                    else:
+                        # Criar deputado se não existir (para autores de legislaturas anteriores)
+                        logger.info(f"   🆕 Criando deputado: {autor.get('nome')} (ID: {deputado_api_id})")
+                        
+                        novo_deputado = Deputado(
+                            api_camara_id=int(deputado_api_id),
+                            nome=autor.get('nome', ''),
+                            uf_nascimento=None,  # Não disponível neste endpoint
+                            situacao='Fora de Exercício',  # Provavelmente não está mais em exercício
+                            data_nascimento=None,
+                            escolaridade=None,
+                            email=None
+                        )
+                        self.session.add(novo_deputado)
+                        self.session.flush()  # Obter ID sem commit
+                        
+                        # Criar autoria com o novo deputado
+                        autoria = Autoria(
+                            proposicao_id=proposicao_id,
+                            deputado_id=novo_deputado.id,
+                            tipo_autoria=autor.get('tipo', 'Autor'),
+                            ordem=autor.get('ordemAssinatura', 1)
+                        )
+                        self.session.add(autoria)
+                        logger.info(f"   👤 Autoria criada: {autor.get('nome')} ({autor.get('tipo')})")
+            
+        except Exception as e:
+            logger.error(f"❌ Erro ao salvar autoria: {e}")
+    
+    def _clean_text(self, text: str) -> str:
+        """
+        Limpa e normaliza texto para evitar problemas de encoding.
+        
+        Args:
+            text: Texto original
             
         Returns:
-            str: Texto completo da proposição ou None
+            Texto limpo e normalizado
+        """
+        if not text:
+            return ""
+        
+        try:
+            # Remover caracteres problemáticos e normalizar
+            cleaned = str(text).strip()
+            # Substituir caracteres que causam problemas no PostgreSQL
+            cleaned = cleaned.replace('\x00', '')  # Null character
+            cleaned = cleaned.replace('\r\n', '\n')  # Normalizar line breaks
+            cleaned = cleaned.replace('\r', '\n')
+            
+            # Limitar tamanho para evitar problemas
+            if len(cleaned) > 10000:
+                cleaned = cleaned[:10000] + "..."
+            
+            return cleaned
+        except Exception as e:
+            logger.warning(f"⚠️ Erro ao limpar texto: {e}")
+            return str(text)[:500] if text else ""
+    
+    def _parse_data(self, data_str: Optional[str]) -> Optional[date]:
+        """
+        Converte string de data para objeto date.
+        
+        Args:
+            data_str: String de data no formato DD/MM/YYYY
+            
+        Returns:
+            Objeto date ou None
+        """
+        if not data_str:
+            return None
+            
+        try:
+            # Formato da API: DD/MM/YYYY
+            return datetime.strptime(data_str, '%d/%m/%Y').date()
+        except:
+            try:
+                # Formato alternativo: YYYY-MM-DD
+                return datetime.strptime(data_str, '%Y-%m-%d').date()
+            except:
+                return None
+    
+    def _baixar_documento_proposicao(self, url_inteiro_teor: str) -> Optional[str]:
+        """
+        Baixa o texto completo de uma proposição.
+        
+        Args:
+            url_inteiro_teor: URL do texto completo da proposição
+            
+        Returns:
+            HTML do documento ou None em caso de erro
         """
         if not url_inteiro_teor:
             return None
             
         try:
-            print(f"      📄 Baixando texto completo de: {url_inteiro_teor}")
+            logger.info(f"📄 Baixando documento: {url_inteiro_teor}")
             
-            # Usar headers de navegador para contornar bloqueios
-            headers = {
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
-                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8,application/pdf',
-                'Accept-Language': 'pt-BR,pt;q=0.8,en-US;q=0.5,en;q=0.3',
-                'Accept-Encoding': 'gzip, deflate',
-                'Connection': 'keep-alive',
-                'Upgrade-Insecure-Requests': '1',
-            }
-            
-            response = self.session.get(url_inteiro_teor, headers=headers, timeout=30)
+            response = requests.get(url_inteiro_teor, timeout=30)
             response.raise_for_status()
             
-            # Verificar se é PDF pelo content-type
-            content_type = response.headers.get('content-type', '').lower()
-            
-            if 'application/pdf' in content_type:
-                # Tratar como PDF binário
-                content_bytes = response.content
-                
-                # Verificar se é PDF válido
-                if content_bytes.startswith(b'%PDF'):
-                    print(f"      ✅ PDF baixado ({len(content_bytes)} bytes)")
-                    print(f"      📄 Formato: PDF")
-                    
-                    # Converter para string usando latin-1 (encoding padrão de PDFs)
-                    return content_bytes.decode('latin-1')
-                else:
-                    print(f"      ❌ Conteúdo não é PDF válido")
-                    return None
+            # Verificar se é HTML
+            content_type = response.headers.get('content-type', '')
+            if 'text/html' in content_type:
+                logger.info(f"✅ Documento baixado como HTML ({len(response.text)} caracteres)")
+                return response.text
             else:
-                # Tratar como HTML/texto
-                content = response.text
-                
-                # Indicadores de que temos o conteúdo correto (HTML)
-                indicadores_html = ['proposição', 'proposicao', 'art.', 'caput', 'parágrafo']
-                
-                if any(indicador in content.lower() for indicador in indicadores_html):
-                    print(f"      ✅ Texto completo baixado ({len(content)} caracteres)")
-                    print(f"      🌐 Formato: HTML")
-                    return content
-                else:
-                    print(f"      ❌ Conteúdo não parece ser o texto da proposição")
-                    print(f"      Amostra: {content[:200]}...")
-                    return None
+                logger.warning(f"⚠️ Documento não é HTML: {content_type}")
+                return None
                 
         except Exception as e:
-            print(f"      ❌ Erro ao baixar texto completo: {e}")
+            logger.error(f"❌ Erro ao baixar documento: {e}")
             return None
-
-    def _mapear_deputado(self, autor_data: Dict, db: Session) -> Optional[int]:
+    
+    def _obter_proxima_versao(self, ano: int, tipo: str, api_id: str) -> str:
         """
-        Mapeia autor para ID do deputado no banco
+        Obtém a próxima versão para uma proposição no GCS.
         
         Args:
-            autor_data: Dados do autor da API
-            db: Sessão do banco
+            ano: Ano da proposição
+            tipo: Tipo da proposição
+            api_id: ID da API
             
         Returns:
-            int: ID do deputado ou None
+            Número da próxima versão (v1, v2, etc.)
         """
-        if not autor_data:
-            return None
+        if not self.gcs_disponivel:
+            return "v1"
         
-        # Se for deputado, buscar por ID da API
-        if autor_data.get('tipo') == 'Deputado':
-            api_id = autor_data.get('codTipo', 0)
-            if api_id:
-                deputado = db.query(Deputado).filter(
-                    Deputado.api_camara_id == api_id
-                ).first()
-                if deputado:
-                    return deputado.id
-        
-        # Tentar buscar por nome
-        nome = autor_data.get('nome')
-        if nome:
-            deputado = db.query(Deputado).filter(
-                Deputado.nome.ilike(f"%{nome}%")
-            ).first()
-            if deputado:
-                return deputado.id
-        
-        return None
-
-    def salvar_proposicao(self, proposicao_data: Dict, db: Session) -> Optional[Proposicao]:
-        """
-        Salva proposição no banco com dados completos no GCS
-        
-        Args:
-            proposicao_data: Dados da proposição
-            db: Sessão do banco
-            
-        Returns:
-            Proposicao: Proposição salva ou None
-        """
         try:
-            # Verificar se já existe
-            existente = db.query(Proposicao).filter(
-                Proposicao.api_camara_id == proposicao_data['id']
-            ).first()
+            # Listar versões existentes
+            prefix = f"proposicoes/{ano}/{tipo}/{tipo}_{api_id}_"
+            blobs = self.gcs_manager.list_blobs(prefix=prefix)
             
-            if existente:
-                print(f"      ⏭️ Proposição já existe: {proposicao_data['siglaTipo']} {proposicao_data['numero']}/{proposicao_data['ano']}")
-                return existente
+            # Encontrar versão mais alta
+            max_version = 0
+            for blob in blobs:
+                if '_metadata.json' in blob.name:
+                    # Extrair número da versão
+                    parts = blob.name.split('_')
+                    for part in parts:
+                        if part.startswith('v') and part.endswith('metadata.json'):
+                            version_num = int(part[1:-13])  # Remove 'v' e 'metadata.json'
+                            max_version = max(max_version, version_num)
             
-            # Buscar detalhes completos
-            detalhes = self.buscar_detalhes_proposicao(proposicao_data['id'])
-            if not detalhes:
-                print(f"      ⚠️ Não foi possível obter detalhes da proposição {proposicao_data['id']}")
+            return f"v{max_version + 1}"
+            
+        except Exception as e:
+            logger.error(f"❌ Erro ao obter próxima versão: {e}")
+            return "v1"
+    
+    def _salvar_proposicao_gcs(self, dados_proposicao: Dict, autores: List[Dict], documento_html: Optional[str] = None) -> Optional[str]:
+        """
+        Salva proposição completa no GCS com versionamento.
+        
+        Args:
+            dados_proposicao: Dados completos da proposição
+            autores: Lista de autores da proposição
+            documento_html: Texto completo do documento (opcional)
+            
+        Returns:
+            URL do metadado no GCS ou None se erro
+        """
+        if not self.gcs_disponivel:
+            logger.warning("⚠️ GCS não disponível - pulando salvamento no storage")
+            return None
+        
+        try:
+            api_id = dados_proposicao.get('id')
+            tipo = dados_proposicao.get('siglaTipo', '')
+            ano = dados_proposicao.get('ano', datetime.now().year)
+            
+            # Obter próxima versão
+            versao = self._obter_proxima_versao(ano, tipo, str(api_id))
+            
+            # Preparar metadados completos
+            metadados_completos = {
+                'proposicao': dados_proposicao,
+                'autores': autores,
+                'data_coleta': datetime.now().isoformat(),
+                'versao': versao,
+                'documento_disponivel': documento_html is not None
+            }
+            
+            # Salvar metadados
+            filename_metadata = f"{tipo}_{api_id}_{versao}_metadata.json"
+            blob_path_metadata = f"proposicoes/{ano}/{tipo}/metadata/{filename_metadata}"
+            
+            if not self.gcs_manager.upload_json(metadados_completos, blob_path_metadata):
                 return None
             
-            # Combinar dados básicos com detalhes
-            dados_completos = {**proposicao_data, **detalhes.get('dados', {})}
+            # Salvar documento se disponível
+            if documento_html:
+                filename_doc = f"{tipo}_{api_id}_{versao}.html"
+                blob_path_doc = f"proposicoes/{ano}/{tipo}/documentos/{filename_doc}"
+                
+                if not self.gcs_manager.upload_text(documento_html, blob_path_doc, compress=False):
+                    logger.warning(f"⚠️ Falha ao salvar documento para {api_id}")
             
-            # Preparar dados para salvamento
-            ano = int(dados_completos.get('ano', 0))
-            tipo = dados_completos.get('siglaTipo', 'UNKNOWN')
-            api_id = str(dados_completos.get('id', ''))
+            # Atualizar índice
+            self._atualizar_indice_ano(ano)
             
-            # Baixar texto completo se disponível
-            texto_completo = None
-            url_inteiro_teor = dados_completos.get('urlInteiroTeor')
-            if url_inteiro_teor:
-                texto_completo = self.baixar_texto_completo(url_inteiro_teor)
+            url_gcs = f"https://storage.googleapis.com/{self.gcs_manager.bucket_name}/{blob_path_metadata}"
+            logger.info(f"✅ Salvo no GCS: {tipo} {api_id} ({versao})")
             
-            # Upload para GCS se disponível
-            gcs_url = None
-            if self.gcs_disponivel:
-                gcs_url = self.gcs_manager.upload_proposicao(
-                    dados_completos, ano, tipo, api_id, texto_completo
-                )
-                if gcs_url:
-                    print(f"      📁 Upload GCS: {gcs_url}")
-            
-            # Criar proposição no banco
-            proposicao = Proposicao(
-                api_camara_id=dados_completos.get('id'),
-                tipo=tipo,
-                numero=int(dados_completos.get('numero', 0)),
-                ano=ano,
-                ementa=dados_completos.get('ementa', ''),
-                explicacao=dados_completos.get('explicacaoEmenta'),
-                data_apresentacao=DateParser.parse_date(dados_completos.get('dataApresentacao')),
-                situacao=dados_completos.get('statusProposicao', {}).get('descricao'),
-                link_inteiro_teor=dados_completos.get('urlInteiroTeor'),
-                keywords=dados_completos.get('keywords'),
-                gcs_url=gcs_url  # Nova campo para URL do GCS
-            )
-            
-            db.add(proposicao)
-            db.flush()  # Para obter o ID
-            
-            # Buscar e salvar autores
-            autores = self.buscar_autores_proposicao(proposicao_data['id'])
-            for autor_data in autores:
-                deputado_id = self._mapear_deputado(autor_data, db)
-                if deputado_id:
-                    autoria = Autoria(
-                        proposicao_id=proposicao.id,
-                        deputado_id=deputado_id,
-                        tipo_autoria=autor_data.get('tipo', 'Autor'),
-                        ordem=autor_data.get('ordemAssinatura', 1)
-                    )
-                    db.add(autoria)
-            
-            # Buscar e salvar votações (simplificado por enquanto)
-            votacoes = self.buscar_votacoes_proposicao(proposicao_data['id'])
-            if votacoes:
-                print(f"      🗳️ Encontradas {len(votacoes)} votações")
-                # TODO: Implementar salvamento de votações
-            
-            db.commit()
-            print(f"      ✅ Proposição salva: {tipo} {proposicao.numero}/{ano}")
-            return proposicao
+            return url_gcs
             
         except Exception as e:
-            print(f"      ❌ Erro ao salvar proposição: {e}")
-            db.rollback()
+            logger.error(f"❌ Erro ao salvar no GCS: {e}")
             return None
-
-
-    def coletar_proposicoes_periodo(self, anos: List[int], db: Session) -> Dict[str, int]:
+    
+    def _atualizar_indice_ano(self, ano: int):
         """
-        Coleta proposições de múltiplos anos específicos
-        CORRIGIDO: Agora aceita lista de anos e usa nova lógica de busca
+        Atualiza o índice de proposições de um ano.
         
         Args:
-            anos: Lista de anos para coleta
-            db: Sessão do banco
-            
-        Returns:
-            Dict: Resultados da coleta
+            ano: Ano para atualizar o índice
         """
-        print(f"\n📄 COLETANDO PROPOSIÇÕES - ANOS {anos}")
-        print("=" * 50)
+        if not self.gcs_disponivel:
+            return
         
-        resultados = {
-            'tipos_processados': 0,
-            'proposicoes_encontradas': 0,
-            'proposicoes_salvas': 0,
-            'autores_mapeados': 0,
-            'uploads_gcs': 0,
-            'erros': 0
-        }
-        
-        limite_total = self.config.get('limite_total', 10000)
-        limite_por_tipo = limite_total // len(self.tipos_prioritarios)
-        
-        print(f"   📋 Configuração: {limite_total} total, {limite_por_tipo} por tipo")
-        print(f"   🎯 Foco especial em PLs para ano eleitoral 2025")
-        
-        for tipo in self.tipos_prioritarios:
-            print(f"\n🔍 Processando tipo: {tipo}")
-            
-            try:
-                # Aumentar limite para PLs (tipo mais importante para ano eleitoral)
-                limite_tipo = limite_por_tipo * 2 if tipo == 'PL' else limite_por_tipo
-                
-                # Buscar proposições do tipo
-                proposicoes = self.buscar_proposicoes_por_tipo(tipo, anos, limite_tipo)
-                resultados['proposicoes_encontradas'] += len(proposicoes)
-                resultados['tipos_processados'] += 1
-                
-                for i, prop_data in enumerate(proposicoes, 1):
-                    print(f"      📄 Processando {i}/{len(proposicoes)}: {tipo} {prop_data.get('numero', '?')}/{prop_data.get('ano', '?')}")
-                    
-                    try:
-                        # Salvar proposição completa
-                        proposicao = self.salvar_proposicao(prop_data, db)
-                        if proposicao:
-                            resultados['proposicoes_salvas'] += 1
-                            resultados['autores_mapeados'] += len(proposicao.autores)
-                            if proposicao.gcs_url:
-                                resultados['uploads_gcs'] += 1
-                        
-                    except Exception as e:
-                        print(f"      ❌ Erro ao processar proposição: {e}")
-                        resultados['erros'] += 1
-                        continue
-                
-            except Exception as e:
-                print(f"❌ Erro ao processar tipo {tipo}: {e}")
-                resultados['erros'] += 1
-                continue
-        
-        return resultados
-
-    def gerar_resumo_coleta(self, ano: int, db: Session) -> bool:
-        """
-        Gera resumo estatístico da coleta
-        
-        Args:
-            ano: Ano da coleta
-            db: Sessão do banco
-            
-        Returns:
-            bool: True se sucesso
-        """
         try:
-            print(f"\n📊 GERANDO RESUMO DA COLETA - {ano}")
-            print("=" * 40)
+            # Buscar todas as proposições do ano no banco
+            props_no_banco = self.session.execute(text("""
+                SELECT api_camara_id, tipo, numero, ano, ementa, situacao, gcs_url
+                FROM proposicoes 
+                WHERE ano = :ano AND gcs_url IS NOT NULL
+                ORDER BY tipo, numero
+            """), {'ano': ano}).fetchall()
             
-            # Contar proposições por tipo
-            from sqlalchemy import func
+            # Criar índice
+            indice = {
+                'ano': ano,
+                'data_atualizacao': datetime.now().isoformat(),
+                'total_proposicoes': len(props_no_banco),
+                'proposicoes': []
+            }
             
-            resumo = db.query(
-                Proposicao.tipo,
-                func.count(Proposicao.id).label('quantidade'),
-                func.count(Proposicao.gcs_url).label('com_gcs')
-            ).filter(
-                Proposicao.ano == ano
-            ).group_by(Proposicao.tipo).all()
+            for prop in props_no_banco:
+                indice['proposicoes'].append({
+                    'api_camara_id': prop[0],
+                    'tipo': prop[1],
+                    'numero': prop[2],
+                    'ano': prop[3],
+                    'ementa': prop[4],
+                    'situacao': prop[5],
+                    'gcs_url': prop[6]
+                })
             
-            print(f"📋 Resumo por tipo:")
-            for tipo, quantidade, com_gcs in resumo:
-                print(f"   • {tipo}: {quantidade} proposições ({com_gcs} no GCS)")
+            # Salvar índice no GCS
+            blob_path = f"proposicoes/indexes/{ano}_proposicoes_index.json"
+            self.gcs_manager.upload_json(indice, blob_path)
             
-            # Total geral
-            total = db.query(func.count(Proposicao.id)).filter(Proposicao.ano == ano).scalar()
-            total_gcs = db.query(func.count(Proposicao.id)).filter(
-                and_(Proposicao.ano == ano, Proposicao.gcs_url.isnot(None))
-            ).scalar()
+            logger.info(f"✅ Índice atualizado: {ano} ({len(props_no_banco)} proposições)")
             
-            print(f"\n📈 Totais:")
-            print(f"   • Total de proposições: {total}")
-            print(f"   • No GCS: {total_gcs}")
-            print(f"   • Taxa de armazenamento: {(total_gcs/total*100):.1f}%" if total > 0 else "   • Taxa de armazenamento: 0%")
+        except Exception as e:
+            logger.error(f"❌ Erro ao atualizar índice: {e}")
+    
+    def limpar_bucket_proposicoes(self) -> bool:
+        """
+        Limpa todos os arquivos de proposições do bucket GCS.
+        
+        Returns:
+            True se sucesso, False caso contrário
+        """
+        if not self.gcs_disponivel:
+            logger.warning("⚠️ GCS não disponível - não é possível limpar")
+            return False
+        
+        try:
+            logger.info("🧹 Limpando bucket de proposições...")
             
+            # Listar todos os arquivos de proposições
+            blobs = self.gcs_manager.list_blobs(prefix='proposicoes/')
+            
+            deletados = 0
+            for blob in blobs:
+                if self.gcs_manager.delete_blob(blob.name):
+                    deletados += 1
+            
+            logger.info(f"✅ Bucket limpo: {deletados} arquivos deletados")
             return True
             
         except Exception as e:
-            print(f"❌ Erro ao gerar resumo: {e}")
+            logger.error(f"❌ Erro ao limpar bucket: {e}")
             return False
+    
+    def coletar_por_json(self, ano: int = 2024) -> int:
+        """
+        Coleta proposições usando download de arquivos JSON OFICIAIS COMPLETOS.
+        
+        Args:
+            ano: Ano das proposições a coletar
+            
+        Returns:
+            Quantidade de proposições coletadas
+        """
+        logger.info(f"🚀 Iniciando coleta por JSON COMPLETO - Ano {ano}")
+        
+        # Baixar arquivo COMPLETO de autores uma vez só
+        logger.info("📥 Baixando arquivo COMPLETO de autores...")
+        autores_dict = self.baixar_json_autores(ano)
+        
+        total_coletadas = 0
+        
+        for tipo in self.tipos_relevantes:
+            logger.info(f"📥 Processando tipo: {tipo}")
+            
+            proposicoes = self.baixar_json_proposicoes(tipo, ano)
+            if not proposicoes:
+                continue
+            
+            for dados_prop in proposicoes:
+                # Usar autores do dicionário pré-carregado (mais eficiente)
+                api_id = dados_prop.get('id')
+                autores = autores_dict.get(api_id, []) if autores_dict else []
+                
+                if self.salvar_proposicao(dados_prop, salvar_gcs=True, autores_dict=autores_dict):
+                    total_coletadas += 1
+        
+        try:
+            self.session.commit()
+            logger.info(f"✅ Coleta JSON COMPLETO concluída: {total_coletadas} proposições")
+        except Exception as e:
+            logger.error(f"❌ Erro no commit: {e}")
+            self.session.rollback()
+        
+        return total_coletadas
+    
+    def coletar_por_deputados(self, limite_deputados: int = 50) -> int:
+        """
+        Coleta proposições buscando por cada deputado via API.
+        
+        Args:
+            limite_deputados: Limite de deputados para processar
+            
+        Returns:
+            Quantidade de proposições coletadas
+        """
+        logger.info(f"🚀 Iniciando coleta por deputados - Limite: {limite_deputados}")
+        
+        # Buscar deputados ativos
+        deputados = self.session.execute(
+            text("SELECT api_camara_id, nome FROM deputados WHERE situacao = 'Exercício' LIMIT :limite"),
+            {'limite': limite_deputados}
+        ).fetchall()
+        
+        total_coletadas = 0
+        
+        for api_id, nome in deputados:
+            logger.info(f"👥 Processando deputado: {nome}")
+            
+            proposicoes = self.buscar_proposicoes_deputado_api(api_id)
+            if not proposicoes:
+                continue
+            
+            for dados_prop in proposicoes:
+                if self.salvar_proposicao(dados_prop):
+                    total_coletadas += 1
+        
+        try:
+            self.session.commit()
+            logger.info(f"✅ Coleta por deputados concluída: {total_coletadas} proposições")
+        except Exception as e:
+            logger.error(f"❌ Erro no commit: {e}")
+            self.session.rollback()
+        
+        return total_coletadas
+    
+    def coletar_hibrido(self, ano_json: int = 2024, limite_api: int = 20) -> Tuple[int, int]:
+        """
+        Coleta usando abordagem híbrida: JSON para carga inicial + API para atualizações.
+        
+        Args:
+            ano_json: Ano para coleta por JSON
+            limite_api: Limite de deputados para coleta por API
+            
+        Returns:
+            Tupla (coletadas_json, coletadas_api)
+        """
+        logger.info("🚀 Iniciando coleta híbrida de proposições")
+        
+        # Fase 1: Coleta por JSON (rápida)
+        logger.info("📥 FASE 1: Coleta por JSON (carga inicial)")
+        coletadas_json = self.coletar_por_json(ano_json)
+        
+        # Fase 2: Coleta por API (atualizações)
+        logger.info("🔍 FASE 2: Coleta por API (atualizações)")
+        coletadas_api = self.coletar_por_deputados(limite_api)
+        
+        return coletadas_json, coletadas_api
+    
+    def __del__(self):
+        """Cleanup ao destruir o objeto."""
+        if hasattr(self, 'session'):
+            self.session.close()
+
 
 def main():
     """
-    Função principal para execução standalone
-    CORRIGIDO: Usa nova configuração com múltiplos anos
+    Função principal para teste do coletor.
     """
-    print("📄 COLETA DE PROPOSIÇÕES DE ALTO IMPACTO - VERSÃO CORRIGIDA")
-    print("=" * 60)
-    print("🔧 CORREÇÕES APLICADAS:")
-    print("   • Removido parâmetro 'sigla' que causava erro 400")
-    print("   • Aumentados limites para ano eleitoral")
-    print("   • Incluídos PLs de 2024 e 2025")
-    print("   • Busca mais profunda (até 2000 páginas)")
-    print("=" * 60)
-    
-    # Usar o utilitário db_utils para obter sessão do banco
-    from models.db_utils import get_db_session
-    
-    db_session = get_db_session()
+    setup_logging()
+    logger.info("Iniciando coletor de proposições")
     
     try:
         coletor = ColetorProposicoes()
         
-        # Obter configuração de anos (CORRIGIDO: usa anos_para_coletar)
-        config = get_config('hackathon', 'proposicoes')
-        anos_para_coletar = config.get('anos_para_coletar', [2024, 2025])
+        # Teste com abordagem híbrida
+        json_count, api_count = coletor.coletar_hibrido(
+            ano_json=2024,  # Ano completo para JSON
+            limite_api=20      # Apenas alguns deputados para teste
+        )
         
-        print(f"🎯 ANOS ALVO: {anos_para_coletar}")
-        print(f"📋 FOCO ESPECIAL: PLs para ano eleitoral 2025")
-        
-        # Coletar para todos os anos de uma vez (melhor performance)
-        resultados = coletor.coletar_proposicoes_periodo(anos_para_coletar, db_session)
-        
-        print(f"\n📋 RESUMO FINAL DA COLETA")
-        print("=" * 40)
-        print(f"📋 Tipos processados: {resultados['tipos_processados']}")
-        print(f"📄 Proposições encontradas: {resultados['proposicoes_encontradas']}")
-        print(f"✅ Proposições salvas: {resultados['proposicoes_salvas']}")
-        print(f"👥 Autores mapeados: {resultados['autores_mapeados']}")
-        print(f"📁 Uploads GCS: {resultados['uploads_gcs']}")
-        print(f"❌ Erros: {resultados['erros']}")
-        
-        # Gerar resumo para cada ano
-        for ano in anos_para_coletar:
-            coletor.gerar_resumo_coleta(ano, db_session)
-        
-        print(f"\n✅ Coleta de proposições concluída com sucesso!")
-        print(f"🎯 PLs coletados devem ser muito maiores agora!")
+        logger.info(f"🎉 Coleta concluída!")
+        logger.info(f"📊 JSON: {json_count} proposições")
+        logger.info(f"🔍 API: {api_count} proposições")
+        logger.info(f"📋 Total: {json_count + api_count} proposições")
         
     except Exception as e:
-        print(f"\n❌ ERRO DURANTE A COLETA: {e}")
-        import traceback
-        traceback.print_exc()
-        db_session.rollback()
-    finally:
-        db_session.close()
+        logger.error(f"❌ Erro fatal: {e}", exc_info=True)
+
 
 if __name__ == "__main__":
     main()

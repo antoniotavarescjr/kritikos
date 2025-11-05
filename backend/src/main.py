@@ -9,7 +9,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from src.utils.common_utils import setup_logging, clear_screen, exibir_menu
 from src.etl.pipeline_coleta import ColetaPipeline
-from src.etl.config import get_etl_config
+# from src.etl.config import get_etl_config  # Removido - função não existe
 
 # Configuração de logging
 logger = logging.getLogger(__name__)
@@ -66,15 +66,33 @@ def executar_coleta_remuneracao():
         print(f"❌ Ocorreu um erro: {e}")
 
 
-def executar_coleta_emendas():
+def executar_coleta_emendas(ano: int = None):
     """Executa a coleta de emendas parlamentares."""
     logger.info("Iniciando coleta de emendas parlamentares...")
     try:
-        pipeline = ColetaPipeline()
-        ano = pipeline._obter_ano_alvo()
+        from etl.coleta_emendas_transparencia import ColetorEmendasTransparencia
+        from models.db_utils import get_db_session
+        
+        if ano is None:
+            pipeline = ColetaPipeline()
+            ano = pipeline._obter_ano_alvo()
+        
         print(f"Coletando emendas para o ano {ano}...")
-        resultado = pipeline.emendas_etl.coletar_e_salvar(ano)
-        print(f"✅ Coleta de emendas concluída. {len(resultado)} registros de emendas processados.")
+        
+        # Usar o ColetorEmendasTransparencia diretamente
+        coletor = ColetorEmendasTransparencia()
+        db_session = get_db_session()
+        
+        try:
+            resultado = coletor.coletar_emendas_periodo(ano, db=db_session)
+            if resultado:
+                print(f"✅ Coleta de emendas concluída. {resultado.get('emendas_salvas', 0)} registros de emendas processados.")
+                print(f"📊 Valor total empenhado: R$ {resultado.get('valor_total_empenhado', 0):,.2f}")
+            else:
+                print("⚠️ Nenhuma emenda encontrada para este ano.")
+        finally:
+            db_session.close()
+            
     except Exception as e:
         logger.error(f"Erro na coleta de emendas: {e}", exc_info=True)
         print(f"❌ Ocorreu um erro: {e}")
@@ -175,6 +193,11 @@ def main():
         type=int,
         help="Executa a pipeline ETL completa para o ano especificado (ex: --etl 2025)"
     )
+    parser.add_argument(
+        "--emendas",
+        type=int,
+        help="Executa apenas a coleta de emendas para o ano especificado (ex: --emendas 2024)"
+    )
     args = parser.parse_args()
 
     setup_logging()
@@ -189,6 +212,13 @@ def main():
         print(f"🚀 Executando pipeline ETL automatizada para o ano {args.etl}...")
         executar_pipeline_etl(args.etl)
         print("\n🎉 Pipeline ETL concluída!")
+        return
+    
+    if args.emendas:
+        # Executa apenas a coleta de emendas para o ano especificado
+        print(f"💰 Executando coleta de emendas para o ano {args.emendas}...")
+        executar_coleta_emendas(args.emendas)
+        print("\n🎉 Coleta de emendas concluída!")
         return
 
     # Se não for modo ETL, exibe o menu interativo
@@ -231,4 +261,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

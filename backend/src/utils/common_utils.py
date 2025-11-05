@@ -310,30 +310,21 @@ def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 def exibir_menu():
-    """Exibe menu de opções"""
+    """Exibe menu de opções simplificado"""
     print("\n" + "=" * 60)
     print("     🚀 SISTEMA DE COLETA DE DADOS - KRIKTIKOS")
     print("=" * 60)
-    print("1. Coletar Dados de Referência (Partidos, Deputados)")
-    print("2. Coletar Gastos Parlamentares (CEAP)")
-    print("3. Coletar Remuneração de Deputados")
-    print("4. Coletar Emendas Parlamentares")
-    print("5. Análise Cruzada de Dados")
-    print("6. Validação de Qualidade de Dados")
-    print("7. Verificação de Dados")
-    print("8. Limpeza de Banco de Dados")
-    print("9. Executar Pipeline Completa")
-    print("10. Executar Pipeline ETL Automático")
+    print("1. Executar Pipeline ETL Automático")
     print("0. Sair")
     print("=" * 60)
     
     while True:
         try:
             opcao = int(input("\n🎯 Escolha uma opção: "))
-            if 0 <= opcao <= 10:
+            if 0 <= opcao <= 1:
                 return opcao
             else:
-                print("⚠️ Opção inválida. Digite um número entre 0 e 10.")
+                print("⚠️ Opção inválida. Digite 0 ou 1.")
         except ValueError:
             print("⚠️ Entrada inválida. Digite um número.")
 

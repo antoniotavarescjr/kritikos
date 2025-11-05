@@ -5,3 +5,4 @@ from .financeiro_models import GastoParlamentar
 from .ranking_models import CalculoIDP, AvaliacaoPAR, SituacaoLegal
 from .sistema_models import Usuario, LogSistema
 from .frequencia_models import FrequenciaDeputado, DetalheFrequencia, RankingFrequencia, ResumoFrequenciaMensal
+from .analise_models import AnaliseProposicao, ScoreDeputado, LogProcessamento

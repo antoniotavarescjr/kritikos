@@ -17,9 +17,23 @@ import hashlib
 import json
 
 # Importar utilitários existentes
-from ..utils.cache_utils import CacheManager, get_cache_manager
-from ..utils.gcs_utils import get_gcs_manager
-from .config import get_config
+try:
+    from ..utils.cache_utils import CacheManager, get_cache_manager
+except ImportError:
+    # Fallback para execução direta
+    from utils.cache_utils import CacheManager, get_cache_manager
+
+try:
+    from ..utils.gcs_utils import get_gcs_manager
+except ImportError:
+    # Fallback para execução direta
+    from utils.gcs_utils import get_gcs_manager
+
+try:
+    from .config import get_config
+except ImportError:
+    # Fallback para execução direta
+    from etl.config import get_config
 
 
 class ETLBase(ABC):

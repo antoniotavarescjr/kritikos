@@ -10,9 +10,10 @@ import time
 from datetime import datetime
 from typing import Dict, List, Optional, Any
 
-from .coleta_emendas_transparencia import ColetorEmendasTransparencia
-from .config import get_coleta_config, get_data_inicio_coleta, coleta_habilitada, get_tipos_coleta_habilitados, deve_usar_fallback_votacoes
-from ..utils.common_utils import setup_logging, clear_screen, exibir_menu
+from etl.coleta_emendas_transparencia import ColetorEmendasTransparencia
+from etl.coleta_proposicoes import ColetorProposicoes
+from etl.config import get_coleta_config, get_data_inicio_coleta, coleta_habilitada, get_tipos_coleta_habilitados
+from utils.common_utils import setup_logging, clear_screen, exibir_menu
 
 logger = logging.getLogger(__name__)
 
@@ -33,15 +34,12 @@ class ColetaPipeline:
         self.emendas_etl = ColetorEmendasTransparencia()
         
         # Importar e inicializar coletores disponíveis
-        from .coleta_votacoes import ColetorVotacoes
-        from .coleta_votacoes_fallback import ColetorVotacoesFallback
-        from .coleta_frequencia import ColetorFrequencia
-        from .coleta_referencia import ColetorDadosCamara
+        from etl.coleta_referencia import ColetorDadosCamara
+        from etl.coleta_proposicoes import ColetorProposicoes
         
-        self.votacoes_etl = ColetorVotacoes()
-        self.votacoes_fallback = ColetorVotacoesFallback()
-        self.frequencia_etl = ColetorFrequencia()
         self.referencia_etl = ColetorDadosCamara()
+        self.proposicoes_etl = ColetorProposicoes()
+        # Frequência removida conforme solicitado
 
     def _executar_etapa(
         self,
@@ -95,168 +93,7 @@ class ColetaPipeline:
                 "erro": str(e),
             }
 
-    def _obter_ano_alvo(self) -> int:
-        """
-        Solicita ao usuário o ano alvo para a coleta.
 
-        Returns:
-            Ano informado pelo usuário.
-        """
-        while True:
-            try:
-                ano_str = input("📅 Informe o ano para a coleta (ex: 2024): ").strip()
-                ano = int(ano_str)
-                if 2000 <= ano <= datetime.now().year + 1:
-                    return ano
-                else:
-                    print("⚠️ Ano inválido. Digite um ano entre 2000 e o próximo ano.")
-            except ValueError:
-                print("⚠️ Entrada inválida. Digite um número inteiro para o ano.")
-
-    def _obter_ids_deputados(self) -> List[str]:
-        """
-        Busca no banco os IDs dos deputados ativos para o usuário escolher.
-
-        Returns:
-            Lista de IDs dos deputados selecionados.
-        """
-        try:
-            deputados = self.db_ops.listar_deputados_ativos()
-            if not deputados:
-                logger.warning("Nenhum deputado ativo encontrado no banco.")
-                return []
-
-            print("\n📋 Deputados Ativos Encontrados:")
-            for i, dep in enumerate(deputados, 1):
-                print(f"  {i}. {dep['nome']} ({dep['partido']}) - ID: {dep['id']}")
-
-            print("\nOpções:")
-            print("  a. Coletar de TODOS os deputados")
-            print("  b. Selecionar deputados específicos (informe os números separados por vírgula)")
-            print("  c. Cancelar")
-
-            escolha = input("\nEscolha uma opção: ").strip().lower()
-
-            if escolha == 'a':
-                return [dep['id'] for dep in deputados]
-            elif escolha == 'b':
-                numeros_str = input("Informe os números dos deputados (ex: 1,3,5): ").strip()
-                indices = [int(n.strip()) - 1 for n in numeros_str.split(',') if n.strip().isdigit()]
-                ids_selecionados = []
-                for idx in indices:
-                    if 0 <= idx < len(deputados):
-                        ids_selecionados.append(deputados[idx]['id'])
-                    else:
-                        print(f"⚠️ Número {idx + 1} é inválido e será ignorado.")
-                return ids_selecionados
-            elif escolha == 'c':
-                return []
-            else:
-                print("⚠️ Opção inválida.")
-                return []
-
-        except Exception as e:
-            logger.error(f"Erro ao obter IDs dos deputados: {e}", exc_info=True)
-            return []
-
-    def executar_coleta_completa(self) -> Dict[str, Any]:
-        """
-        Executa a pipeline completa de coleta de dados para um ano específico.
-
-        Returns:
-            Dicionário com o resumo de toda a execução.
-        """
-        logger.info("🚀 Iniciando Pipeline de Coleta Completa")
-        clear_screen()
-        print("=" * 60)
-        print("     🚀 PIPELINE DE COLETA COMPLETA DE DADOS")
-        print("=" * 60)
-
-        ano_alvo = self._obter_ano_alvo()
-        print(f"\n📅 Ano alvo para a coleta: {ano_alvo}")
-
-        ids_deputados = self._obter_ids_deputados()
-        if not ids_deputados:
-            print("⚠️ Nenhum deputado selecionado. Encerrando pipeline.")
-            return {"status": "cancelado", "motivo": "nenhum deputado selecionado"}
-
-        print(f"\n👥 Deputados selecionados: {len(ids_deputados)}")
-
-        resumo_execucao = {
-            "ano_alvo": ano_alvo,
-            "deputados_selecionados": len(ids_deputados),
-            "etapas": {},
-            "inicio": datetime.now().isoformat(),
-        }
-
-        # Etapa 1: Coleta de Dados de Referência
-        print("\n" + "=" * 60)
-        print("📋 ETAPA 1/5: Coletando Dados de Referência (Partidos, Deputados)")
-        print("=" * 60)
-        resumo_execucao["etapas"]["referencia"] = self._executar_etapa(
-            "Coleta de Referência",
-            self.referencia_etl.coletar_e_salvar
-        )
-
-        # Etapa 2: Coleta de Gastos Parlamentares
-        print("\n" + "=" * 60)
-        print("💰 ETAPA 2/5: Coletando Gastos Parlamentares (CEAP)")
-        print("=" * 60)
-        resumo_execucao["etapas"]["gastos"] = self._executar_etapa(
-            "Coleta de Gastos",
-            self.gastos_etl.coletar_e_salvar,
-            ano=ano_alvo,
-            ids_deputados=ids_deputados
-        )
-
-        # Etapa 3: Coleta de Emendas
-        print("\n" + "=" * 60)
-        print("📝 ETAPA 3/5: Coletando Emendas Parlamentares")
-        print("=" * 60)
-        resumo_execucao["etapas"]["emendas"] = self._executar_etapa(
-            "Coleta de Emendas",
-            self.emendas_etl.coletar_emendas_periodo,
-            ano=ano_alvo
-        )
-
-        # Etapa 4: Coleta de Votações (com fallback)
-        print("\n" + "=" * 60)
-        print("🗳️ ETAPA 4/5: Coletando Votações (API + Fallback)")
-        print("=" * 60)
-        
-        # Tentar API primeiro, depois fallback
-        resultado_votacoes = self._executar_etapa(
-            "Coleta de Votações (API)",
-            self.votacoes_etl.buscar_votacoes_periodo,
-            ano=ano_alvo
-        )
-        
-        # Se API falhar, usar fallback
-        if resultado_votacoes["status"] == "erro" or deve_usar_fallback_votacoes():
-            print("   🔄 API falhou ou fallback habilitado, usando arquivos JSON...")
-            resumo_execucao["etapas"]["votacoes_fallback"] = self._executar_etapa(
-                "Coleta de Votações (Fallback JSON)",
-                self.votacoes_fallback.coletar_votacoes_periodo,
-                ano=ano_alvo
-            )
-        else:
-            resumo_execucao["etapas"]["votacoes"] = resultado_votacoes
-
-        # Etapa 5: Coleta de Proposições (se habilitada)
-        if coleta_habilitada('proposicoes'):
-            print("\n" + "=" * 60)
-            print("📜 ETAPA 5/5: Coletando Proposições Legislativas")
-            print("=" * 60)
-            resumo_execucao["etapas"]["proposicoes"] = self._executar_etapa(
-                "Coleta de Proposições",
-                self.proposicoes_etl.coletar_e_salvar,
-                ano=ano_alvo
-            )
-
-        resumo_execucao["fim"] = datetime.now().isoformat()
-        self._exibir_resumo_final(resumo_execucao)
-
-        return resumo_execucao
 
     def executar_pipeline_etl(self, ano: int) -> Dict[str, Any]:
         """
@@ -284,54 +121,40 @@ class ColetaPipeline:
         print(f"\n{'='*60}")
         print(f"📋 ETAPA 1/4: Coletando Dados de Referência (Partidos, Deputados)")
         print(f"{'='*60}")
-        resumo_execucao["etapas"]["referencia"] = self._executar_etapa(
-            "Coleta de Referência",
-            self.referencia_etl.coletar_e_salvar
-        )
+        # Importar database manager para passar sessão do banco
+        from models.db_utils import get_db_session
+        
+        db_session = get_db_session()
+        try:
+            resumo_execucao["etapas"]["referencia"] = self._executar_etapa(
+                "Coleta de Referência",
+                lambda: self.referencia_etl.executar_coleta_completa(db_session)
+            )
+        finally:
+            db_session.close()
 
-        # Etapa 2: Coleta de Gastos
+        # Etapa 2: Coleta de Emendas
         print(f"\n{'='*60}")
-        print(f"💰 ETAPA 2/4: Coletando Gastos Parlamentares (CEAP)")
-        print(f"{'='*60}")
-        resumo_execucao["etapas"]["gastos"] = self._executar_etapa(
-            "Coleta de Gastos",
-            self.gastos_etl.coletar_e_salvar,
-            ano=ano
-        )
-
-        # Etapa 3: Coleta de Votações (com fallback)
-        print(f"\n{'='*60}")
-        print(f"🗳️ ETAPA 3/4: Coletando Votações (API + Fallback)")
+        print(f"📝 ETAPA 2/4: Coletando Emendas Parlamentares")
         print(f"{'='*60}")
         
-        # Tentar API primeiro, depois fallback
-        resultado_votacoes = self._executar_etapa(
-            "Coleta de Votações (API)",
-            self.votacoes_etl.buscar_votacoes_periodo,
-            ano=ano
-        )
+        # Importar database manager para passar sessão do banco
+        from models.db_utils import get_db_session
         
-        # Se API falhar, usar fallback
-        if resultado_votacoes["status"] == "erro" or deve_usar_fallback_votacoes():
-            print("   🔄 API falhou ou fallback habilitado, usando arquivos JSON...")
-            resumo_execucao["etapas"]["votacoes_fallback"] = self._executar_etapa(
-                "Coleta de Votações (Fallback JSON)",
-                self.votacoes_fallback.coletar_votacoes_periodo,
-                ano=ano
+        db_session = get_db_session()
+        try:
+            resumo_execucao["etapas"]["emendas"] = self._executar_etapa(
+                "Coleta de Emendas",
+                lambda: self.emendas_etl.coletar_emendas_periodo(ano, db=db_session)
             )
-        else:
-            resumo_execucao["etapas"]["votacoes"] = resultado_votacoes
+        finally:
+            db_session.close()
 
-        # Etapa 4: Coleta de Proposições (se habilitada)
-        if coleta_habilitada('proposicoes'):
-            print(f"\n{'='*60}")
-            print(f"📜 ETAPA 4/4: Coletando Proposições Legislativas")
-            print(f"{'='*60}")
-            resumo_execucao["etapas"]["proposicoes"] = self._executar_etapa(
-                "Coleta de Proposições",
-                self.proposicoes_etl.coletar_e_salvar,
-                ano=ano
-            )
+        # Votações e Proposições removidos - Evolução Futura
+        print(f"\n{'='*60}")
+        print(f"🗳️ ETAPA 3/3: Votações e Proposições (REMOVIDOS)")
+        print(f"{'='*60}")
+        print("   ❌ Votações e Proposições foram removidos - evolução futura")
 
         resumo_execucao["fim"] = datetime.now().isoformat()
         self._exibir_resumo_final(resumo_execucao)
@@ -355,7 +178,7 @@ class ColetaPipeline:
         
         print(f"📅 Período de coleta: {data_inicio} até hoje")
         print(f"🔧 Tipos habilitados: {', '.join(tipos_habilitados)}")
-        print(f"❌ Proposições desabilitadas conforme configuração")
+        print(f"✅ Proposições habilitadas com integração GCS")
 
         resumo_execucao = {
             "data_inicio": data_inicio,
@@ -369,20 +192,24 @@ class ColetaPipeline:
             print(f"\n{'='*60}")
             print(f"📋 COLETANDO DADOS DE REFERÊNCIA")
             print(f"{'='*60}")
-            resumo_execucao["etapas"]["referencia"] = self._executar_etapa(
-                "Coleta de Referência",
-                self.referencia_etl.coletar_e_salvar
-            )
+            # Importar database manager para passar sessão do banco
+            from models.db_utils import get_db_session
+            
+            db_session = get_db_session()
+            try:
+                resumo_execucao["etapas"]["referencia"] = self._executar_etapa(
+                    "Coleta de Referência",
+                    lambda: self.referencia_etl.executar_coleta_completa(db_session)
+                )
+            finally:
+                db_session.close()
 
+        # Gastos já são coletados na referência - removido para evitar duplicação
         if coleta_habilitada('gastos'):
             print(f"\n{'='*60}")
-            print(f"💰 COLETANDO GASTOS PARLAMENTARES")
+            print(f"💰 GASTOS PARLAMENTARES (Já incluídos na Referência)")
             print(f"{'='*60}")
-            resumo_execucao["etapas"]["gastos"] = self._executar_etapa(
-                "Coleta de Gastos",
-                self.gastos_etl.coletar_e_salvar,
-                ano=2025  # Ano atual conforme configuração
-            )
+            print("   ✅ Gastos já foram coletados junto com os dados de referência")
 
         if coleta_habilitada('emendas'):
             print(f"\n{'='*60}")
@@ -394,38 +221,28 @@ class ColetaPipeline:
                 ano=2024  # Usar 2024 pois API não tem dados de 2025
             )
 
-        if coleta_habilitada('votacoes'):
+        # Coleta de Proposições com GCS
+        if coleta_habilitada('proposicoes'):
             print(f"\n{'='*60}")
-            print(f"🗳️ COLETANDO VOTAÇÕES (API + FALLBACK)")
+            print(f"📋 COLETANDO PROPOSIÇÕES (2025 + GCS)")
             print(f"{'='*60}")
             
-            # Tentar API primeiro, depois fallback
-            resultado_votacoes = self._executar_etapa(
-                "Coleta de Votações (API)",
-                self.votacoes_etl.buscar_votacoes_periodo,
-                ano=2025
-            )
+            # Obter configurações das proposições
+            config_props = get_coleta_config('proposicoes')
+            ano_coleta = config_props.get('ano_coleta', 2025)
+            limite_deputados = config_props.get('limite_deputados_api', 50)
             
-            # Se API falhar, usar fallback
-            if resultado_votacoes["status"] == "erro" or deve_usar_fallback_votacoes():
-                print("   🔄 API falhou ou fallback habilitado, usando arquivos JSON...")
-                resumo_execucao["etapas"]["votacoes_fallback"] = self._executar_etapa(
-                    "Coleta de Votações (Fallback JSON)",
-                    self.votacoes_fallback.coletar_votacoes_periodo,
-                    ano=2024  # Usar 2024 pois tem dados completos
-                )
-            else:
-                resumo_execucao["etapas"]["votacoes"] = resultado_votacoes
+            resumo_execucao["etapas"]["proposicoes"] = self._executar_etapa(
+                "Coleta de Proposições",
+                lambda: self.proposicoes_etl.coletar_por_json(ano_coleta)
+            )
 
-        if coleta_habilitada('frequencia'):
+        # Votações e Frequência removidos - Evolução Futura
+        if coleta_habilitada('votacoes') or coleta_habilitada('frequencia'):
             print(f"\n{'='*60}")
-            print(f"📊 COLETANDO FREQUÊNCIA DE DEPUTADOS")
+            print(f"🗳️ VOTAÇÕES E FREQUÊNCIA (REMOVIDOS)")
             print(f"{'='*60}")
-            resumo_execucao["etapas"]["frequencia"] = self._executar_etapa(
-                "Coleta de Frequência",
-                self.frequencia_etl.coletar_e_salvar,
-                ano=2024  # Usar 2024 pois tem dados completos
-            )
+            print("   ❌ Votações e Frequência foram removidos - evolução futura")
 
         resumo_execucao["fim"] = datetime.now().isoformat()
         self._exibir_resumo_final_configurado(resumo_execucao)
@@ -522,37 +339,7 @@ def main():
             print("\n👋 Saindo do sistema...")
             break
         elif opcao == 1:
-            pipeline = ColetaPipeline()
-            pipeline._executar_etapa("Coleta de Referência", pipeline.referencia_etl.coletar_e_salvar)
-        elif opcao == 2:
-            pipeline = ColetaPipeline()
-            ano = pipeline._obter_ano_alvo()
-            ids = pipeline._obter_ids_deputados()
-            if ids:
-                pipeline._executar_etapa("Coleta de Gastos", pipeline.gastos_etl.coletar_e_salvar, ano=ano, ids_deputados=ids)
-        elif opcao == 3:
-            pipeline = ColetaPipeline()
-            ano = pipeline._obter_ano_alvo()
-            ids = pipeline._obter_ids_deputados()
-            if ids:
-                pipeline._executar_etapa("Coleta de Remuneração", pipeline.remuneracao_etl.coletar_e_salvar, ano=ano, ids_deputados=ids)
-        elif opcao == 4:
-            pipeline = ColetaPipeline()
-            ano = pipeline._obter_ano_alvo()
-            pipeline._executar_etapa("Coleta de Emendas", pipeline.emendas_etl.coletar_e_salvar, ano=ano)
-        elif opcao == 5:
-            print("🔍 Funcionalidade de análise cruzada ainda não implementada.")
-        elif opcao == 6:
-            print("✅ Funcionalidade de validação de qualidade ainda não implementada.")
-        elif opcao == 7:
-            print("📊 Funcionalidade de verificação de dados ainda não implementada.")
-        elif opcao == 8:
-            print("🧹 Funcionalidade de limpeza de banco de dados ainda não implementada.")
-        elif opcao == 9:
-            pipeline = ColetaPipeline()
-            pipeline.executar_coleta_completa()
-        elif opcao == 10:
-            # Executa a pipeline ETL para o ano atual
+            # Executa a pipeline ETL para o ano atual (antiga opção 10)
             ano_atual = datetime.now().year
             pipeline = ColetaPipeline()
             pipeline.executar_pipeline_etl(ano_atual)

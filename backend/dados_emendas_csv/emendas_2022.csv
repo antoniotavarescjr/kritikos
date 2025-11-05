@@ -1,0 +1,801 @@
+Autor;Ano;Número Emenda;Tipo Emenda;Valor Empenhado;UF;Função;Subfunção;Localidade do Gasto;Data do Empenho
+BACELAR FILHO;2022;20223103;Comissão;R$ 2,511,098,75;PE;Educação Infantil;Ensino Superior;DF (UF);09/12/2022
+ELICORRÊA;2022;20227709;Bancada;R$ 1,951,355,93;PR;Educação Infantil;Assistência Hospitalar e Ambulatorial;PE (UF);17/09/2022
+ALENCAR SANTANA;2022;20226038;Comissão;R$ 1,153,125,98;SC;Infraestrutura Urbana;Infraestrutura Urbana;RS (UF);19/11/2022
+DANIEL ALMEIDA;2022;20222447;Individual;R$ 3,902,138,06;SP;Ensino Médio;Ensino Médio;MG (UF);12/06/2022
+GUILHERME MUSSI;2022;20223201;Individual;R$ 1,636,657,14;GO;Segurança Pública;Educação Infantil;SP (UF);07/10/2022
+HERCÍLIO DINIZ FILHO;2022;20229591;Bancada;R$ 3,311,668,72;SC;Infraestrutura Urbana;Assistência Hospitalar e Ambulatorial;GO (UF);19/12/2022
+DEPUTADO DANIEL ALMEIDA;2022;20225381;Bancada;R$ 2,103,155,42;RS;Ensino Fundamental;Atenção Básica à Saúde;RJ (UF);07/04/2022
+GUILHERME MUSSI;2022;20227812;Comissão;R$ 1,090,208,68;BA;Ensino Fundamental;Atenção Básica à Saúde;PR (UF);11/03/2022
+DANIEL ALMEIDA;2022;20229493;Bancada;R$ 2,091,881,05;SP;Ensino Médio;Segurança Pública;PR (UF);01/04/2022
+EDUARDO BARBOSA;2022;20222892;Comissão;R$ 1,915,438,52;PE;Assistência Hospitalar e Ambulatorial;Ensino Superior;RS (UF);20/12/2022
+BACELAR;2022;20223849;Comissão;R$ 830,069,72;GO;Educação Infantil;Atenção Básica à Saúde;DF (UF);22/03/2022
+DEPUTADO DANIEL ALMEIDA;2022;20228209;Individual;R$ 1,853,110,95;MG;Segurança Pública;Ensino Superior;PR (UF);10/09/2022
+ALENCAR SANTANA;2022;20222225;Comissão;R$ 773,204,09;GO;Segurança Pública;Assistência Hospitalar e Ambulatorial;GO (UF);11/09/2022
+DEPUTADO BACELAR;2022;20223101;Comissão;R$ 4,028,407,64;SP;Atenção Básica à Saúde;Vigilância Epidemiológica;PE (UF);02/04/2022
+CARLOS ZARATTINI;2022;20224787;Bancada;R$ 2,118,386,76;PE;Saneamento Básico;Segurança Pública;BA (UF);03/08/2022
+FELIPE BORNIER;2022;20226204;Individual;R$ 4,744,131,39;SC;Vigilância Epidemiológica;Atenção Básica à Saúde;PE (UF);24/12/2022
+EDUARDO BARBOSA;2022;20225496;Comissão;R$ 440,506,72;SC;Vigilância Epidemiológica;Infraestrutura Urbana;SC (UF);04/08/2022
+FELIPE BORNIER;2022;20229438;Comissão;R$ 1,785,784,15;PR;Ensino Médio;Segurança Pública;SC (UF);09/06/2022
+CARLOS ZARATTINI;2022;20221039;Bancada;R$ 4,098,915,09;PE;Assistência Hospitalar e Ambulatorial;Vigilância Epidemiológica;RJ (UF);04/10/2022
+EDUARDO BARBOSA;2022;20221016;Individual;R$ 2,746,611,95;MG;Vigilância Epidemiológica;Vigilância Epidemiológica;MG (UF);20/08/2022
+DEPUTADO JULIO CESAR RIBEIRO;2022;20227844;Bancada;R$ 3,443,856,12;RJ;Vigilância Epidemiológica;Saneamento Básico;DF (UF);27/10/2022
+DEPUTADO FELIPE BORNIER;2022;20222386;Comissão;R$ 660,142,08;SP;Segurança Pública;Ensino Superior;PR (UF);01/09/2022
+DEPUTADO EDUARDO BARBOSA;2022;20226095;Comissão;R$ 2,674,282,81;MG;Ensino Fundamental;Atenção Básica à Saúde;PR (UF);23/04/2022
+HERCÍLIO DINIZ FILHO;2022;20228654;Bancada;R$ 3,148,996,52;PE;Educação Infantil;Infraestrutura Urbana;GO (UF);04/03/2022
+BACELAR;2022;20225454;Individual;R$ 1,916,858,37;MG;Ensino Superior;Assistência Hospitalar e Ambulatorial;SP (UF);09/09/2022
+DEPUTADO CARLOS ZARATTINI;2022;20229855;Individual;R$ 2,633,336,75;SC;Educação Infantil;Vigilância Epidemiológica;SP (UF);28/07/2022
+DANIEL ALMEIDA;2022;20227657;Comissão;R$ 2,713,643,88;DF;Saneamento Básico;Ensino Médio;PR (UF);26/04/2022
+GUILHERME MUSSI;2022;20224266;Individual;R$ 339,453,08;SP;Ensino Superior;Atenção Básica à Saúde;PR (UF);14/04/2022
+ALENCAR SANTANA;2022;20225873;Comissão;R$ 1,491,356,99;RJ;Infraestrutura Urbana;Assistência Hospitalar e Ambulatorial;PR (UF);26/10/2022
+DEPUTADO CARLOS ZARATTINI;2022;20222522;Individual;R$ 2,854,375,03;MG;Ensino Fundamental;Infraestrutura Urbana;RS (UF);12/10/2022
+BACELAR;2022;20221053;Comissão;R$ 4,718,550,84;MG;Atenção Básica à Saúde;Vigilância Epidemiológica;MG (UF);08/08/2022
+DEPUTADO CARLOS ZARATTINI;2022;20224736;Bancada;R$ 2,314,400,79;RS;Ensino Superior;Assistência Hospitalar e Ambulatorial;PR (UF);16/09/2022
+DANIEL ALMEIDA;2022;20228558;Bancada;R$ 1,289,608,65;PR;Assistência Hospitalar e Ambulatorial;Saneamento Básico;RJ (UF);25/04/2022
+DEPUTADO ELICORRÊA;2022;20229959;Comissão;R$ 2,821,676,23;BA;Educação Infantil;Infraestrutura Urbana;RS (UF);01/10/2022
+DEPUTADO GUILHERME MUSSI;2022;20222781;Comissão;R$ 3,677,096,44;PR;Ensino Médio;Ensino Superior;PR (UF);26/12/2022
+GUILHERME MUSSI;2022;20227905;Bancada;R$ 1,497,518,91;GO;Atenção Básica à Saúde;Saneamento Básico;PR (UF);07/12/2022
+FELIPE BORNIER FILHO;2022;20221613;Comissão;R$ 2,700,947,86;MG;Saneamento Básico;Assistência Hospitalar e Ambulatorial;PE (UF);10/03/2022
+BACELAR;2022;20229540;Individual;R$ 770,812,57;SC;Segurança Pública;Ensino Fundamental;RS (UF);20/12/2022
+HERCÍLIO DINIZ;2022;20224234;Individual;R$ 4,058,196,74;SP;Vigilância Epidemiológica;Segurança Pública;PE (UF);24/05/2022
+HERCÍLIO DINIZ;2022;20226927;Comissão;R$ 2,041,309,62;SC;Saneamento Básico;Ensino Médio;SC (UF);08/09/2022
+HERCÍLIO DINIZ;2022;20225947;Bancada;R$ 1,232,912,50;PR;Assistência Hospitalar e Ambulatorial;Educação Infantil;DF (UF);06/07/2022
+FELIPE BORNIER;2022;20225803;Bancada;R$ 1,589,507,61;GO;Infraestrutura Urbana;Infraestrutura Urbana;MG (UF);25/02/2022
+DEPUTADO ALENCAR SANTANA;2022;20224523;Bancada;R$ 3,150,672,20;BA;Atenção Básica à Saúde;Ensino Fundamental;GO (UF);20/04/2022
+EDUARDO BARBOSA;2022;20221923;Comissão;R$ 4,593,628,15;PE;Educação Infantil;Infraestrutura Urbana;MG (UF);22/04/2022
+ELICORRÊA FILHO;2022;20226989;Individual;R$ 1,914,099,54;RJ;Atenção Básica à Saúde;Ensino Fundamental;PE (UF);14/04/2022
+DEPUTADO ELICORRÊA;2022;20221881;Individual;R$ 1,952,248,66;RJ;Ensino Fundamental;Vigilância Epidemiológica;RS (UF);16/04/2022
+GUILHERME MUSSI FILHO;2022;20222557;Individual;R$ 453,809,60;SP;Infraestrutura Urbana;Infraestrutura Urbana;RJ (UF);23/12/2022
+JULIO CESAR RIBEIRO;2022;20226020;Individual;R$ 1,524,943,99;MG;Saneamento Básico;Infraestrutura Urbana;SP (UF);27/11/2022
+DANIEL ALMEIDA FILHO;2022;20227782;Bancada;R$ 773,364,52;DF;Atenção Básica à Saúde;Assistência Hospitalar e Ambulatorial;PR (UF);10/10/2022
+ELICORRÊA;2022;20229569;Bancada;R$ 1,746,139,52;SP;Ensino Fundamental;Atenção Básica à Saúde;PE (UF);24/03/2022
+FELIPE BORNIER;2022;20227715;Comissão;R$ 932,893,77;BA;Ensino Médio;Ensino Fundamental;BA (UF);12/11/2022
+HERCÍLIO DINIZ;2022;20224268;Individual;R$ 2,984,462,83;RJ;Educação Infantil;Assistência Hospitalar e Ambulatorial;RJ (UF);01/11/2022
+ELICORRÊA;2022;20223786;Bancada;R$ 1,020,890,12;MG;Assistência Hospitalar e Ambulatorial;Ensino Superior;RJ (UF);08/06/2022
+JULIO CESAR RIBEIRO;2022;20226558;Individual;R$ 455,281,94;DF;Ensino Superior;Ensino Fundamental;GO (UF);21/01/2022
+DEPUTADO ALENCAR SANTANA;2022;20223984;Bancada;R$ 4,805,219,99;DF;Saneamento Básico;Educação Infantil;RJ (UF);03/11/2022
+EDUARDO BARBOSA;2022;20224562;Individual;R$ 844,110,60;MG;Vigilância Epidemiológica;Segurança Pública;RJ (UF);13/11/2022
+DEPUTADO FELIPE BORNIER;2022;20221907;Comissão;R$ 119,097,32;RJ;Ensino Fundamental;Educação Infantil;SP (UF);05/08/2022
+DEPUTADO JULIO CESAR RIBEIRO;2022;20221662;Comissão;R$ 357,332,27;SP;Ensino Médio;Infraestrutura Urbana;SC (UF);16/11/2022
+FELIPE BORNIER;2022;20229318;Individual;R$ 4,879,655,55;PE;Ensino Superior;Assistência Hospitalar e Ambulatorial;BA (UF);01/05/2022
+FELIPE BORNIER FILHO;2022;20221434;Bancada;R$ 3,257,451,54;DF;Atenção Básica à Saúde;Vigilância Epidemiológica;SP (UF);08/09/2022
+CARLOS ZARATTINI;2022;20228241;Individual;R$ 2,440,786,74;DF;Assistência Hospitalar e Ambulatorial;Vigilância Epidemiológica;SP (UF);03/03/2022
+BACELAR;2022;20222532;Comissão;R$ 3,118,308,07;PR;Infraestrutura Urbana;Ensino Fundamental;SC (UF);26/05/2022
+CARLOS ZARATTINI;2022;20225011;Individual;R$ 4,797,107,90;PR;Segurança Pública;Infraestrutura Urbana;BA (UF);24/06/2022
+CARLOS ZARATTINI;2022;20223194;Individual;R$ 1,131,297,11;PE;Educação Infantil;Saneamento Básico;SP (UF);17/05/2022
+JULIO CESAR RIBEIRO FILHO;2022;20222462;Comissão;R$ 4,973,768,89;GO;Ensino Superior;Assistência Hospitalar e Ambulatorial;PR (UF);26/11/2022
+GUILHERME MUSSI FILHO;2022;20229027;Bancada;R$ 1,993,081,06;BA;Saneamento Básico;Ensino Superior;GO (UF);18/09/2022
+FELIPE BORNIER FILHO;2022;20223023;Comissão;R$ 2,682,815,72;SC;Infraestrutura Urbana;Ensino Superior;SP (UF);26/05/2022
+CARLOS ZARATTINI;2022;20224278;Individual;R$ 3,870,034,25;BA;Assistência Hospitalar e Ambulatorial;Infraestrutura Urbana;PR (UF);18/07/2022
+HERCÍLIO DINIZ;2022;20222627;Bancada;R$ 3,199,140,80;BA;Ensino Médio;Ensino Fundamental;DF (UF);18/04/2022
+FELIPE BORNIER FILHO;2022;20223717;Comissão;R$ 2,383,598,33;GO;Ensino Médio;Ensino Fundamental;SP (UF);07/07/2022
+CARLOS ZARATTINI;2022;20229286;Comissão;R$ 3,708,196,98;RS;Ensino Fundamental;Segurança Pública;BA (UF);09/03/2022
+EDUARDO BARBOSA;2022;20225301;Bancada;R$ 3,119,738,48;PE;Ensino Médio;Educação Infantil;MG (UF);15/06/2022
+DEPUTADO FELIPE BORNIER;2022;20226039;Comissão;R$ 1,676,043,13;BA;Atenção Básica à Saúde;Infraestrutura Urbana;MG (UF);16/05/2022
+BACELAR;2022;20227411;Comissão;R$ 2,000,706,31;DF;Ensino Fundamental;Assistência Hospitalar e Ambulatorial;GO (UF);24/11/2022
+ALENCAR SANTANA FILHO;2022;20228273;Bancada;R$ 694,222,92;DF;Vigilância Epidemiológica;Infraestrutura Urbana;PR (UF);01/03/2022
+CARLOS ZARATTINI;2022;20228371;Comissão;R$ 2,116,190,52;SC;Educação Infantil;Vigilância Epidemiológica;PR (UF);01/08/2022
+ELICORRÊA;2022;20224882;Bancada;R$ 2,458,218,33;RJ;Ensino Fundamental;Infraestrutura Urbana;PR (UF);16/12/2022
+ALENCAR SANTANA;2022;20222344;Comissão;R$ 2,044,636,15;SC;Atenção Básica à Saúde;Vigilância Epidemiológica;GO (UF);19/10/2022
+DANIEL ALMEIDA;2022;20229909;Comissão;R$ 106,532,86;PR;Vigilância Epidemiológica;Ensino Fundamental;MG (UF);21/09/2022
+DANIEL ALMEIDA;2022;20224855;Bancada;R$ 2,679,954,33;MG;Saneamento Básico;Atenção Básica à Saúde;DF (UF);28/06/2022
+GUILHERME MUSSI;2022;20229530;Bancada;R$ 1,892,275,47;SC;Infraestrutura Urbana;Ensino Médio;PE (UF);05/12/2022
+BACELAR;2022;20222030;Comissão;R$ 2,224,718,91;MG;Educação Infantil;Vigilância Epidemiológica;BA (UF);13/07/2022
+EDUARDO BARBOSA;2022;20222006;Individual;R$ 2,003,701,16;BA;Atenção Básica à Saúde;Assistência Hospitalar e Ambulatorial;DF (UF);28/07/2022
+ELICORRÊA;2022;20223184;Comissão;R$ 417,049,65;DF;Saneamento Básico;Infraestrutura Urbana;RJ (UF);09/09/2022
+CARLOS ZARATTINI;2022;20224510;Bancada;R$ 4,624,793,38;SC;Ensino Superior;Ensino Médio;RS (UF);03/08/2022
+CARLOS ZARATTINI;2022;20223169;Bancada;R$ 473,179,40;DF;Ensino Superior;Segurança Pública;BA (UF);17/10/2022
+DANIEL ALMEIDA;2022;20226839;Comissão;R$ 4,142,896,73;GO;Educação Infantil;Vigilância Epidemiológica;RS (UF);26/10/2022
+ALENCAR SANTANA;2022;20225945;Bancada;R$ 2,922,509,85;PR;Atenção Básica à Saúde;Assistência Hospitalar e Ambulatorial;SP (UF);08/09/2022
+DANIEL ALMEIDA FILHO;2022;20225882;Comissão;R$ 2,881,635,41;RS;Educação Infantil;Ensino Superior;BA (UF);10/12/2022
+BACELAR;2022;20227515;Comissão;R$ 315,218,04;BA;Segurança Pública;Ensino Médio;RJ (UF);12/06/2022
+DEPUTADO DANIEL ALMEIDA;2022;20223810;Bancada;R$ 445,367,73;RS;Ensino Superior;Segurança Pública;SP (UF);15/03/2022
+DANIEL ALMEIDA;2022;20229063;Individual;R$ 328,368,30;MG;Ensino Fundamental;Atenção Básica à Saúde;PE (UF);14/06/2022
+DANIEL ALMEIDA;2022;20224207;Bancada;R$ 3,455,695,53;RJ;Ensino Superior;Vigilância Epidemiológica;GO (UF);03/06/2022
+FELIPE BORNIER;2022;20226137;Bancada;R$ 1,172,258,02;GO;Segurança Pública;Ensino Médio;SC (UF);15/11/2022
+ELICORRÊA;2022;20221709;Comissão;R$ 2,636,326,78;RJ;Ensino Fundamental;Infraestrutura Urbana;PR (UF);07/03/2022
+DEPUTADO EDUARDO BARBOSA;2022;20224010;Bancada;R$ 3,428,829,27;BA;Ensino Superior;Infraestrutura Urbana;SC (UF);09/07/2022
+HERCÍLIO DINIZ FILHO;2022;20224878;Individual;R$ 1,735,340,95;MG;Educação Infantil;Ensino Superior;PR (UF);05/04/2022
+DEPUTADO ELICORRÊA;2022;20229523;Bancada;R$ 2,698,680,71;MG;Atenção Básica à Saúde;Educação Infantil;DF (UF);15/02/2022
+DEPUTADO DANIEL ALMEIDA;2022;20225523;Individual;R$ 2,680,645,07;BA;Atenção Básica à Saúde;Ensino Fundamental;BA (UF);10/12/2022
+HERCÍLIO DINIZ;2022;20227888;Individual;R$ 2,089,454,83;RS;Ensino Fundamental;Ensino Médio;GO (UF);09/07/2022
+EDUARDO BARBOSA;2022;20228450;Individual;R$ 2,972,568,93;BA;Educação Infantil;Ensino Superior;SP (UF);09/09/2022
+DEPUTADO DANIEL ALMEIDA;2022;20229597;Individual;R$ 527,952,39;DF;Atenção Básica à Saúde;Ensino Superior;SP (UF);16/05/2022
+DEPUTADO JULIO CESAR RIBEIRO;2022;20221299;Comissão;R$ 4,740,424,13;BA;Ensino Médio;Assistência Hospitalar e Ambulatorial;SC (UF);06/02/2022
+CARLOS ZARATTINI;2022;20221184;Bancada;R$ 1,533,324,50;SP;Ensino Fundamental;Educação Infantil;PR (UF);02/04/2022
+DEPUTADO CARLOS ZARATTINI;2022;20228228;Comissão;R$ 1,873,868,46;DF;Atenção Básica à Saúde;Infraestrutura Urbana;PR (UF);04/05/2022
+DEPUTADO EDUARDO BARBOSA;2022;20224286;Bancada;R$ 574,542,70;PR;Infraestrutura Urbana;Vigilância Epidemiológica;RJ (UF);08/11/2022
+HERCÍLIO DINIZ;2022;20228080;Bancada;R$ 1,874,475,89;PE;Educação Infantil;Atenção Básica à Saúde;RJ (UF);23/10/2022
+JULIO CESAR RIBEIRO;2022;20224845;Comissão;R$ 3,872,056,40;PR;Atenção Básica à Saúde;Ensino Superior;RS (UF);20/12/2022
+DEPUTADO ALENCAR SANTANA;2022;20229793;Comissão;R$ 4,949,835,70;GO;Assistência Hospitalar e Ambulatorial;Educação Infantil;SC (UF);13/07/2022
+JULIO CESAR RIBEIRO;2022;20224774;Individual;R$ 1,034,484,90;GO;Educação Infantil;Atenção Básica à Saúde;RJ (UF);24/05/2022
+DEPUTADO BACELAR;2022;20223442;Comissão;R$ 490,423,40;DF;Educação Infantil;Atenção Básica à Saúde;RJ (UF);24/06/2022
+DANIEL ALMEIDA FILHO;2022;20229466;Bancada;R$ 3,246,854,99;RS;Vigilância Epidemiológica;Infraestrutura Urbana;PR (UF);12/12/2022
+JULIO CESAR RIBEIRO;2022;20227385;Bancada;R$ 551,194,82;DF;Ensino Superior;Segurança Pública;MG (UF);21/11/2022
+HERCÍLIO DINIZ FILHO;2022;20226089;Individual;R$ 2,050,319,86;RS;Vigilância Epidemiológica;Segurança Pública;PE (UF);02/09/2022
+FELIPE BORNIER;2022;20226274;Comissão;R$ 2,232,995,39;PR;Vigilância Epidemiológica;Saneamento Básico;MG (UF);22/11/2022
+ALENCAR SANTANA;2022;20226434;Comissão;R$ 1,804,153,03;RS;Ensino Superior;Assistência Hospitalar e Ambulatorial;MG (UF);20/02/2022
+DEPUTADO JULIO CESAR RIBEIRO;2022;20223745;Individual;R$ 2,310,790,41;SC;Assistência Hospitalar e Ambulatorial;Ensino Superior;RJ (UF);18/05/2022
+DEPUTADO DANIEL ALMEIDA;2022;20226440;Comissão;R$ 847,235,29;PE;Ensino Superior;Ensino Superior;SP (UF);17/07/2022
+DEPUTADO ALENCAR SANTANA;2022;20229524;Bancada;R$ 159,523,01;PR;Ensino Médio;Segurança Pública;SP (UF);17/02/2022
+ALENCAR SANTANA;2022;20226397;Individual;R$ 4,144,940,09;DF;Saneamento Básico;Atenção Básica à Saúde;SC (UF);21/11/2022
+ELICORRÊA;2022;20222734;Comissão;R$ 3,803,304,15;GO;Vigilância Epidemiológica;Saneamento Básico;SP (UF);12/10/2022
+ALENCAR SANTANA;2022;20225250;Bancada;R$ 3,477,251,04;PE;Segurança Pública;Vigilância Epidemiológica;BA (UF);09/04/2022
+DANIEL ALMEIDA;2022;20222920;Bancada;R$ 3,803,216,53;MG;Atenção Básica à Saúde;Assistência Hospitalar e Ambulatorial;RS (UF);15/12/2022
+HERCÍLIO DINIZ;2022;20228734;Individual;R$ 1,092,058,84;PE;Ensino Superior;Ensino Fundamental;RS (UF);27/05/2022
+BACELAR;2022;20226437;Bancada;R$ 1,967,923,17;PE;Ensino Superior;Infraestrutura Urbana;PE (UF);14/08/2022
+DEPUTADO HERCÍLIO DINIZ;2022;20223200;Bancada;R$ 3,390,000,29;DF;Atenção Básica à Saúde;Saneamento Básico;SP (UF);22/11/2022
+GUILHERME MUSSI;2022;20225645;Individual;R$ 1,975,976,71;SP;Atenção Básica à Saúde;Assistência Hospitalar e Ambulatorial;RJ (UF);26/10/2022
+JULIO CESAR RIBEIRO;2022;20222745;Comissão;R$ 2,880,916,35;SP;Ensino Fundamental;Saneamento Básico;PE (UF);21/01/2022
+JULIO CESAR RIBEIRO;2022;20223266;Comissão;R$ 4,123,094,81;BA;Saneamento Básico;Assistência Hospitalar e Ambulatorial;SP (UF);14/09/2022
+GUILHERME MUSSI;2022;20224770;Bancada;R$ 4,151,183,74;DF;Vigilância Epidemiológica;Assistência Hospitalar e Ambulatorial;SC (UF);18/03/2022
+DEPUTADO ELICORRÊA;2022;20229492;Individual;R$ 3,536,039,79;RS;Educação Infantil;Vigilância Epidemiológica;PR (UF);23/09/2022
+ELICORRÊA;2022;20228889;Comissão;R$ 4,348,286,52;RS;Ensino Superior;Ensino Médio;MG (UF);21/06/2022
+BACELAR FILHO;2022;20227951;Bancada;R$ 1,723,644,44;GO;Segurança Pública;Ensino Médio;DF (UF);19/03/2022
+DEPUTADO JULIO CESAR RIBEIRO;2022;20224409;Individual;R$ 2,101,429,68;BA;Assistência Hospitalar e Ambulatorial;Saneamento Básico;SC (UF);03/10/2022
+GUILHERME MUSSI;2022;20221692;Comissão;R$ 3,720,878,64;DF;Saneamento Básico;Segurança Pública;RS (UF);10/03/2022
+DEPUTADO ELICORRÊA;2022;20227813;Individual;R$ 246,079,35;MG;Ensino Médio;Ensino Médio;PE (UF);02/05/2022
+ALENCAR SANTANA;2022;20224815;Comissão;R$ 1,528,471,45;GO;Atenção Básica à Saúde;Ensino Médio;SC (UF);06/10/2022
+ALENCAR SANTANA;2022;20222725;Bancada;R$ 2,622,437,44;BA;Segurança Pública;Assistência Hospitalar e Ambulatorial;DF (UF);22/08/2022
+ELICORRÊA;2022;20221084;Individual;R$ 4,762,807,06;PE;Ensino Médio;Vigilância Epidemiológica;RS (UF);02/04/2022
+CARLOS ZARATTINI;2022;20224224;Individual;R$ 2,259,573,60;RJ;Infraestrutura Urbana;Ensino Superior;GO (UF);02/08/2022
+ELICORRÊA FILHO;2022;20223336;Bancada;R$ 848,533,52;RJ;Saneamento Básico;Atenção Básica à Saúde;SP (UF);24/04/2022
+GUILHERME MUSSI;2022;20222578;Comissão;R$ 2,374,264,31;PE;Ensino Superior;Segurança Pública;SC (UF);15/12/2022
+ALENCAR SANTANA;2022;20222506;Comissão;R$ 4,340,633,39;SP;Atenção Básica à Saúde;Ensino Fundamental;MG (UF);12/01/2022
+FELIPE BORNIER;2022;20227044;Individual;R$ 3,945,581,43;PR;Assistência Hospitalar e Ambulatorial;Educação Infantil;MG (UF);21/04/2022
+FELIPE BORNIER;2022;20229965;Bancada;R$ 4,360,365,02;SP;Ensino Médio;Educação Infantil;SP (UF);08/06/2022
+DANIEL ALMEIDA;2022;20229663;Individual;R$ 3,138,910,38;PR;Infraestrutura Urbana;Ensino Fundamental;RS (UF);08/01/2022
+ALENCAR SANTANA;2022;20225201;Bancada;R$ 2,268,365,80;GO;Educação Infantil;Ensino Médio;BA (UF);23/06/2022
+GUILHERME MUSSI;2022;20229816;Bancada;R$ 581,500,46;RJ;Atenção Básica à Saúde;Ensino Superior;GO (UF);20/10/2022
+CARLOS ZARATTINI FILHO;2022;20226173;Comissão;R$ 2,964,744,17;GO;Infraestrutura Urbana;Vigilância Epidemiológica;RS (UF);14/05/2022
+CARLOS ZARATTINI;2022;20221462;Bancada;R$ 4,922,957,47;SP;Ensino Superior;Atenção Básica à Saúde;BA (UF);18/02/2022
+BACELAR;2022;20229088;Comissão;R$ 2,206,917,39;BA;Ensino Médio;Infraestrutura Urbana;BA (UF);19/03/2022
+ELICORRÊA FILHO;2022;20227701;Individual;R$ 1,035,195,77;PR;Educação Infantil;Ensino Médio;PE (UF);16/11/2022
+JULIO CESAR RIBEIRO;2022;20226113;Comissão;R$ 2,059,586,10;MG;Segurança Pública;Ensino Médio;BA (UF);10/11/2022
+GUILHERME MUSSI;2022;20222220;Bancada;R$ 2,826,781,93;MG;Ensino Fundamental;Ensino Superior;PR (UF);24/09/2022
+FELIPE BORNIER;2022;20227764;Bancada;R$ 3,506,043,48;RJ;Atenção Básica à Saúde;Ensino Médio;SC (UF);08/05/2022
+HERCÍLIO DINIZ;2022;20228958;Comissão;R$ 337,867,88;PR;Ensino Superior;Infraestrutura Urbana;SC (UF);12/04/2022
+DANIEL ALMEIDA;2022;20224790;Individual;R$ 4,109,233,15;BA;Ensino Superior;Ensino Médio;GO (UF);08/03/2022
+DEPUTADO JULIO CESAR RIBEIRO;2022;20229232;Individual;R$ 4,465,053,96;DF;Segurança Pública;Ensino Superior;DF (UF);17/08/2022
+EDUARDO BARBOSA;2022;20224062;Bancada;R$ 2,566,483,78;PE;Educação Infantil;Segurança Pública;SP (UF);23/12/2022
+JULIO CESAR RIBEIRO;2022;20223964;Comissão;R$ 4,659,080,61;RJ;Educação Infantil;Ensino Superior;PR (UF);08/09/2022
+GUILHERME MUSSI;2022;20225993;Bancada;R$ 36,222,66;RS;Assistência Hospitalar e Ambulatorial;Ensino Superior;PE (UF);09/05/2022
+HERCÍLIO DINIZ;2022;20228027;Individual;R$ 724,895,43;RS;Infraestrutura Urbana;Vigilância Epidemiológica;PR (UF);12/10/2022
+FELIPE BORNIER;2022;20228590;Bancada;R$ 2,494,404,51;RS;Educação Infantil;Ensino Médio;DF (UF);11/09/2022
+ALENCAR SANTANA;2022;20223060;Individual;R$ 414,792,15;PR;Ensino Superior;Educação Infantil;PE (UF);15/09/2022
+HERCÍLIO DINIZ;2022;20227133;Bancada;R$ 1,516,884,61;MG;Ensino Superior;Segurança Pública;PE (UF);23/02/2022
+HERCÍLIO DINIZ;2022;20225933;Comissão;R$ 301,655,84;RJ;Saneamento Básico;Ensino Superior;PR (UF);11/11/2022
+DANIEL ALMEIDA;2022;20228010;Individual;R$ 4,743,663,82;PE;Saneamento Básico;Segurança Pública;DF (UF);19/04/2022
+ELICORRÊA;2022;20222973;Individual;R$ 3,893,457,89;RJ;Assistência Hospitalar e Ambulatorial;Vigilância Epidemiológica;DF (UF);28/03/2022
+ELICORRÊA;2022;20224761;Individual;R$ 358,173,79;PE;Educação Infantil;Infraestrutura Urbana;DF (UF);02/03/2022
+DEPUTADO BACELAR;2022;20228147;Comissão;R$ 3,078,518,11;PR;Assistência Hospitalar e Ambulatorial;Educação Infantil;DF (UF);28/07/2022
+ALENCAR SANTANA;2022;20224508;Bancada;R$ 3,862,840,67;PE;Ensino Superior;Saneamento Básico;SC (UF);01/03/2022
+JULIO CESAR RIBEIRO;2022;20222176;Bancada;R$ 3,839,354,77;DF;Assistência Hospitalar e Ambulatorial;Assistência Hospitalar e Ambulatorial;RJ (UF);27/05/2022
+DEPUTADO JULIO CESAR RIBEIRO;2022;20228041;Individual;R$ 4,810,349,10;DF;Vigilância Epidemiológica;Segurança Pública;RJ (UF);10/04/2022
+DEPUTADO HERCÍLIO DINIZ;2022;20223302;Individual;R$ 3,658,257,64;PE;Assistência Hospitalar e Ambulatorial;Saneamento Básico;SC (UF);05/10/2022
+ALENCAR SANTANA;2022;20226944;Individual;R$ 2,844,238,48;SP;Assistência Hospitalar e Ambulatorial;Saneamento Básico;RS (UF);19/07/2022
+GUILHERME MUSSI FILHO;2022;20227761;Individual;R$ 4,262,399,50;RS;Educação Infantil;Infraestrutura Urbana;MG (UF);19/01/2022
+EDUARDO BARBOSA;2022;20227489;Individual;R$ 1,851,079,21;SC;Ensino Superior;Infraestrutura Urbana;RS (UF);15/04/2022
+EDUARDO BARBOSA;2022;20225699;Comissão;R$ 3,376,170,85;RS;Assistência Hospitalar e Ambulatorial;Educação Infantil;RJ (UF);16/08/2022
+JULIO CESAR RIBEIRO;2022;20229108;Bancada;R$ 2,947,182,05;RJ;Atenção Básica à Saúde;Atenção Básica à Saúde;RJ (UF);18/02/2022
+GUILHERME MUSSI;2022;20229000;Bancada;R$ 1,502,631,27;SC;Educação Infantil;Educação Infantil;BA (UF);15/09/2022
+ELICORRÊA FILHO;2022;20228297;Individual;R$ 4,895,863,76;RS;Ensino Superior;Ensino Médio;DF (UF);17/02/2022
+DEPUTADO HERCÍLIO DINIZ;2022;20224972;Individual;R$ 3,685,477,46;PE;Infraestrutura Urbana;Ensino Superior;PE (UF);21/04/2022
+JULIO CESAR RIBEIRO;2022;20224482;Bancada;R$ 2,405,516,55;PE;Atenção Básica à Saúde;Atenção Básica à Saúde;MG (UF);17/03/2022
+CARLOS ZARATTINI FILHO;2022;20229278;Individual;R$ 794,768,53;SC;Educação Infantil;Infraestrutura Urbana;BA (UF);18/10/2022
+EDUARDO BARBOSA;2022;20224925;Individual;R$ 4,151,550,00;DF;Infraestrutura Urbana;Ensino Fundamental;BA (UF);06/01/2022
+BACELAR FILHO;2022;20226007;Comissão;R$ 1,491,282,66;DF;Saneamento Básico;Atenção Básica à Saúde;MG (UF);14/11/2022
+CARLOS ZARATTINI;2022;20226039;Bancada;R$ 4,205,876,52;GO;Vigilância Epidemiológica;Atenção Básica à Saúde;SC (UF);15/04/2022
+DANIEL ALMEIDA;2022;20222754;Individual;R$ 4,639,274,80;BA;Segurança Pública;Segurança Pública;RJ (UF);11/11/2022
+DANIEL ALMEIDA;2022;20222460;Individual;R$ 2,363,256,94;DF;Atenção Básica à Saúde;Ensino Fundamental;MG (UF);06/11/2022
+HERCÍLIO DINIZ;2022;20227092;Comissão;R$ 2,181,045,26;MG;Saneamento Básico;Vigilância Epidemiológica;SC (UF);10/09/2022
+BACELAR;2022;20228860;Comissão;R$ 3,741,928,86;RJ;Infraestrutura Urbana;Vigilância Epidemiológica;MG (UF);09/05/2022
+BACELAR;2022;20228845;Individual;R$ 1,435,282,37;SP;Saneamento Básico;Assistência Hospitalar e Ambulatorial;SC (UF);13/02/2022
+CARLOS ZARATTINI FILHO;2022;20226900;Comissão;R$ 4,478,078,74;PE;Assistência Hospitalar e Ambulatorial;Atenção Básica à Saúde;DF (UF);10/04/2022
+FELIPE BORNIER;2022;20226063;Comissão;R$ 2,577,992,13;MG;Infraestrutura Urbana;Atenção Básica à Saúde;SC (UF);17/08/2022
+BACELAR;2022;20227902;Bancada;R$ 2,195,105,99;RJ;Ensino Superior;Ensino Médio;PR (UF);01/11/2022
+ELICORRÊA;2022;20226480;Individual;R$ 4,574,265,25;SC;Ensino Médio;Educação Infantil;RS (UF);22/12/2022
+DANIEL ALMEIDA;2022;20221313;Bancada;R$ 4,720,674,69;SP;Ensino Médio;Segurança Pública;SC (UF);08/03/2022
+CARLOS ZARATTINI;2022;20224977;Bancada;R$ 4,055,536,33;SC;Infraestrutura Urbana;Assistência Hospitalar e Ambulatorial;BA (UF);02/05/2022
+FELIPE BORNIER;2022;20225679;Bancada;R$ 4,246,381,43;RJ;Infraestrutura Urbana;Atenção Básica à Saúde;RS (UF);17/09/2022
+EDUARDO BARBOSA;2022;20224911;Individual;R$ 2,773,832,65;MG;Segurança Pública;Infraestrutura Urbana;BA (UF);23/02/2022
+JULIO CESAR RIBEIRO;2022;20227561;Comissão;R$ 4,451,282,52;SP;Segurança Pública;Educação Infantil;GO (UF);24/10/2022
+GUILHERME MUSSI FILHO;2022;20224062;Bancada;R$ 3,179,804,94;PR;Vigilância Epidemiológica;Infraestrutura Urbana;GO (UF);17/07/2022
+BACELAR FILHO;2022;20223979;Bancada;R$ 2,934,622,90;DF;Saneamento Básico;Assistência Hospitalar e Ambulatorial;SC (UF);04/01/2022
+JULIO CESAR RIBEIRO;2022;20226280;Bancada;R$ 3,646,572,75;MG;Saneamento Básico;Saneamento Básico;DF (UF);23/10/2022
+BACELAR;2022;20224125;Bancada;R$ 907,555,44;SC;Ensino Superior;Infraestrutura Urbana;PR (UF);09/06/2022
+DEPUTADO GUILHERME MUSSI;2022;20222847;Individual;R$ 4,928,835,13;SC;Assistência Hospitalar e Ambulatorial;Saneamento Básico;PE (UF);05/01/2022
+DANIEL ALMEIDA;2022;20223264;Bancada;R$ 1,040,812,84;RS;Infraestrutura Urbana;Segurança Pública;GO (UF);07/11/2022
+BACELAR;2022;20226475;Individual;R$ 4,299,093,29;PE;Infraestrutura Urbana;Ensino Superior;RS (UF);15/06/2022
+CARLOS ZARATTINI;2022;20224741;Bancada;R$ 760,364,97;PE;Segurança Pública;Ensino Fundamental;DF (UF);05/07/2022
+GUILHERME MUSSI FILHO;2022;20223409;Bancada;R$ 699,040,48;MG;Saneamento Básico;Infraestrutura Urbana;MG (UF);08/07/2022
+JULIO CESAR RIBEIRO;2022;20226200;Comissão;R$ 2,749,034,93;MG;Vigilância Epidemiológica;Atenção Básica à Saúde;PR (UF);11/08/2022
+EDUARDO BARBOSA;2022;20222060;Comissão;R$ 3,352,399,91;RS;Ensino Fundamental;Assistência Hospitalar e Ambulatorial;SP (UF);06/11/2022
+EDUARDO BARBOSA;2022;20223151;Comissão;R$ 2,775,752,94;DF;Assistência Hospitalar e Ambulatorial;Atenção Básica à Saúde;RJ (UF);04/03/2022
+GUILHERME MUSSI;2022;20224526;Comissão;R$ 2,650,531,17;SP;Atenção Básica à Saúde;Ensino Médio;SP (UF);06/02/2022
+HERCÍLIO DINIZ;2022;20226941;Bancada;R$ 1,828,056,50;RJ;Segurança Pública;Vigilância Epidemiológica;PR (UF);03/03/2022
+GUILHERME MUSSI;2022;20223278;Comissão;R$ 2,979,303,82;DF;Ensino Médio;Ensino Fundamental;DF (UF);18/02/2022
+JULIO CESAR RIBEIRO;2022;20222856;Comissão;R$ 1,232,507,35;BA;Vigilância Epidemiológica;Vigilância Epidemiológica;PE (UF);02/04/2022
+DEPUTADO JULIO CESAR RIBEIRO;2022;20226056;Comissão;R$ 2,762,777,21;RJ;Educação Infantil;Assistência Hospitalar e Ambulatorial;SP (UF);21/11/2022
+EDUARDO BARBOSA;2022;20228290;Bancada;R$ 2,428,144,58;GO;Vigilância Epidemiológica;Ensino Fundamental;BA (UF);13/12/2022
+GUILHERME MUSSI;2022;20229349;Bancada;R$ 2,001,000,88;RS;Vigilância Epidemiológica;Infraestrutura Urbana;RS (UF);05/07/2022
+BACELAR;2022;20225526;Individual;R$ 875,669,69;GO;Saneamento Básico;Segurança Pública;RJ (UF);05/12/2022
+BACELAR FILHO;2022;20225840;Comissão;R$ 4,486,119,07;RJ;Ensino Superior;Ensino Fundamental;MG (UF);02/01/2022
+DANIEL ALMEIDA;2022;20225973;Bancada;R$ 3,221,822,44;MG;Vigilância Epidemiológica;Ensino Superior;MG (UF);25/01/2022
+DANIEL ALMEIDA;2022;20225726;Comissão;R$ 4,225,070,10;GO;Ensino Superior;Ensino Superior;MG (UF);09/07/2022
+ELICORRÊA;2022;20221625;Individual;R$ 2,653,892,03;PE;Atenção Básica à Saúde;Atenção Básica à Saúde;PE (UF);22/02/2022
+DEPUTADO FELIPE BORNIER;2022;20222159;Individual;R$ 1,504,488,96;MG;Assistência Hospitalar e Ambulatorial;Educação Infantil;SP (UF);23/07/2022
+DEPUTADO ALENCAR SANTANA;2022;20222058;Comissão;R$ 3,693,606,00;PE;Infraestrutura Urbana;Educação Infantil;GO (UF);18/07/2022
+DEPUTADO HERCÍLIO DINIZ;2022;20221878;Individual;R$ 4,988,077,60;DF;Ensino Superior;Atenção Básica à Saúde;PE (UF);24/06/2022
+EDUARDO BARBOSA;2022;20223804;Bancada;R$ 2,202,945,77;PE;Assistência Hospitalar e Ambulatorial;Segurança Pública;MG (UF);24/09/2022
+FELIPE BORNIER FILHO;2022;20224440;Bancada;R$ 2,084,472,31;RS;Assistência Hospitalar e Ambulatorial;Assistência Hospitalar e Ambulatorial;PR (UF);28/09/2022
+HERCÍLIO DINIZ;2022;20222825;Comissão;R$ 4,380,006,61;SC;Ensino Superior;Atenção Básica à Saúde;BA (UF);19/12/2022
+GUILHERME MUSSI;2022;20221414;Bancada;R$ 1,867,776,76;RS;Ensino Superior;Vigilância Epidemiológica;SP (UF);24/05/2022
+ALENCAR SANTANA;2022;20227518;Bancada;R$ 1,871,011,86;SP;Segurança Pública;Segurança Pública;DF (UF);26/09/2022
+DEPUTADO HERCÍLIO DINIZ;2022;20227849;Comissão;R$ 3,445,584,54;PR;Assistência Hospitalar e Ambulatorial;Ensino Fundamental;DF (UF);24/09/2022
+DEPUTADO JULIO CESAR RIBEIRO;2022;20228930;Bancada;R$ 1,546,382,61;RJ;Ensino Médio;Segurança Pública;PE (UF);11/08/2022
+ALENCAR SANTANA;2022;20223353;Comissão;R$ 1,950,451,90;MG;Ensino Superior;Ensino Médio;RJ (UF);27/05/2022
+BACELAR;2022;20227980;Individual;R$ 705,402,38;MG;Ensino Fundamental;Infraestrutura Urbana;PE (UF);19/04/2022
+GUILHERME MUSSI;2022;20222391;Individual;R$ 4,169,886,68;PE;Vigilância Epidemiológica;Educação Infantil;MG (UF);02/06/2022
+GUILHERME MUSSI;2022;20228547;Individual;R$ 2,923,662,26;PE;Infraestrutura Urbana;Assistência Hospitalar e Ambulatorial;PE (UF);07/03/2022
+EDUARDO BARBOSA;2022;20225012;Individual;R$ 1,945,414,96;GO;Vigilância Epidemiológica;Segurança Pública;RS (UF);20/06/2022
+HERCÍLIO DINIZ FILHO;2022;20228392;Bancada;R$ 20,429,07;RS;Assistência Hospitalar e Ambulatorial;Saneamento Básico;MG (UF);16/09/2022
+DEPUTADO GUILHERME MUSSI;2022;20224588;Comissão;R$ 2,995,564,76;SC;Infraestrutura Urbana;Ensino Médio;RS (UF);27/06/2022
+BACELAR;2022;20227546;Bancada;R$ 1,550,751,67;MG;Ensino Superior;Educação Infantil;PR (UF);02/06/2022
+ALENCAR SANTANA;2022;20226708;Individual;R$ 345,637,66;SP;Educação Infantil;Educação Infantil;PR (UF);25/03/2022
+ALENCAR SANTANA;2022;20221331;Comissão;R$ 216,181,12;SC;Ensino Médio;Saneamento Básico;PE (UF);17/04/2022
+BACELAR;2022;20223362;Comissão;R$ 4,207,851,14;RS;Segurança Pública;Educação Infantil;PE (UF);23/07/2022
+GUILHERME MUSSI;2022;20221294;Individual;R$ 3,434,952,64;GO;Ensino Médio;Ensino Médio;MG (UF);17/06/2022
+ALENCAR SANTANA;2022;20228917;Bancada;R$ 4,616,315,56;RJ;Educação Infantil;Segurança Pública;MG (UF);13/02/2022
+EDUARDO BARBOSA;2022;20226548;Comissão;R$ 4,898,908,18;DF;Atenção Básica à Saúde;Saneamento Básico;GO (UF);20/01/2022
+DEPUTADO CARLOS ZARATTINI;2022;20225665;Comissão;R$ 129,928,16;PE;Saneamento Básico;Assistência Hospitalar e Ambulatorial;RS (UF);11/10/2022
+ELICORRÊA;2022;20221686;Individual;R$ 1,756,461,41;PE;Vigilância Epidemiológica;Segurança Pública;GO (UF);09/10/2022
+DANIEL ALMEIDA;2022;20224576;Bancada;R$ 1,354,883,32;RJ;Ensino Fundamental;Ensino Fundamental;SP (UF);14/09/2022
+EDUARDO BARBOSA FILHO;2022;20227841;Bancada;R$ 4,209,735,97;RJ;Saneamento Básico;Ensino Superior;SP (UF);26/11/2022
+EDUARDO BARBOSA FILHO;2022;20229222;Comissão;R$ 3,082,314,16;DF;Ensino Superior;Ensino Fundamental;DF (UF);12/11/2022
+BACELAR;2022;20223639;Individual;R$ 4,543,933,87;PE;Atenção Básica à Saúde;Segurança Pública;PE (UF);15/07/2022
+ALENCAR SANTANA;2022;20224036;Bancada;R$ 4,720,991,04;RJ;Assistência Hospitalar e Ambulatorial;Saneamento Básico;PR (UF);14/05/2022
+DANIEL ALMEIDA;2022;20226778;Comissão;R$ 4,403,275,56;GO;Vigilância Epidemiológica;Infraestrutura Urbana;BA (UF);01/04/2022
+CARLOS ZARATTINI;2022;20228197;Comissão;R$ 2,730,217,79;PE;Saneamento Básico;Ensino Fundamental;SP (UF);08/08/2022
+DEPUTADO HERCÍLIO DINIZ;2022;20227436;Comissão;R$ 1,097,569,27;PR;Saneamento Básico;Assistência Hospitalar e Ambulatorial;PE (UF);21/10/2022
+DEPUTADO ALENCAR SANTANA;2022;20228511;Bancada;R$ 4,770,662,88;SC;Assistência Hospitalar e Ambulatorial;Ensino Fundamental;SP (UF);07/07/2022
+CARLOS ZARATTINI;2022;20229975;Individual;R$ 1,716,961,76;DF;Segurança Pública;Vigilância Epidemiológica;BA (UF);09/01/2022
+HERCÍLIO DINIZ;2022;20221286;Individual;R$ 1,823,545,52;PR;Atenção Básica à Saúde;Assistência Hospitalar e Ambulatorial;PR (UF);21/05/2022
+CARLOS ZARATTINI;2022;20229997;Bancada;R$ 3,489,213,94;SP;Educação Infantil;Infraestrutura Urbana;SC (UF);14/02/2022
+BACELAR;2022;20224706;Individual;R$ 1,761,171,98;BA;Assistência Hospitalar e Ambulatorial;Ensino Superior;RS (UF);28/06/2022
+EDUARDO BARBOSA;2022;20229116;Bancada;R$ 4,853,747,71;BA;Ensino Superior;Saneamento Básico;GO (UF);26/02/2022
+DEPUTADO EDUARDO BARBOSA;2022;20226164;Bancada;R$ 55,115,34;PR;Saneamento Básico;Vigilância Epidemiológica;SC (UF);03/06/2022
+CARLOS ZARATTINI;2022;20222195;Bancada;R$ 954,775,56;RJ;Ensino Fundamental;Educação Infantil;PE (UF);21/02/2022
+HERCÍLIO DINIZ;2022;20228078;Individual;R$ 2,299,219,92;DF;Saneamento Básico;Ensino Superior;RJ (UF);07/02/2022
+JULIO CESAR RIBEIRO;2022;20229423;Individual;R$ 3,221,513,54;PE;Educação Infantil;Vigilância Epidemiológica;PR (UF);18/10/2022
+DEPUTADO CARLOS ZARATTINI;2022;20224257;Bancada;R$ 2,419,674,32;BA;Ensino Fundamental;Assistência Hospitalar e Ambulatorial;SP (UF);08/08/2022
+JULIO CESAR RIBEIRO;2022;20226207;Individual;R$ 1,261,412,62;MG;Segurança Pública;Saneamento Básico;PE (UF);13/02/2022
+ELICORRÊA;2022;20223416;Bancada;R$ 4,766,150,89;MG;Vigilância Epidemiológica;Segurança Pública;BA (UF);03/11/2022
+BACELAR FILHO;2022;20222209;Comissão;R$ 162,977,98;PR;Infraestrutura Urbana;Ensino Superior;SP (UF);09/06/2022
+JULIO CESAR RIBEIRO;2022;20226917;Individual;R$ 2,951,175,33;RS;Educação Infantil;Ensino Fundamental;MG (UF);11/01/2022
+BACELAR;2022;20225430;Individual;R$ 487,347,88;RJ;Assistência Hospitalar e Ambulatorial;Ensino Superior;PR (UF);07/10/2022
+EDUARDO BARBOSA FILHO;2022;20221596;Individual;R$ 3,531,490,52;SP;Ensino Médio;Infraestrutura Urbana;MG (UF);10/10/2022
+BACELAR;2022;20221567;Comissão;R$ 4,454,811,09;RS;Infraestrutura Urbana;Ensino Médio;GO (UF);03/11/2022
+CARLOS ZARATTINI;2022;20221973;Individual;R$ 1,384,945,64;GO;Ensino Médio;Vigilância Epidemiológica;RJ (UF);10/09/2022
+FELIPE BORNIER;2022;20225015;Bancada;R$ 2,552,315,16;RJ;Ensino Médio;Ensino Médio;RS (UF);04/04/2022
+DEPUTADO HERCÍLIO DINIZ;2022;20227007;Comissão;R$ 4,133,990,18;SP;Ensino Superior;Saneamento Básico;BA (UF);25/11/2022
+FELIPE BORNIER;2022;20225157;Individual;R$ 283,709,35;SP;Assistência Hospitalar e Ambulatorial;Vigilância Epidemiológica;PR (UF);07/07/2022
+DANIEL ALMEIDA;2022;20228022;Individual;R$ 2,238,102,47;SP;Saneamento Básico;Ensino Fundamental;PR (UF);12/05/2022
+ELICORRÊA;2022;20229519;Individual;R$ 15,931,23;SP;Segurança Pública;Infraestrutura Urbana;SP (UF);05/12/2022
+HERCÍLIO DINIZ;2022;20227500;Individual;R$ 917,701,05;SC;Vigilância Epidemiológica;Ensino Superior;RS (UF);16/10/2022
+GUILHERME MUSSI;2022;20221478;Bancada;R$ 4,962,534,36;MG;Assistência Hospitalar e Ambulatorial;Atenção Básica à Saúde;GO (UF);05/01/2022
+JULIO CESAR RIBEIRO FILHO;2022;20224809;Individual;R$ 1,871,471,02;PR;Ensino Fundamental;Vigilância Epidemiológica;GO (UF);26/03/2022
+DANIEL ALMEIDA;2022;20223743;Individual;R$ 4,536,564,75;GO;Educação Infantil;Ensino Médio;MG (UF);10/02/2022
+EDUARDO BARBOSA;2022;20227159;Comissão;R$ 1,897,521,06;RJ;Segurança Pública;Assistência Hospitalar e Ambulatorial;RS (UF);03/03/2022
+DANIEL ALMEIDA;2022;20227488;Individual;R$ 4,975,734,89;RS;Ensino Fundamental;Infraestrutura Urbana;GO (UF);01/12/2022
+DEPUTADO CARLOS ZARATTINI;2022;20229433;Individual;R$ 2,016,037,23;SP;Educação Infantil;Ensino Médio;PR (UF);13/01/2022
+ELICORRÊA FILHO;2022;20225207;Bancada;R$ 4,867,457,69;RJ;Segurança Pública;Infraestrutura Urbana;RJ (UF);24/12/2022
+DEPUTADO JULIO CESAR RIBEIRO;2022;20225555;Comissão;R$ 528,517,42;PR;Educação Infantil;Ensino Fundamental;SC (UF);02/11/2022
+CARLOS ZARATTINI;2022;20225531;Comissão;R$ 856,797,00;PE;Segurança Pública;Atenção Básica à Saúde;RS (UF);16/03/2022
+EDUARDO BARBOSA;2022;20227614;Bancada;R$ 2,851,815,23;SC;Ensino Fundamental;Vigilância Epidemiológica;GO (UF);05/02/2022
+FELIPE BORNIER;2022;20228267;Bancada;R$ 1,868,469,87;SC;Educação Infantil;Atenção Básica à Saúde;RS (UF);11/06/2022
+DANIEL ALMEIDA FILHO;2022;20221928;Individual;R$ 4,488,890,16;BA;Infraestrutura Urbana;Saneamento Básico;MG (UF);20/08/2022
+DEPUTADO GUILHERME MUSSI;2022;20223805;Bancada;R$ 2,187,998,94;PE;Saneamento Básico;Ensino Fundamental;MG (UF);05/12/2022
+BACELAR;2022;20225064;Bancada;R$ 2,941,452,81;RS;Ensino Superior;Ensino Fundamental;PE (UF);15/04/2022
+EDUARDO BARBOSA;2022;20228605;Comissão;R$ 3,897,487,04;BA;Ensino Médio;Ensino Médio;SP (UF);11/08/2022
+GUILHERME MUSSI;2022;20229174;Bancada;R$ 3,892,039,63;MG;Ensino Fundamental;Atenção Básica à Saúde;RS (UF);10/10/2022
+JULIO CESAR RIBEIRO;2022;20223179;Bancada;R$ 1,497,444,36;MG;Vigilância Epidemiológica;Ensino Médio;BA (UF);14/09/2022
+DANIEL ALMEIDA;2022;20222150;Bancada;R$ 4,476,520,25;RS;Ensino Fundamental;Segurança Pública;BA (UF);22/02/2022
+DANIEL ALMEIDA;2022;20227955;Individual;R$ 1,830,437,11;BA;Educação Infantil;Atenção Básica à Saúde;PR (UF);21/01/2022
+HERCÍLIO DINIZ;2022;20227544;Individual;R$ 3,564,980,61;MG;Infraestrutura Urbana;Saneamento Básico;SC (UF);08/04/2022
+GUILHERME MUSSI;2022;20229314;Comissão;R$ 347,077,62;GO;Ensino Superior;Ensino Superior;SP (UF);18/06/2022
+FELIPE BORNIER;2022;20222083;Bancada;R$ 726,714,32;MG;Segurança Pública;Saneamento Básico;RS (UF);05/09/2022
+ALENCAR SANTANA;2022;20224848;Bancada;R$ 4,064,787,26;PR;Saneamento Básico;Ensino Superior;PR (UF);15/01/2022
+EDUARDO BARBOSA;2022;20226320;Individual;R$ 2,344,121,18;RS;Segurança Pública;Infraestrutura Urbana;BA (UF);18/12/2022
+JULIO CESAR RIBEIRO;2022;20229221;Comissão;R$ 2,123,384,61;RJ;Educação Infantil;Ensino Fundamental;PE (UF);15/03/2022
+DANIEL ALMEIDA;2022;20227372;Bancada;R$ 4,792,934,71;PE;Segurança Pública;Saneamento Básico;SP (UF);08/01/2022
+GUILHERME MUSSI;2022;20221571;Comissão;R$ 1,267,329,00;SP;Infraestrutura Urbana;Educação Infantil;MG (UF);03/12/2022
+DEPUTADO JULIO CESAR RIBEIRO;2022;20225323;Individual;R$ 3,324,180,97;MG;Educação Infantil;Assistência Hospitalar e Ambulatorial;RJ (UF);15/07/2022
+GUILHERME MUSSI;2022;20228043;Comissão;R$ 4,727,566,49;MG;Ensino Médio;Infraestrutura Urbana;MG (UF);07/11/2022
+DEPUTADO CARLOS ZARATTINI;2022;20222124;Bancada;R$ 354,828,01;SP;Vigilância Epidemiológica;Segurança Pública;RJ (UF);20/10/2022
+DANIEL ALMEIDA;2022;20229848;Bancada;R$ 3,206,905,09;PE;Segurança Pública;Assistência Hospitalar e Ambulatorial;PE (UF);26/08/2022
+GUILHERME MUSSI FILHO;2022;20226982;Bancada;R$ 4,183,581,59;RS;Atenção Básica à Saúde;Ensino Médio;DF (UF);23/10/2022
+DANIEL ALMEIDA;2022;20224105;Individual;R$ 4,685,113,09;BA;Infraestrutura Urbana;Assistência Hospitalar e Ambulatorial;PR (UF);25/07/2022
+CARLOS ZARATTINI;2022;20223593;Individual;R$ 2,058,422,62;MG;Assistência Hospitalar e Ambulatorial;Segurança Pública;MG (UF);10/02/2022
+HERCÍLIO DINIZ;2022;20222446;Bancada;R$ 1,639,294,15;SC;Saneamento Básico;Assistência Hospitalar e Ambulatorial;SP (UF);14/02/2022
+DEPUTADO BACELAR;2022;20227954;Bancada;R$ 3,453,827,33;SC;Ensino Médio;Vigilância Epidemiológica;PR (UF);11/11/2022
+DEPUTADO DANIEL ALMEIDA;2022;20227734;Individual;R$ 4,681,627,42;GO;Ensino Médio;Atenção Básica à Saúde;RJ (UF);22/12/2022
+HERCÍLIO DINIZ;2022;20229233;Bancada;R$ 991,096,56;GO;Educação Infantil;Assistência Hospitalar e Ambulatorial;SP (UF);28/11/2022
+FELIPE BORNIER;2022;20227732;Comissão;R$ 3,353,486,06;MG;Ensino Superior;Infraestrutura Urbana;DF (UF);11/06/2022
+DEPUTADO EDUARDO BARBOSA;2022;20224910;Bancada;R$ 463,262,16;SC;Ensino Superior;Segurança Pública;PE (UF);01/11/2022
+JULIO CESAR RIBEIRO;2022;20229891;Bancada;R$ 1,455,334,67;DF;Segurança Pública;Ensino Médio;DF (UF);04/04/2022
+BACELAR;2022;20223910;Bancada;R$ 924,635,83;SC;Educação Infantil;Ensino Fundamental;BA (UF);14/10/2022
+DEPUTADO FELIPE BORNIER;2022;20228917;Individual;R$ 525,131,62;RS;Ensino Médio;Ensino Fundamental;PR (UF);23/10/2022
+GUILHERME MUSSI;2022;20223152;Comissão;R$ 4,074,895,32;GO;Segurança Pública;Segurança Pública;DF (UF);04/09/2022
+GUILHERME MUSSI;2022;20221101;Bancada;R$ 4,778,897,17;DF;Ensino Fundamental;Ensino Fundamental;DF (UF);18/12/2022
+ALENCAR SANTANA;2022;20223800;Bancada;R$ 2,242,897,81;GO;Educação Infantil;Ensino Fundamental;SC (UF);19/12/2022
+ELICORRÊA;2022;20229071;Comissão;R$ 1,355,079,69;PR;Vigilância Epidemiológica;Assistência Hospitalar e Ambulatorial;PR (UF);25/06/2022
+BACELAR;2022;20221666;Bancada;R$ 229,186,07;RS;Ensino Fundamental;Educação Infantil;BA (UF);28/03/2022
+BACELAR;2022;20222965;Individual;R$ 1,267,554,04;SP;Infraestrutura Urbana;Ensino Fundamental;SP (UF);25/05/2022
+DEPUTADO BACELAR;2022;20225044;Bancada;R$ 367,974,12;PE;Ensino Médio;Assistência Hospitalar e Ambulatorial;RJ (UF);02/03/2022
+CARLOS ZARATTINI;2022;20228208;Individual;R$ 456,231,62;RS;Assistência Hospitalar e Ambulatorial;Assistência Hospitalar e Ambulatorial;RS (UF);06/09/2022
+GUILHERME MUSSI;2022;20229793;Individual;R$ 3,308,050,67;SC;Ensino Superior;Educação Infantil;RJ (UF);14/09/2022
+GUILHERME MUSSI;2022;20221112;Individual;R$ 1,347,442,05;PE;Ensino Superior;Ensino Fundamental;RS (UF);04/11/2022
+FELIPE BORNIER;2022;20225287;Bancada;R$ 4,596,259,96;SC;Ensino Fundamental;Ensino Fundamental;SC (UF);21/04/2022
+DANIEL ALMEIDA;2022;20223116;Individual;R$ 3,984,764,10;PR;Ensino Fundamental;Saneamento Básico;SC (UF);23/04/2022
+HERCÍLIO DINIZ;2022;20222801;Comissão;R$ 4,235,576,27;DF;Ensino Superior;Assistência Hospitalar e Ambulatorial;PR (UF);26/03/2022
+ALENCAR SANTANA FILHO;2022;20227973;Individual;R$ 2,957,984,69;RS;Saneamento Básico;Ensino Médio;PE (UF);21/05/2022
+GUILHERME MUSSI FILHO;2022;20222052;Individual;R$ 3,703,392,81;MG;Segurança Pública;Educação Infantil;RJ (UF);20/08/2022
+GUILHERME MUSSI;2022;20225384;Individual;R$ 3,445,036,91;SC;Saneamento Básico;Assistência Hospitalar e Ambulatorial;MG (UF);23/04/2022
+HERCÍLIO DINIZ;2022;20226867;Individual;R$ 2,299,007,92;DF;Ensino Superior;Ensino Superior;PR (UF);27/01/2022
+GUILHERME MUSSI;2022;20222312;Bancada;R$ 4,229,986,16;BA;Atenção Básica à Saúde;Ensino Médio;BA (UF);14/05/2022
+ALENCAR SANTANA FILHO;2022;20224759;Bancada;R$ 2,258,671,74;DF;Assistência Hospitalar e Ambulatorial;Atenção Básica à Saúde;GO (UF);22/07/2022
+DEPUTADO HERCÍLIO DINIZ;2022;20223785;Individual;R$ 2,703,093,49;RJ;Atenção Básica à Saúde;Educação Infantil;PE (UF);21/05/2022
+HERCÍLIO DINIZ;2022;20227599;Individual;R$ 2,250,619,17;RS;Educação Infantil;Segurança Pública;PE (UF);10/09/2022
+ALENCAR SANTANA;2022;20224935;Bancada;R$ 466,520,65;PR;Vigilância Epidemiológica;Segurança Pública;BA (UF);06/09/2022
+ALENCAR SANTANA;2022;20229095;Comissão;R$ 3,602,148,50;RS;Saneamento Básico;Educação Infantil;SP (UF);10/05/2022
+ELICORRÊA;2022;20228186;Individual;R$ 1,758,066,63;PE;Educação Infantil;Segurança Pública;PE (UF);05/04/2022
+ELICORRÊA;2022;20222611;Comissão;R$ 4,557,545,84;MG;Educação Infantil;Assistência Hospitalar e Ambulatorial;PR (UF);07/01/2022
+DEPUTADO JULIO CESAR RIBEIRO;2022;20224723;Individual;R$ 3,743,730,30;RJ;Assistência Hospitalar e Ambulatorial;Infraestrutura Urbana;SP (UF);01/06/2022
+CARLOS ZARATTINI;2022;20228963;Comissão;R$ 3,795,941,87;GO;Ensino Médio;Infraestrutura Urbana;RS (UF);04/04/2022
+DEPUTADO BACELAR;2022;20226999;Bancada;R$ 1,769,517,00;PE;Ensino Médio;Infraestrutura Urbana;BA (UF);14/06/2022
+CARLOS ZARATTINI;2022;20228035;Comissão;R$ 644,825,57;PE;Vigilância Epidemiológica;Atenção Básica à Saúde;RS (UF);28/03/2022
+CARLOS ZARATTINI;2022;20225875;Individual;R$ 1,788,821,51;GO;Infraestrutura Urbana;Ensino Médio;BA (UF);01/01/2022
+DANIEL ALMEIDA;2022;20224207;Bancada;R$ 1,184,137,92;RJ;Segurança Pública;Educação Infantil;SP (UF);01/06/2022
+JULIO CESAR RIBEIRO;2022;20226677;Comissão;R$ 1,365,413,49;PR;Atenção Básica à Saúde;Saneamento Básico;RS (UF);24/04/2022
+DANIEL ALMEIDA;2022;20224093;Comissão;R$ 750,894,98;MG;Assistência Hospitalar e Ambulatorial;Saneamento Básico;SC (UF);25/01/2022
+ALENCAR SANTANA;2022;20224697;Individual;R$ 1,677,335,71;DF;Assistência Hospitalar e Ambulatorial;Saneamento Básico;PR (UF);27/10/2022
+DANIEL ALMEIDA;2022;20221948;Comissão;R$ 2,774,651,11;MG;Educação Infantil;Ensino Médio;DF (UF);23/06/2022
+BACELAR;2022;20229041;Individual;R$ 323,968,63;RJ;Ensino Fundamental;Infraestrutura Urbana;DF (UF);27/11/2022
+JULIO CESAR RIBEIRO;2022;20228041;Comissão;R$ 2,789,935,96;RS;Saneamento Básico;Assistência Hospitalar e Ambulatorial;SP (UF);23/03/2022
+ALENCAR SANTANA FILHO;2022;20226607;Comissão;R$ 3,232,627,19;SC;Atenção Básica à Saúde;Saneamento Básico;SP (UF);20/10/2022
+CARLOS ZARATTINI;2022;20224006;Comissão;R$ 3,909,430,71;DF;Vigilância Epidemiológica;Ensino Superior;RS (UF);12/05/2022
+DANIEL ALMEIDA;2022;20228088;Comissão;R$ 1,066,411,40;BA;Educação Infantil;Saneamento Básico;DF (UF);07/04/2022
+DEPUTADO HERCÍLIO DINIZ;2022;20221778;Comissão;R$ 801,076,07;SP;Educação Infantil;Educação Infantil;RS (UF);11/01/2022
+ELICORRÊA;2022;20227477;Comissão;R$ 266,733,70;SP;Assistência Hospitalar e Ambulatorial;Ensino Fundamental;SC (UF);17/09/2022
+EDUARDO BARBOSA;2022;20227090;Bancada;R$ 3,706,399,57;DF;Atenção Básica à Saúde;Atenção Básica à Saúde;RJ (UF);17/11/2022
+DEPUTADO ELICORRÊA;2022;20222793;Bancada;R$ 3,034,020,97;GO;Segurança Pública;Atenção Básica à Saúde;RJ (UF);12/07/2022
+HERCÍLIO DINIZ;2022;20225193;Comissão;R$ 3,378,168,25;RJ;Ensino Fundamental;Ensino Superior;PR (UF);10/05/2022
+ALENCAR SANTANA;2022;20223940;Comissão;R$ 1,617,988,43;PR;Ensino Superior;Ensino Superior;MG (UF);06/09/2022
+DEPUTADO DANIEL ALMEIDA;2022;20224910;Bancada;R$ 319,500,62;PR;Infraestrutura Urbana;Ensino Médio;GO (UF);21/10/2022
+ALENCAR SANTANA;2022;20221662;Bancada;R$ 609,067,27;DF;Infraestrutura Urbana;Ensino Médio;SP (UF);03/02/2022
+FELIPE BORNIER;2022;20225611;Individual;R$ 1,498,433,64;MG;Atenção Básica à Saúde;Saneamento Básico;SP (UF);24/02/2022
+ELICORRÊA;2022;20229626;Comissão;R$ 3,702,707,56;GO;Saneamento Básico;Segurança Pública;MG (UF);02/03/2022
+ALENCAR SANTANA;2022;20227987;Bancada;R$ 3,210,469,43;RJ;Infraestrutura Urbana;Ensino Superior;SP (UF);14/08/2022
+HERCÍLIO DINIZ;2022;20223254;Bancada;R$ 3,193,571,33;SC;Assistência Hospitalar e Ambulatorial;Atenção Básica à Saúde;SP (UF);02/12/2022
+HERCÍLIO DINIZ;2022;20222902;Comissão;R$ 3,127,276,28;PE;Infraestrutura Urbana;Ensino Médio;MG (UF);27/09/2022
+CARLOS ZARATTINI;2022;20226375;Bancada;R$ 4,170,117,62;RJ;Infraestrutura Urbana;Ensino Fundamental;RJ (UF);08/08/2022
+DANIEL ALMEIDA;2022;20229164;Bancada;R$ 4,707,461,31;SC;Saneamento Básico;Vigilância Epidemiológica;RS (UF);25/04/2022
+DANIEL ALMEIDA;2022;20228573;Comissão;R$ 4,396,703,98;GO;Ensino Superior;Ensino Fundamental;PR (UF);23/01/2022
+ELICORRÊA;2022;20229050;Bancada;R$ 858,584,16;BA;Saneamento Básico;Ensino Superior;PE (UF);20/10/2022
+HERCÍLIO DINIZ;2022;20221879;Bancada;R$ 3,668,437,37;SC;Infraestrutura Urbana;Assistência Hospitalar e Ambulatorial;GO (UF);08/09/2022
+DEPUTADO ALENCAR SANTANA;2022;20225690;Individual;R$ 1,317,459,00;DF;Assistência Hospitalar e Ambulatorial;Saneamento Básico;SP (UF);18/03/2022
+JULIO CESAR RIBEIRO;2022;20222479;Bancada;R$ 4,264,281,65;SC;Segurança Pública;Ensino Superior;RJ (UF);25/11/2022
+FELIPE BORNIER;2022;20228982;Individual;R$ 1,727,661,57;RJ;Atenção Básica à Saúde;Ensino Superior;SP (UF);28/07/2022
+HERCÍLIO DINIZ;2022;20224612;Bancada;R$ 2,430,198,42;DF;Saneamento Básico;Assistência Hospitalar e Ambulatorial;PR (UF);16/06/2022
+ALENCAR SANTANA;2022;20222412;Individual;R$ 1,869,265,52;SP;Infraestrutura Urbana;Saneamento Básico;SC (UF);22/05/2022
+EDUARDO BARBOSA;2022;20227847;Bancada;R$ 797,521,67;PE;Vigilância Epidemiológica;Segurança Pública;RS (UF);11/01/2022
+FELIPE BORNIER;2022;20221859;Comissão;R$ 2,370,729,78;GO;Segurança Pública;Saneamento Básico;RS (UF);08/07/2022
+BACELAR FILHO;2022;20226789;Individual;R$ 4,173,661,70;MG;Infraestrutura Urbana;Vigilância Epidemiológica;SP (UF);10/09/2022
+FELIPE BORNIER;2022;20225583;Individual;R$ 4,584,652,43;PE;Ensino Fundamental;Saneamento Básico;PR (UF);21/12/2022
+CARLOS ZARATTINI;2022;20225706;Individual;R$ 1,232,345,45;PR;Saneamento Básico;Vigilância Epidemiológica;RS (UF);09/03/2022
+CARLOS ZARATTINI;2022;20226742;Bancada;R$ 3,011,519,42;GO;Atenção Básica à Saúde;Vigilância Epidemiológica;PE (UF);01/09/2022
+DEPUTADO GUILHERME MUSSI;2022;20228347;Comissão;R$ 4,305,946,19;PE;Vigilância Epidemiológica;Atenção Básica à Saúde;RS (UF);28/04/2022
+DANIEL ALMEIDA;2022;20222144;Bancada;R$ 2,378,295,79;GO;Ensino Superior;Ensino Fundamental;MG (UF);07/10/2022
+DEPUTADO BACELAR;2022;20227435;Bancada;R$ 4,198,174,89;MG;Educação Infantil;Educação Infantil;SP (UF);10/04/2022
+CARLOS ZARATTINI;2022;20223014;Bancada;R$ 3,495,006,76;SC;Vigilância Epidemiológica;Educação Infantil;BA (UF);19/02/2022
+FELIPE BORNIER;2022;20221899;Comissão;R$ 2,120,649,90;SP;Assistência Hospitalar e Ambulatorial;Segurança Pública;PE (UF);07/10/2022
+BACELAR;2022;20226404;Individual;R$ 1,640,003,65;BA;Segurança Pública;Ensino Superior;GO (UF);08/03/2022
+BACELAR;2022;20226726;Bancada;R$ 3,362,641,21;PE;Assistência Hospitalar e Ambulatorial;Infraestrutura Urbana;RS (UF);26/09/2022
+DEPUTADO JULIO CESAR RIBEIRO;2022;20225322;Comissão;R$ 281,732,37;RS;Vigilância Epidemiológica;Ensino Médio;MG (UF);14/11/2022
+BACELAR;2022;20223090;Bancada;R$ 1,500,465,02;SC;Saneamento Básico;Assistência Hospitalar e Ambulatorial;DF (UF);11/08/2022
+EDUARDO BARBOSA;2022;20228450;Individual;R$ 1,247,408,70;BA;Assistência Hospitalar e Ambulatorial;Segurança Pública;DF (UF);12/12/2022
+GUILHERME MUSSI;2022;20227088;Bancada;R$ 3,781,015,68;PR;Saneamento Básico;Assistência Hospitalar e Ambulatorial;SC (UF);04/12/2022
+ALENCAR SANTANA;2022;20224059;Comissão;R$ 1,450,219,11;RS;Ensino Superior;Infraestrutura Urbana;SP (UF);07/06/2022
+CARLOS ZARATTINI;2022;20221691;Bancada;R$ 2,938,685,70;MG;Assistência Hospitalar e Ambulatorial;Ensino Médio;RS (UF);15/12/2022
+HERCÍLIO DINIZ;2022;20228411;Individual;R$ 4,379,268,06;RS;Atenção Básica à Saúde;Educação Infantil;BA (UF);10/08/2022
+EDUARDO BARBOSA FILHO;2022;20222019;Bancada;R$ 2,666,019,01;PR;Infraestrutura Urbana;Assistência Hospitalar e Ambulatorial;GO (UF);27/03/2022
+BACELAR FILHO;2022;20227632;Comissão;R$ 3,932,665,96;GO;Ensino Médio;Vigilância Epidemiológica;RS (UF);25/08/2022
+FELIPE BORNIER FILHO;2022;20228599;Comissão;R$ 776,170,60;PR;Educação Infantil;Vigilância Epidemiológica;MG (UF);27/08/2022
+ALENCAR SANTANA;2022;20226769;Individual;R$ 4,011,796,62;PE;Infraestrutura Urbana;Vigilância Epidemiológica;RJ (UF);02/07/2022
+FELIPE BORNIER;2022;20225802;Individual;R$ 4,407,114,03;DF;Vigilância Epidemiológica;Atenção Básica à Saúde;BA (UF);15/04/2022
+FELIPE BORNIER;2022;20227490;Individual;R$ 992,947,01;PR;Ensino Superior;Saneamento Básico;SP (UF);15/07/2022
+CARLOS ZARATTINI;2022;20222869;Bancada;R$ 4,587,643,93;PR;Saneamento Básico;Infraestrutura Urbana;RJ (UF);25/04/2022
+BACELAR FILHO;2022;20224241;Individual;R$ 4,788,327,65;PR;Ensino Fundamental;Ensino Fundamental;GO (UF);01/03/2022
+FELIPE BORNIER FILHO;2022;20227351;Comissão;R$ 3,581,726,40;BA;Ensino Superior;Segurança Pública;RJ (UF);12/04/2022
+GUILHERME MUSSI;2022;20227621;Bancada;R$ 3,362,612,14;MG;Vigilância Epidemiológica;Ensino Superior;BA (UF);14/09/2022
+ALENCAR SANTANA;2022;20227475;Comissão;R$ 1,312,482,95;PE;Segurança Pública;Segurança Pública;DF (UF);20/03/2022
+CARLOS ZARATTINI;2022;20226892;Comissão;R$ 4,715,450,29;RS;Atenção Básica à Saúde;Saneamento Básico;PR (UF);19/12/2022
+EDUARDO BARBOSA;2022;20229811;Bancada;R$ 1,977,061,65;BA;Infraestrutura Urbana;Atenção Básica à Saúde;PR (UF);09/10/2022
+ALENCAR SANTANA;2022;20229770;Comissão;R$ 3,420,096,14;BA;Ensino Médio;Atenção Básica à Saúde;SC (UF);13/05/2022
+HERCÍLIO DINIZ;2022;20223986;Comissão;R$ 4,992,717,69;PE;Saneamento Básico;Ensino Fundamental;PE (UF);20/10/2022
+ALENCAR SANTANA FILHO;2022;20228602;Comissão;R$ 1,476,385,59;RJ;Ensino Superior;Saneamento Básico;DF (UF);02/10/2022
+JULIO CESAR RIBEIRO;2022;20227359;Individual;R$ 2,377,290,05;DF;Educação Infantil;Atenção Básica à Saúde;SC (UF);07/11/2022
+DEPUTADO FELIPE BORNIER;2022;20226396;Comissão;R$ 1,722,739,37;SP;Ensino Fundamental;Saneamento Básico;RS (UF);12/05/2022
+DANIEL ALMEIDA;2022;20229043;Individual;R$ 1,628,118,70;GO;Ensino Superior;Ensino Fundamental;SP (UF);02/01/2022
+DANIEL ALMEIDA;2022;20221772;Individual;R$ 4,431,453,38;RS;Saneamento Básico;Saneamento Básico;RS (UF);26/02/2022
+FELIPE BORNIER;2022;20226326;Comissão;R$ 47,684,37;SC;Vigilância Epidemiológica;Vigilância Epidemiológica;RS (UF);10/07/2022
+DEPUTADO ALENCAR SANTANA;2022;20226633;Bancada;R$ 2,243,447,22;PR;Infraestrutura Urbana;Segurança Pública;BA (UF);13/03/2022
+DEPUTADO EDUARDO BARBOSA;2022;20221096;Comissão;R$ 1,351,024,24;SC;Ensino Superior;Segurança Pública;SP (UF);23/05/2022
+DANIEL ALMEIDA;2022;20229216;Bancada;R$ 4,188,148,72;PE;Ensino Superior;Saneamento Básico;RS (UF);25/11/2022
+CARLOS ZARATTINI;2022;20228467;Individual;R$ 2,442,888,83;BA;Assistência Hospitalar e Ambulatorial;Vigilância Epidemiológica;MG (UF);23/10/2022
+ALENCAR SANTANA;2022;20224816;Bancada;R$ 3,082,301,76;MG;Educação Infantil;Saneamento Básico;GO (UF);10/05/2022
+ELICORRÊA FILHO;2022;20226385;Bancada;R$ 4,510,275,27;SP;Atenção Básica à Saúde;Vigilância Epidemiológica;SC (UF);12/07/2022
+DANIEL ALMEIDA FILHO;2022;20226926;Comissão;R$ 2,448,363,76;MG;Ensino Médio;Ensino Médio;RJ (UF);07/02/2022
+GUILHERME MUSSI;2022;20222099;Individual;R$ 1,022,973,82;DF;Ensino Médio;Ensino Superior;SC (UF);16/02/2022
+CARLOS ZARATTINI;2022;20222183;Bancada;R$ 1,753,415,36;DF;Ensino Médio;Assistência Hospitalar e Ambulatorial;RJ (UF);10/11/2022
+DEPUTADO HERCÍLIO DINIZ;2022;20226659;Individual;R$ 3,021,580,30;DF;Ensino Médio;Ensino Médio;PR (UF);16/07/2022
+DEPUTADO DANIEL ALMEIDA;2022;20228703;Bancada;R$ 959,640,00;PR;Ensino Médio;Vigilância Epidemiológica;DF (UF);21/10/2022
+ALENCAR SANTANA FILHO;2022;20221780;Comissão;R$ 3,147,688,40;MG;Saneamento Básico;Ensino Fundamental;PE (UF);17/09/2022
+JULIO CESAR RIBEIRO;2022;20225077;Comissão;R$ 1,698,732,43;MG;Segurança Pública;Infraestrutura Urbana;PR (UF);18/07/2022
+DANIEL ALMEIDA FILHO;2022;20227278;Comissão;R$ 312,371,88;GO;Ensino Superior;Vigilância Epidemiológica;RJ (UF);01/02/2022
+JULIO CESAR RIBEIRO;2022;20225524;Comissão;R$ 3,875,024,63;DF;Assistência Hospitalar e Ambulatorial;Ensino Médio;MG (UF);03/11/2022
+DEPUTADO HERCÍLIO DINIZ;2022;20228952;Individual;R$ 4,671,225,45;MG;Atenção Básica à Saúde;Saneamento Básico;BA (UF);04/04/2022
+HERCÍLIO DINIZ;2022;20225788;Individual;R$ 4,729,930,93;PR;Saneamento Básico;Infraestrutura Urbana;MG (UF);17/04/2022
+DANIEL ALMEIDA;2022;20224916;Individual;R$ 2,897,417,93;MG;Ensino Médio;Vigilância Epidemiológica;PE (UF);04/10/2022
+DEPUTADO ALENCAR SANTANA;2022;20227028;Comissão;R$ 776,087,63;BA;Segurança Pública;Assistência Hospitalar e Ambulatorial;RJ (UF);27/11/2022
+DEPUTADO GUILHERME MUSSI;2022;20222320;Bancada;R$ 1,828,463,58;BA;Ensino Fundamental;Ensino Médio;PE (UF);19/05/2022
+ALENCAR SANTANA FILHO;2022;20229254;Bancada;R$ 295,632,68;PR;Saneamento Básico;Saneamento Básico;SC (UF);27/08/2022
+HERCÍLIO DINIZ;2022;20224572;Comissão;R$ 1,562,971,34;PR;Vigilância Epidemiológica;Infraestrutura Urbana;BA (UF);18/11/2022
+ELICORRÊA;2022;20221358;Comissão;R$ 3,369,398,13;BA;Assistência Hospitalar e Ambulatorial;Segurança Pública;GO (UF);27/08/2022
+BACELAR;2022;20225787;Bancada;R$ 2,815,602,85;BA;Saneamento Básico;Ensino Superior;GO (UF);21/12/2022
+EDUARDO BARBOSA;2022;20228829;Comissão;R$ 1,259,464,73;PR;Saneamento Básico;Infraestrutura Urbana;SC (UF);07/09/2022
+HERCÍLIO DINIZ;2022;20225343;Individual;R$ 2,974,083,98;SC;Segurança Pública;Educação Infantil;SC (UF);19/09/2022
+EDUARDO BARBOSA;2022;20222495;Comissão;R$ 1,221,743,83;SC;Segurança Pública;Atenção Básica à Saúde;RJ (UF);15/08/2022
+EDUARDO BARBOSA;2022;20227414;Comissão;R$ 1,850,509,70;PR;Vigilância Epidemiológica;Saneamento Básico;RS (UF);26/06/2022
+GUILHERME MUSSI;2022;20221750;Comissão;R$ 4,395,988,72;RJ;Ensino Superior;Vigilância Epidemiológica;BA (UF);12/11/2022
+HERCÍLIO DINIZ;2022;20221083;Bancada;R$ 3,751,913,53;SP;Educação Infantil;Infraestrutura Urbana;RS (UF);11/03/2022
+BACELAR;2022;20227809;Individual;R$ 3,484,902,55;SP;Ensino Superior;Educação Infantil;SP (UF);01/11/2022
+DEPUTADO GUILHERME MUSSI;2022;20223344;Bancada;R$ 855,519,70;SP;Infraestrutura Urbana;Atenção Básica à Saúde;SP (UF);09/09/2022
+GUILHERME MUSSI;2022;20223817;Individual;R$ 3,238,097,43;PR;Saneamento Básico;Vigilância Epidemiológica;RJ (UF);23/07/2022
+JULIO CESAR RIBEIRO FILHO;2022;20229173;Individual;R$ 2,962,716,04;MG;Ensino Superior;Segurança Pública;GO (UF);07/11/2022
+JULIO CESAR RIBEIRO;2022;20222260;Comissão;R$ 4,346,661,67;GO;Assistência Hospitalar e Ambulatorial;Ensino Superior;SC (UF);19/01/2022
+ELICORRÊA;2022;20223925;Individual;R$ 876,088,18;BA;Ensino Médio;Saneamento Básico;PE (UF);03/07/2022
+EDUARDO BARBOSA;2022;20225889;Comissão;R$ 37,420,84;PE;Atenção Básica à Saúde;Vigilância Epidemiológica;RS (UF);26/02/2022
+DEPUTADO FELIPE BORNIER;2022;20227305;Bancada;R$ 3,607,920,86;MG;Vigilância Epidemiológica;Educação Infantil;PE (UF);10/02/2022
+HERCÍLIO DINIZ;2022;20226872;Comissão;R$ 3,267,365,49;SC;Ensino Médio;Atenção Básica à Saúde;DF (UF);16/08/2022
+DEPUTADO ALENCAR SANTANA;2022;20226325;Comissão;R$ 15,562,95;RJ;Vigilância Epidemiológica;Infraestrutura Urbana;PR (UF);10/09/2022
+FELIPE BORNIER;2022;20221394;Individual;R$ 2,576,451,80;GO;Ensino Superior;Vigilância Epidemiológica;PR (UF);07/11/2022
+GUILHERME MUSSI;2022;20228829;Individual;R$ 3,353,583,88;SC;Infraestrutura Urbana;Infraestrutura Urbana;BA (UF);21/06/2022
+CARLOS ZARATTINI;2022;20228502;Individual;R$ 2,869,736,15;RJ;Ensino Médio;Segurança Pública;GO (UF);22/07/2022
+HERCÍLIO DINIZ;2022;20226957;Bancada;R$ 3,551,999,37;MG;Infraestrutura Urbana;Ensino Superior;PE (UF);23/10/2022
+GUILHERME MUSSI;2022;20222414;Bancada;R$ 4,202,137,57;MG;Educação Infantil;Ensino Superior;GO (UF);18/12/2022
+EDUARDO BARBOSA;2022;20226581;Individual;R$ 4,700,741,21;GO;Assistência Hospitalar e Ambulatorial;Ensino Superior;DF (UF);08/11/2022
+JULIO CESAR RIBEIRO;2022;20225395;Bancada;R$ 1,029,898,95;PR;Infraestrutura Urbana;Segurança Pública;PE (UF);19/08/2022
+EDUARDO BARBOSA FILHO;2022;20227764;Individual;R$ 2,217,306,86;BA;Ensino Superior;Ensino Médio;PR (UF);11/03/2022
+DEPUTADO GUILHERME MUSSI;2022;20228124;Bancada;R$ 4,372,869,93;DF;Segurança Pública;Ensino Superior;BA (UF);21/12/2022
+ALENCAR SANTANA;2022;20222102;Bancada;R$ 561,500,80;SC;Ensino Superior;Segurança Pública;MG (UF);28/08/2022
+CARLOS ZARATTINI;2022;20228024;Bancada;R$ 758,689,07;DF;Atenção Básica à Saúde;Infraestrutura Urbana;GO (UF);08/02/2022
+ALENCAR SANTANA FILHO;2022;20226730;Bancada;R$ 2,422,399,64;SC;Atenção Básica à Saúde;Ensino Superior;SP (UF);14/09/2022
+ELICORRÊA;2022;20221925;Comissão;R$ 2,741,927,83;SC;Assistência Hospitalar e Ambulatorial;Vigilância Epidemiológica;SC (UF);13/01/2022
+FELIPE BORNIER;2022;20229496;Bancada;R$ 4,038,734,45;BA;Assistência Hospitalar e Ambulatorial;Ensino Fundamental;DF (UF);02/11/2022
+GUILHERME MUSSI;2022;20223285;Comissão;R$ 2,946,777,53;RS;Educação Infantil;Atenção Básica à Saúde;GO (UF);07/05/2022
+EDUARDO BARBOSA;2022;20222455;Individual;R$ 4,700,035,58;DF;Educação Infantil;Segurança Pública;PE (UF);07/01/2022
+GUILHERME MUSSI;2022;20228485;Individual;R$ 101,702,23;PE;Vigilância Epidemiológica;Assistência Hospitalar e Ambulatorial;RS (UF);19/01/2022
+BACELAR;2022;20225883;Bancada;R$ 708,251,13;RJ;Ensino Superior;Educação Infantil;DF (UF);06/09/2022
+ALENCAR SANTANA;2022;20221583;Comissão;R$ 2,834,079,84;GO;Ensino Médio;Educação Infantil;BA (UF);22/06/2022
+ELICORRÊA;2022;20223849;Bancada;R$ 3,869,070,77;DF;Ensino Superior;Ensino Médio;RS (UF);08/06/2022
+HERCÍLIO DINIZ;2022;20226347;Comissão;R$ 56,072,01;PR;Infraestrutura Urbana;Ensino Superior;SP (UF);20/09/2022
+DEPUTADO HERCÍLIO DINIZ;2022;20221661;Individual;R$ 2,788,162,92;GO;Saneamento Básico;Vigilância Epidemiológica;DF (UF);14/03/2022
+CARLOS ZARATTINI;2022;20223442;Bancada;R$ 2,960,772,62;BA;Saneamento Básico;Segurança Pública;MG (UF);26/10/2022
+CARLOS ZARATTINI;2022;20221379;Bancada;R$ 4,709,343,29;SC;Ensino Médio;Segurança Pública;PR (UF);17/07/2022
+DANIEL ALMEIDA;2022;20227266;Bancada;R$ 2,453,594,98;SP;Ensino Fundamental;Assistência Hospitalar e Ambulatorial;PR (UF);09/07/2022
+JULIO CESAR RIBEIRO;2022;20223265;Bancada;R$ 4,387,513,64;DF;Segurança Pública;Ensino Médio;GO (UF);19/07/2022
+FELIPE BORNIER;2022;20226785;Bancada;R$ 52,649,71;MG;Segurança Pública;Infraestrutura Urbana;PE (UF);14/02/2022
+DANIEL ALMEIDA;2022;20221309;Comissão;R$ 3,181,985,05;SC;Assistência Hospitalar e Ambulatorial;Ensino Superior;MG (UF);16/06/2022
+JULIO CESAR RIBEIRO;2022;20223167;Individual;R$ 2,038,677,78;SP;Assistência Hospitalar e Ambulatorial;Vigilância Epidemiológica;RS (UF);03/11/2022
+ALENCAR SANTANA;2022;20224667;Comissão;R$ 541,961,54;SC;Educação Infantil;Saneamento Básico;RS (UF);14/10/2022
+HERCÍLIO DINIZ;2022;20225209;Comissão;R$ 4,170,017,45;DF;Educação Infantil;Ensino Superior;PE (UF);07/05/2022
+ALENCAR SANTANA;2022;20221608;Comissão;R$ 1,611,278,18;PE;Vigilância Epidemiológica;Ensino Fundamental;RJ (UF);17/12/2022
+DANIEL ALMEIDA;2022;20222382;Comissão;R$ 1,014,835,83;MG;Vigilância Epidemiológica;Educação Infantil;PR (UF);15/12/2022
+BACELAR;2022;20222001;Comissão;R$ 1,377,461,25;SP;Ensino Médio;Infraestrutura Urbana;BA (UF);27/12/2022
+HERCÍLIO DINIZ;2022;20222631;Individual;R$ 737,898,51;SP;Infraestrutura Urbana;Ensino Fundamental;SC (UF);24/02/2022
+DEPUTADO ELICORRÊA;2022;20226882;Comissão;R$ 4,392,939,58;GO;Vigilância Epidemiológica;Atenção Básica à Saúde;DF (UF);06/03/2022
+DANIEL ALMEIDA;2022;20226453;Comissão;R$ 4,215,380,78;RS;Segurança Pública;Segurança Pública;SP (UF);11/04/2022
+JULIO CESAR RIBEIRO FILHO;2022;20229486;Comissão;R$ 1,724,967,11;MG;Ensino Fundamental;Ensino Superior;PE (UF);16/07/2022
+BACELAR;2022;20225256;Bancada;R$ 4,585,011,31;BA;Segurança Pública;Ensino Superior;PR (UF);07/10/2022
+ALENCAR SANTANA;2022;20229837;Individual;R$ 4,168,510,37;SP;Saneamento Básico;Assistência Hospitalar e Ambulatorial;SP (UF);16/05/2022
+FELIPE BORNIER;2022;20224361;Bancada;R$ 2,603,167,09;PR;Infraestrutura Urbana;Ensino Fundamental;BA (UF);06/01/2022
+BACELAR FILHO;2022;20227119;Individual;R$ 3,847,441,51;RS;Saneamento Básico;Saneamento Básico;BA (UF);15/11/2022
+GUILHERME MUSSI FILHO;2022;20228407;Comissão;R$ 3,797,335,99;RJ;Ensino Médio;Saneamento Básico;BA (UF);25/02/2022
+JULIO CESAR RIBEIRO;2022;20224255;Comissão;R$ 3,698,298,55;DF;Infraestrutura Urbana;Segurança Pública;DF (UF);21/07/2022
+GUILHERME MUSSI;2022;20221271;Bancada;R$ 2,645,995,95;PR;Saneamento Básico;Ensino Médio;RS (UF);06/03/2022
+GUILHERME MUSSI;2022;20229644;Individual;R$ 3,786,933,41;DF;Vigilância Epidemiológica;Ensino Fundamental;GO (UF);24/05/2022
+FELIPE BORNIER;2022;20228001;Bancada;R$ 3,530,966,57;RS;Ensino Superior;Educação Infantil;PR (UF);08/09/2022
+HERCÍLIO DINIZ;2022;20222551;Comissão;R$ 166,771,59;DF;Ensino Superior;Vigilância Epidemiológica;BA (UF);05/12/2022
+HERCÍLIO DINIZ;2022;20226808;Bancada;R$ 1,308,944,44;PR;Ensino Superior;Educação Infantil;MG (UF);23/07/2022
+GUILHERME MUSSI;2022;20223789;Individual;R$ 798,585,70;DF;Vigilância Epidemiológica;Infraestrutura Urbana;RJ (UF);17/06/2022
+BACELAR;2022;20229630;Bancada;R$ 4,658,349,27;RJ;Segurança Pública;Ensino Médio;SC (UF);14/03/2022
+HERCÍLIO DINIZ;2022;20229848;Comissão;R$ 1,529,814,18;PR;Atenção Básica à Saúde;Ensino Superior;PR (UF);12/01/2022
+EDUARDO BARBOSA;2022;20221894;Individual;R$ 362,452,65;DF;Saneamento Básico;Atenção Básica à Saúde;RS (UF);22/05/2022
+BACELAR;2022;20226088;Individual;R$ 196,117,21;MG;Ensino Superior;Infraestrutura Urbana;PE (UF);28/09/2022
+BACELAR;2022;20222317;Comissão;R$ 3,869,993,97;PR;Saneamento Básico;Assistência Hospitalar e Ambulatorial;PE (UF);02/04/2022
+JULIO CESAR RIBEIRO;2022;20221846;Comissão;R$ 234,996,22;RS;Assistência Hospitalar e Ambulatorial;Ensino Superior;RS (UF);17/01/2022
+CARLOS ZARATTINI;2022;20224969;Comissão;R$ 3,507,338,68;MG;Ensino Médio;Atenção Básica à Saúde;GO (UF);27/11/2022
+ELICORRÊA;2022;20227141;Individual;R$ 2,864,368,20;GO;Ensino Superior;Atenção Básica à Saúde;RS (UF);27/03/2022
+BACELAR;2022;20222611;Comissão;R$ 2,929,992,00;GO;Ensino Médio;Segurança Pública;SP (UF);17/11/2022
+EDUARDO BARBOSA;2022;20229943;Individual;R$ 730,074,13;RS;Assistência Hospitalar e Ambulatorial;Assistência Hospitalar e Ambulatorial;PR (UF);02/05/2022
+GUILHERME MUSSI;2022;20229038;Bancada;R$ 4,854,628,45;MG;Assistência Hospitalar e Ambulatorial;Saneamento Básico;RS (UF);16/02/2022
+ELICORRÊA;2022;20228860;Bancada;R$ 3,396,879,77;DF;Segurança Pública;Assistência Hospitalar e Ambulatorial;RS (UF);02/03/2022
+DEPUTADO FELIPE BORNIER;2022;20225827;Comissão;R$ 2,099,705,80;SP;Ensino Fundamental;Assistência Hospitalar e Ambulatorial;SC (UF);19/03/2022
+CARLOS ZARATTINI;2022;20227077;Individual;R$ 4,672,006,57;BA;Segurança Pública;Infraestrutura Urbana;GO (UF);27/08/2022
+FELIPE BORNIER;2022;20221472;Bancada;R$ 222,750,21;PR;Atenção Básica à Saúde;Segurança Pública;BA (UF);12/01/2022
+JULIO CESAR RIBEIRO;2022;20227463;Comissão;R$ 534,751,59;SP;Ensino Superior;Segurança Pública;MG (UF);27/08/2022
+JULIO CESAR RIBEIRO;2022;20225021;Individual;R$ 2,140,646,75;SP;Infraestrutura Urbana;Infraestrutura Urbana;BA (UF);05/07/2022
+BACELAR;2022;20227109;Individual;R$ 3,085,650,04;RJ;Atenção Básica à Saúde;Infraestrutura Urbana;DF (UF);25/04/2022
+DANIEL ALMEIDA FILHO;2022;20221915;Comissão;R$ 2,311,600,35;RS;Saneamento Básico;Ensino Médio;PR (UF);01/09/2022
+GUILHERME MUSSI;2022;20226539;Comissão;R$ 788,197,37;DF;Ensino Superior;Educação Infantil;BA (UF);11/02/2022
+CARLOS ZARATTINI;2022;20229664;Comissão;R$ 4,159,159,24;BA;Segurança Pública;Assistência Hospitalar e Ambulatorial;RS (UF);09/05/2022
+BACELAR FILHO;2022;20229164;Bancada;R$ 4,229,768,49;SC;Atenção Básica à Saúde;Vigilância Epidemiológica;SP (UF);07/01/2022
+JULIO CESAR RIBEIRO;2022;20228426;Individual;R$ 3,397,004,06;MG;Infraestrutura Urbana;Educação Infantil;GO (UF);10/06/2022
+GUILHERME MUSSI FILHO;2022;20223991;Bancada;R$ 36,916,31;BA;Educação Infantil;Educação Infantil;BA (UF);12/04/2022
+DEPUTADO GUILHERME MUSSI;2022;20227052;Comissão;R$ 1,733,587,64;RJ;Ensino Superior;Segurança Pública;BA (UF);08/02/2022
+DANIEL ALMEIDA;2022;20222493;Bancada;R$ 4,620,960,08;MG;Ensino Superior;Infraestrutura Urbana;PE (UF);22/09/2022
+ALENCAR SANTANA;2022;20229668;Individual;R$ 2,010,307,52;MG;Segurança Pública;Ensino Fundamental;GO (UF);02/01/2022
+DANIEL ALMEIDA;2022;20226092;Individual;R$ 2,615,152,82;RJ;Ensino Superior;Ensino Fundamental;PR (UF);12/08/2022
+EDUARDO BARBOSA FILHO;2022;20227054;Comissão;R$ 4,991,917,84;SC;Segurança Pública;Infraestrutura Urbana;SP (UF);05/02/2022
+GUILHERME MUSSI;2022;20223212;Comissão;R$ 1,173,798,37;MG;Ensino Médio;Segurança Pública;PR (UF);18/08/2022
+BACELAR;2022;20221522;Bancada;R$ 1,433,395,41;BA;Saneamento Básico;Atenção Básica à Saúde;RS (UF);03/07/2022
+ELICORRÊA;2022;20221481;Comissão;R$ 2,940,950,81;BA;Assistência Hospitalar e Ambulatorial;Vigilância Epidemiológica;MG (UF);08/12/2022
+EDUARDO BARBOSA;2022;20223480;Individual;R$ 540,660,81;PR;Assistência Hospitalar e Ambulatorial;Ensino Fundamental;SP (UF);11/12/2022
+DEPUTADO ELICORRÊA;2022;20228700;Individual;R$ 3,270,199,96;RS;Segurança Pública;Infraestrutura Urbana;MG (UF);27/05/2022
+DEPUTADO CARLOS ZARATTINI;2022;20228286;Bancada;R$ 3,284,418,40;SP;Ensino Médio;Atenção Básica à Saúde;RS (UF);10/11/2022
+DEPUTADO ELICORRÊA;2022;20225863;Individual;R$ 3,567,754,54;MG;Segurança Pública;Ensino Médio;GO (UF);07/10/2022
+GUILHERME MUSSI;2022;20224724;Individual;R$ 453,426,17;MG;Assistência Hospitalar e Ambulatorial;Vigilância Epidemiológica;GO (UF);14/05/2022
+CARLOS ZARATTINI;2022;20228558;Individual;R$ 1,077,896,28;MG;Segurança Pública;Atenção Básica à Saúde;GO (UF);24/08/2022
+ELICORRÊA FILHO;2022;20222931;Bancada;R$ 2,838,054,22;RS;Assistência Hospitalar e Ambulatorial;Vigilância Epidemiológica;GO (UF);16/12/2022
+DANIEL ALMEIDA;2022;20224593;Bancada;R$ 330,908,62;MG;Segurança Pública;Ensino Fundamental;MG (UF);24/05/2022
+DEPUTADO GUILHERME MUSSI;2022;20222836;Individual;R$ 3,759,738,72;RJ;Saneamento Básico;Saneamento Básico;BA (UF);16/07/2022
+BACELAR;2022;20222741;Comissão;R$ 835,859,15;PE;Ensino Médio;Ensino Fundamental;DF (UF);04/08/2022
+CARLOS ZARATTINI;2022;20224985;Individual;R$ 291,014,43;RJ;Educação Infantil;Infraestrutura Urbana;RS (UF);08/04/2022
+DANIEL ALMEIDA;2022;20223421;Comissão;R$ 800,799,75;RS;Ensino Fundamental;Saneamento Básico;DF (UF);14/11/2022
+GUILHERME MUSSI;2022;20227435;Individual;R$ 322,824,96;SP;Ensino Médio;Ensino Superior;BA (UF);06/06/2022
+EDUARDO BARBOSA;2022;20229400;Comissão;R$ 1,532,538,01;BA;Saneamento Básico;Educação Infantil;SC (UF);23/04/2022
+BACELAR;2022;20226263;Bancada;R$ 1,535,925,63;SC;Ensino Médio;Ensino Médio;SP (UF);20/07/2022
+JULIO CESAR RIBEIRO;2022;20221650;Individual;R$ 4,316,774,73;PE;Assistência Hospitalar e Ambulatorial;Segurança Pública;PR (UF);20/05/2022
+DEPUTADO JULIO CESAR RIBEIRO;2022;20222843;Individual;R$ 2,184,862,89;SP;Saneamento Básico;Assistência Hospitalar e Ambulatorial;SC (UF);05/01/2022
+BACELAR;2022;20222096;Bancada;R$ 3,513,838,27;GO;Saneamento Básico;Atenção Básica à Saúde;RS (UF);25/08/2022
+DEPUTADO CARLOS ZARATTINI;2022;20225110;Comissão;R$ 3,140,805,13;DF;Ensino Superior;Ensino Fundamental;GO (UF);12/06/2022
+ALENCAR SANTANA;2022;20224735;Individual;R$ 2,856,453,38;MG;Ensino Superior;Ensino Fundamental;SP (UF);08/01/2022
+BACELAR;2022;20229265;Comissão;R$ 2,470,753,00;GO;Infraestrutura Urbana;Ensino Fundamental;SP (UF);26/05/2022
+EDUARDO BARBOSA FILHO;2022;20221407;Bancada;R$ 3,399,857,82;PE;Ensino Superior;Infraestrutura Urbana;BA (UF);25/05/2022
+HERCÍLIO DINIZ;2022;20227973;Bancada;R$ 249,461,57;PE;Ensino Superior;Saneamento Básico;DF (UF);10/12/2022
+JULIO CESAR RIBEIRO FILHO;2022;20225834;Bancada;R$ 4,439,770,44;BA;Ensino Superior;Educação Infantil;RJ (UF);15/12/2022
+BACELAR;2022;20222783;Comissão;R$ 4,473,829,45;BA;Ensino Médio;Ensino Médio;BA (UF);14/09/2022
+DANIEL ALMEIDA;2022;20229656;Individual;R$ 784,375,53;PR;Ensino Superior;Segurança Pública;DF (UF);10/08/2022
+HERCÍLIO DINIZ;2022;20226901;Comissão;R$ 618,787,28;RS;Vigilância Epidemiológica;Segurança Pública;PR (UF);28/08/2022
+JULIO CESAR RIBEIRO;2022;20225826;Bancada;R$ 2,659,818,02;DF;Ensino Superior;Assistência Hospitalar e Ambulatorial;PE (UF);18/04/2022
+ELICORRÊA;2022;20221851;Individual;R$ 1,924,524,90;DF;Ensino Superior;Atenção Básica à Saúde;PE (UF);08/08/2022
+DANIEL ALMEIDA;2022;20224028;Bancada;R$ 1,828,425,07;MG;Infraestrutura Urbana;Atenção Básica à Saúde;GO (UF);25/10/2022
+CARLOS ZARATTINI;2022;20224737;Individual;R$ 282,240,07;PR;Atenção Básica à Saúde;Segurança Pública;PE (UF);26/03/2022
+JULIO CESAR RIBEIRO;2022;20229679;Comissão;R$ 1,207,382,34;RS;Infraestrutura Urbana;Ensino Médio;RS (UF);04/03/2022
+ALENCAR SANTANA;2022;20221048;Individual;R$ 1,311,390,84;MG;Ensino Fundamental;Assistência Hospitalar e Ambulatorial;BA (UF);03/03/2022
+BACELAR;2022;20229560;Bancada;R$ 676,582,63;PR;Ensino Médio;Educação Infantil;DF (UF);28/04/2022
+BACELAR;2022;20229485;Individual;R$ 813,899,48;SC;Assistência Hospitalar e Ambulatorial;Ensino Fundamental;SP (UF);24/01/2022
+DANIEL ALMEIDA;2022;20223406;Individual;R$ 1,237,487,91;RJ;Ensino Médio;Ensino Superior;RJ (UF);28/05/2022
+GUILHERME MUSSI;2022;20226262;Individual;R$ 2,752,764,70;PR;Vigilância Epidemiológica;Atenção Básica à Saúde;PR (UF);16/02/2022
+BACELAR;2022;20224572;Comissão;R$ 3,687,503,16;PE;Vigilância Epidemiológica;Vigilância Epidemiológica;PE (UF);01/01/2022
+CARLOS ZARATTINI;2022;20223127;Individual;R$ 615,971,12;PR;Ensino Fundamental;Saneamento Básico;PR (UF);05/03/2022
+JULIO CESAR RIBEIRO;2022;20226700;Bancada;R$ 1,749,646,16;BA;Segurança Pública;Ensino Fundamental;RS (UF);12/05/2022
+ALENCAR SANTANA FILHO;2022;20227294;Comissão;R$ 4,333,142,50;MG;Ensino Fundamental;Ensino Fundamental;RS (UF);28/04/2022
+HERCÍLIO DINIZ;2022;20226686;Individual;R$ 4,023,999,27;MG;Educação Infantil;Vigilância Epidemiológica;RJ (UF);27/06/2022
+JULIO CESAR RIBEIRO;2022;20228073;Bancada;R$ 1,331,769,81;PR;Vigilância Epidemiológica;Ensino Fundamental;PR (UF);22/12/2022
+HERCÍLIO DINIZ;2022;20226515;Comissão;R$ 516,193,24;BA;Infraestrutura Urbana;Infraestrutura Urbana;PR (UF);10/08/2022
+HERCÍLIO DINIZ;2022;20222054;Comissão;R$ 4,338,599,01;RJ;Assistência Hospitalar e Ambulatorial;Infraestrutura Urbana;MG (UF);26/04/2022
+FELIPE BORNIER;2022;20227266;Comissão;R$ 776,965,32;DF;Segurança Pública;Infraestrutura Urbana;GO (UF);17/08/2022
+ALENCAR SANTANA;2022;20228420;Bancada;R$ 2,778,749,81;RS;Segurança Pública;Ensino Fundamental;RS (UF);19/12/2022
+ALENCAR SANTANA;2022;20227430;Individual;R$ 4,769,929,30;PE;Atenção Básica à Saúde;Saneamento Básico;SC (UF);06/04/2022
+ELICORRÊA;2022;20226860;Individual;R$ 621,479,60;RJ;Ensino Superior;Vigilância Epidemiológica;DF (UF);02/08/2022
+CARLOS ZARATTINI;2022;20226759;Comissão;R$ 4,661,674,83;GO;Ensino Médio;Assistência Hospitalar e Ambulatorial;SP (UF);28/07/2022
+GUILHERME MUSSI;2022;20223399;Comissão;R$ 4,478,681,32;PR;Saneamento Básico;Ensino Fundamental;PE (UF);13/08/2022
+EDUARDO BARBOSA;2022;20225331;Comissão;R$ 2,860,475,92;DF;Vigilância Epidemiológica;Saneamento Básico;RS (UF);05/07/2022
+ELICORRÊA;2022;20221418;Bancada;R$ 2,426,572,93;SC;Ensino Médio;Ensino Médio;PR (UF);13/07/2022
+DANIEL ALMEIDA;2022;20226292;Individual;R$ 1,585,538,91;MG;Ensino Fundamental;Educação Infantil;RS (UF);04/08/2022
+FELIPE BORNIER;2022;20222167;Comissão;R$ 2,716,636,93;PR;Infraestrutura Urbana;Infraestrutura Urbana;PR (UF);14/08/2022
+BACELAR;2022;20221541;Comissão;R$ 2,300,502,94;DF;Atenção Básica à Saúde;Vigilância Epidemiológica;MG (UF);16/02/2022
+FELIPE BORNIER;2022;20223645;Individual;R$ 3,661,995,59;SP;Ensino Superior;Vigilância Epidemiológica;GO (UF);12/04/2022
+DEPUTADO ALENCAR SANTANA;2022;20221340;Comissão;R$ 4,645,212,90;BA;Saneamento Básico;Saneamento Básico;DF (UF);18/08/2022
+CARLOS ZARATTINI;2022;20221769;Bancada;R$ 2,666,253,84;SP;Ensino Médio;Infraestrutura Urbana;GO (UF);04/04/2022
+FELIPE BORNIER;2022;20228113;Bancada;R$ 1,741,043,22;RJ;Ensino Fundamental;Assistência Hospitalar e Ambulatorial;RJ (UF);13/08/2022
+JULIO CESAR RIBEIRO FILHO;2022;20226221;Comissão;R$ 2,882,803,11;GO;Segurança Pública;Segurança Pública;DF (UF);12/06/2022
+HERCÍLIO DINIZ;2022;20226924;Bancada;R$ 2,238,356,70;RS;Infraestrutura Urbana;Infraestrutura Urbana;DF (UF);24/11/2022
+DEPUTADO EDUARDO BARBOSA;2022;20227629;Bancada;R$ 2,865,228,74;BA;Assistência Hospitalar e Ambulatorial;Ensino Fundamental;PR (UF);16/10/2022
+ALENCAR SANTANA;2022;20224725;Bancada;R$ 916,013,59;BA;Ensino Fundamental;Educação Infantil;RS (UF);24/01/2022
+DEPUTADO JULIO CESAR RIBEIRO;2022;20229317;Individual;R$ 3,179,920,97;MG;Segurança Pública;Ensino Fundamental;MG (UF);08/10/2022
+EDUARDO BARBOSA;2022;20221063;Bancada;R$ 2,756,126,91;DF;Atenção Básica à Saúde;Infraestrutura Urbana;RS (UF);21/02/2022
+HERCÍLIO DINIZ;2022;20228601;Comissão;R$ 3,315,040,92;RS;Atenção Básica à Saúde;Ensino Médio;DF (UF);04/06/2022
+DEPUTADO HERCÍLIO DINIZ;2022;20227481;Bancada;R$ 4,499,209,49;SP;Educação Infantil;Educação Infantil;RS (UF);16/08/2022
+GUILHERME MUSSI;2022;20229064;Comissão;R$ 4,046,969,89;GO;Saneamento Básico;Ensino Médio;RJ (UF);21/05/2022
+DANIEL ALMEIDA;2022;20222640;Comissão;R$ 2,608,330,51;SC;Atenção Básica à Saúde;Saneamento Básico;MG (UF);05/10/2022
+ELICORRÊA;2022;20225589;Bancada;R$ 314,690,09;MG;Infraestrutura Urbana;Ensino Médio;SP (UF);26/06/2022
+ELICORRÊA FILHO;2022;20221247;Comissão;R$ 3,002,929,13;SC;Ensino Fundamental;Infraestrutura Urbana;RJ (UF);01/02/2022
+DEPUTADO ALENCAR SANTANA;2022;20229844;Individual;R$ 2,600,010,68;RJ;Infraestrutura Urbana;Ensino Superior;SC (UF);21/08/2022
+DEPUTADO GUILHERME MUSSI;2022;20226836;Individual;R$ 3,193,276,24;MG;Ensino Médio;Ensino Superior;SP (UF);06/02/2022
+DEPUTADO FELIPE BORNIER;2022;20229324;Comissão;R$ 21,843,90;SC;Ensino Fundamental;Segurança Pública;BA (UF);18/07/2022
+HERCÍLIO DINIZ FILHO;2022;20229225;Bancada;R$ 1,746,573,06;PE;Educação Infantil;Segurança Pública;BA (UF);10/05/2022
+EDUARDO BARBOSA;2022;20225840;Individual;R$ 793,199,87;RJ;Infraestrutura Urbana;Atenção Básica à Saúde;DF (UF);05/11/2022
+DANIEL ALMEIDA;2022;20226858;Bancada;R$ 447,307,74;DF;Ensino Superior;Atenção Básica à Saúde;DF (UF);24/06/2022
+FELIPE BORNIER;2022;20224517;Individual;R$ 4,799,241,01;SC;Ensino Médio;Ensino Médio;PR (UF);14/01/2022
+ALENCAR SANTANA;2022;20228383;Bancada;R$ 4,438,019,52;RS;Atenção Básica à Saúde;Segurança Pública;DF (UF);21/08/2022
+ALENCAR SANTANA FILHO;2022;20224141;Individual;R$ 1,777,576,50;RJ;Ensino Médio;Segurança Pública;SC (UF);10/10/2022
+JULIO CESAR RIBEIRO;2022;20227992;Individual;R$ 3,637,483,33;PR;Vigilância Epidemiológica;Educação Infantil;GO (UF);27/09/2022
+GUILHERME MUSSI;2022;20229607;Comissão;R$ 1,409,839,23;SP;Segurança Pública;Educação Infantil;GO (UF);03/01/2022
+BACELAR FILHO;2022;20223222;Bancada;R$ 4,678,716,22;PE;Assistência Hospitalar e Ambulatorial;Vigilância Epidemiológica;GO (UF);03/04/2022
+EDUARDO BARBOSA;2022;20229228;Bancada;R$ 2,203,222,03;PR;Segurança Pública;Vigilância Epidemiológica;SC (UF);23/03/2022
+FELIPE BORNIER;2022;20227867;Individual;R$ 3,324,061,15;GO;Ensino Superior;Saneamento Básico;PE (UF);01/02/2022
+BACELAR;2022;20229362;Bancada;R$ 1,969,749,95;SP;Assistência Hospitalar e Ambulatorial;Saneamento Básico;SC (UF);27/06/2022
+DANIEL ALMEIDA FILHO;2022;20221089;Individual;R$ 2,209,323,18;BA;Atenção Básica à Saúde;Educação Infantil;BA (UF);16/03/2022
+GUILHERME MUSSI;2022;20229518;Bancada;R$ 4,105,341,36;RS;Ensino Médio;Ensino Médio;PR (UF);28/12/2022
+DANIEL ALMEIDA;2022;20226014;Individual;R$ 3,599,644,16;SC;Saneamento Básico;Educação Infantil;MG (UF);09/12/2022
+DEPUTADO ALENCAR SANTANA;2022;20223192;Comissão;R$ 3,093,264,10;PR;Ensino Superior;Segurança Pública;PR (UF);13/08/2022
+ELICORRÊA;2022;20222295;Individual;R$ 1,368,760,34;SC;Atenção Básica à Saúde;Assistência Hospitalar e Ambulatorial;GO (UF);14/06/2022
+DEPUTADO FELIPE BORNIER;2022;20223651;Comissão;R$ 3,390,332,19;DF;Vigilância Epidemiológica;Ensino Médio;GO (UF);10/09/2022
+CARLOS ZARATTINI;2022;20224786;Individual;R$ 2,727,572,36;SC;Saneamento Básico;Vigilância Epidemiológica;RJ (UF);22/02/2022
+CARLOS ZARATTINI;2022;20228045;Comissão;R$ 525,337,49;BA;Vigilância Epidemiológica;Segurança Pública;RJ (UF);22/10/2022
+ALENCAR SANTANA;2022;20224544;Bancada;R$ 3,860,235,64;PE;Segurança Pública;Assistência Hospitalar e Ambulatorial;PE (UF);13/02/2022
+DEPUTADO HERCÍLIO DINIZ;2022;20222227;Bancada;R$ 2,049,921,03;RJ;Infraestrutura Urbana;Assistência Hospitalar e Ambulatorial;PE (UF);22/12/2022
+ELICORRÊA;2022;20223716;Bancada;R$ 2,611,548,02;RJ;Saneamento Básico;Vigilância Epidemiológica;SC (UF);22/01/2022
+BACELAR;2022;20228638;Bancada;R$ 3,591,876,91;MG;Ensino Fundamental;Saneamento Básico;MG (UF);02/07/2022
+HERCÍLIO DINIZ;2022;20225949;Comissão;R$ 1,272,941,43;SC;Educação Infantil;Saneamento Básico;DF (UF);20/07/2022
+JULIO CESAR RIBEIRO;2022;20222739;Comissão;R$ 1,679,625,94;BA;Assistência Hospitalar e Ambulatorial;Segurança Pública;RJ (UF);05/03/2022
+GUILHERME MUSSI FILHO;2022;20223094;Bancada;R$ 251,977,51;DF;Assistência Hospitalar e Ambulatorial;Infraestrutura Urbana;RS (UF);14/02/2022
+DEPUTADO EDUARDO BARBOSA;2022;20225342;Comissão;R$ 700,494,62;MG;Ensino Médio;Ensino Médio;PE (UF);02/03/2022
+DANIEL ALMEIDA;2022;20226404;Comissão;R$ 4,976,444,94;GO;Educação Infantil;Assistência Hospitalar e Ambulatorial;SP (UF);13/02/2022
+GUILHERME MUSSI;2022;20224250;Bancada;R$ 3,504,218,36;GO;Vigilância Epidemiológica;Segurança Pública;MG (UF);14/09/2022
+BACELAR;2022;20225101;Comissão;R$ 183,778,29;PE;Educação Infantil;Saneamento Básico;GO (UF);25/10/2022
+DANIEL ALMEIDA FILHO;2022;20221800;Individual;R$ 3,740,155,55;SP;Ensino Fundamental;Vigilância Epidemiológica;RS (UF);12/01/2022
+CARLOS ZARATTINI;2022;20221663;Bancada;R$ 1,937,690,22;GO;Vigilância Epidemiológica;Atenção Básica à Saúde;PR (UF);12/07/2022
+FELIPE BORNIER;2022;20223575;Bancada;R$ 2,199,978,68;RS;Assistência Hospitalar e Ambulatorial;Ensino Superior;BA (UF);09/09/2022
+EDUARDO BARBOSA;2022;20229075;Individual;R$ 557,604,83;PE;Infraestrutura Urbana;Ensino Superior;RS (UF);13/05/2022
+EDUARDO BARBOSA;2022;20221428;Individual;R$ 2,144,776,04;RS;Educação Infantil;Assistência Hospitalar e Ambulatorial;PR (UF);22/03/2022
+ELICORRÊA;2022;20229039;Comissão;R$ 3,011,567,47;MG;Ensino Superior;Vigilância Epidemiológica;SP (UF);28/05/2022
+JULIO CESAR RIBEIRO;2022;20225460;Comissão;R$ 3,947,646,22;SP;Vigilância Epidemiológica;Ensino Fundamental;MG (UF);11/01/2022
+CARLOS ZARATTINI;2022;20221722;Bancada;R$ 1,508,695,22;DF;Atenção Básica à Saúde;Assistência Hospitalar e Ambulatorial;PR (UF);09/11/2022
+CARLOS ZARATTINI;2022;20222764;Bancada;R$ 1,598,098,23;SP;Ensino Superior;Segurança Pública;BA (UF);03/07/2022
+JULIO CESAR RIBEIRO;2022;20228510;Bancada;R$ 1,389,247,91;PE;Assistência Hospitalar e Ambulatorial;Vigilância Epidemiológica;PR (UF);03/10/2022
+ELICORRÊA;2022;20229494;Bancada;R$ 1,525,380,15;SC;Ensino Médio;Ensino Fundamental;PE (UF);17/03/2022
+ALENCAR SANTANA;2022;20227866;Bancada;R$ 4,300,829,48;PE;Segurança Pública;Ensino Superior;GO (UF);01/03/2022
+ALENCAR SANTANA;2022;20226858;Individual;R$ 2,974,186,08;RJ;Ensino Superior;Segurança Pública;SC (UF);09/04/2022
+DEPUTADO DANIEL ALMEIDA;2022;20229243;Bancada;R$ 2,301,431,32;PR;Ensino Fundamental;Assistência Hospitalar e Ambulatorial;RS (UF);21/04/2022
+DEPUTADO EDUARDO BARBOSA;2022;20228273;Bancada;R$ 1,704,669,65;RS;Educação Infantil;Ensino Fundamental;GO (UF);14/04/2022
+ALENCAR SANTANA;2022;20228640;Bancada;R$ 2,602,383,44;PE;Saneamento Básico;Assistência Hospitalar e Ambulatorial;RJ (UF);14/11/2022
+CARLOS ZARATTINI;2022;20226705;Individual;R$ 3,874,323,94;GO;Ensino Fundamental;Segurança Pública;DF (UF);24/04/2022
+DEPUTADO ALENCAR SANTANA;2022;20224559;Bancada;R$ 496,981,82;RJ;Ensino Médio;Ensino Fundamental;DF (UF);21/12/2022
+DANIEL ALMEIDA;2022;20224823;Bancada;R$ 1,540,884,42;RJ;Segurança Pública;Ensino Superior;PE (UF);16/05/2022
+JULIO CESAR RIBEIRO;2022;20221796;Comissão;R$ 4,611,915,98;RJ;Vigilância Epidemiológica;Ensino Médio;SP (UF);27/09/2022
+ELICORRÊA;2022;20228488;Individual;R$ 4,451,645,54;SC;Educação Infantil;Vigilância Epidemiológica;GO (UF);17/10/2022
+CARLOS ZARATTINI;2022;20227716;Individual;R$ 4,399,880,46;PE;Educação Infantil;Saneamento Básico;SC (UF);07/01/2022
+JULIO CESAR RIBEIRO;2022;20225132;Bancada;R$ 402,339,64;GO;Atenção Básica à Saúde;Saneamento Básico;BA (UF);01/08/2022
+EDUARDO BARBOSA;2022;20229481;Comissão;R$ 638,324,48;MG;Segurança Pública;Saneamento Básico;PR (UF);08/03/2022
+DANIEL ALMEIDA;2022;20228098;Individual;R$ 2,438,216,96;PR;Assistência Hospitalar e Ambulatorial;Ensino Fundamental;SP (UF);09/02/2022
+DANIEL ALMEIDA;2022;20222119;Comissão;R$ 353,016,13;DF;Ensino Superior;Educação Infantil;GO (UF);28/10/2022
+HERCÍLIO DINIZ;2022;20225551;Comissão;R$ 2,981,046,07;RS;Ensino Médio;Assistência Hospitalar e Ambulatorial;BA (UF);17/03/2022
+DEPUTADO FELIPE BORNIER;2022;20228815;Individual;R$ 3,257,416,20;BA;Atenção Básica à Saúde;Ensino Fundamental;RS (UF);08/05/2022
+GUILHERME MUSSI;2022;20223683;Bancada;R$ 4,515,293,70;RS;Infraestrutura Urbana;Ensino Fundamental;PE (UF);23/07/2022
+GUILHERME MUSSI;2022;20221137;Bancada;R$ 3,024,651,38;RJ;Ensino Superior;Assistência Hospitalar e Ambulatorial;SP (UF);28/07/2022
+FELIPE BORNIER FILHO;2022;20229020;Individual;R$ 1,277,736,28;PE;Atenção Básica à Saúde;Ensino Médio;SC (UF);02/02/2022
+DEPUTADO JULIO CESAR RIBEIRO;2022;20221187;Comissão;R$ 295,040,08;BA;Ensino Superior;Educação Infantil;MG (UF);02/10/2022
+GUILHERME MUSSI;2022;20221253;Bancada;R$ 1,405,706,39;MG;Vigilância Epidemiológica;Segurança Pública;DF (UF);02/07/2022
+HERCÍLIO DINIZ;2022;20229913;Comissão;R$ 2,303,316,45;SC;Assistência Hospitalar e Ambulatorial;Infraestrutura Urbana;RS (UF);01/10/2022
+ALENCAR SANTANA;2022;20223581;Comissão;R$ 4,711,923,90;SP;Saneamento Básico;Vigilância Epidemiológica;PR (UF);26/02/2022
+ELICORRÊA FILHO;2022;20224234;Individual;R$ 1,101,918,53;BA;Ensino Médio;Atenção Básica à Saúde;SP (UF);18/08/2022
+HERCÍLIO DINIZ;2022;20226474;Bancada;R$ 500,490,30;PE;Infraestrutura Urbana;Segurança Pública;SC (UF);09/09/2022
+EDUARDO BARBOSA;2022;20221089;Individual;R$ 4,348,485,99;DF;Ensino Médio;Infraestrutura Urbana;PR (UF);08/11/2022
+ELICORRÊA;2022;20226625;Bancada;R$ 1,665,002,49;RS;Infraestrutura Urbana;Ensino Fundamental;RJ (UF);10/11/2022
+FELIPE BORNIER;2022;20228815;Comissão;R$ 168,480,13;DF;Assistência Hospitalar e Ambulatorial;Ensino Médio;PR (UF);06/04/2022
+ALENCAR SANTANA FILHO;2022;20223485;Comissão;R$ 1,591,767,72;PR;Educação Infantil;Atenção Básica à Saúde;PE (UF);13/09/2022
+ELICORRÊA;2022;20229307;Bancada;R$ 4,060,447,80;PR;Atenção Básica à Saúde;Vigilância Epidemiológica;DF (UF);09/10/2022
+CARLOS ZARATTINI;2022;20221333;Individual;R$ 3,710,471,12;GO;Educação Infantil;Ensino Médio;PR (UF);16/11/2022
+ELICORRÊA;2022;20222318;Bancada;R$ 18,545,46;MG;Ensino Superior;Infraestrutura Urbana;BA (UF);21/09/2022
+DANIEL ALMEIDA;2022;20224256;Bancada;R$ 2,133,116,46;RS;Saneamento Básico;Segurança Pública;MG (UF);21/05/2022
+BACELAR;2022;20223867;Individual;R$ 3,511,332,24;RS;Segurança Pública;Educação Infantil;GO (UF);12/06/2022
+ALENCAR SANTANA;2022;20221648;Bancada;R$ 4,596,149,44;PR;Infraestrutura Urbana;Segurança Pública;SC (UF);09/03/2022
+GUILHERME MUSSI;2022;20227579;Individual;R$ 4,656,810,56;BA;Assistência Hospitalar e Ambulatorial;Atenção Básica à Saúde;SC (UF);21/12/2022
+DEPUTADO EDUARDO BARBOSA;2022;20222050;Bancada;R$ 4,728,049,70;GO;Saneamento Básico;Vigilância Epidemiológica;PR (UF);25/06/2022
+HERCÍLIO DINIZ;2022;20224143;Comissão;R$ 3,195,929,44;MG;Ensino Superior;Infraestrutura Urbana;PR (UF);24/09/2022
+JULIO CESAR RIBEIRO;2022;20225235;Bancada;R$ 3,632,701,58;BA;Assistência Hospitalar e Ambulatorial;Ensino Superior;MG (UF);17/01/2022
+CARLOS ZARATTINI FILHO;2022;20224351;Bancada;R$ 3,843,751,48;PE;Assistência Hospitalar e Ambulatorial;Ensino Médio;MG (UF);28/01/2022
+ELICORRÊA;2022;20225049;Bancada;R$ 958,954,93;DF;Ensino Médio;Educação Infantil;RS (UF);25/08/2022
+HERCÍLIO DINIZ;2022;20229888;Individual;R$ 3,514,646,79;SC;Segurança Pública;Atenção Básica à Saúde;BA (UF);14/01/2022
+DANIEL ALMEIDA FILHO;2022;20227213;Individual;R$ 1,589,313,69;RJ;Saneamento Básico;Saneamento Básico;RS (UF);13/02/2022
+FELIPE BORNIER FILHO;2022;20227488;Bancada;R$ 4,958,080,16;BA;Educação Infantil;Ensino Médio;MG (UF);02/12/2022
+GUILHERME MUSSI;2022;20225943;Individual;R$ 4,901,253,12;RS;Atenção Básica à Saúde;Assistência Hospitalar e Ambulatorial;SC (UF);02/02/2022
+BACELAR FILHO;2022;20228553;Bancada;R$ 1,271,577,65;SP;Saneamento Básico;Segurança Pública;MG (UF);19/11/2022
+FELIPE BORNIER;2022;20225475;Bancada;R$ 4,732,976,87;PR;Ensino Médio;Segurança Pública;PE (UF);28/05/2022
+CARLOS ZARATTINI;2022;20223092;Individual;R$ 1,960,430,84;PR;Ensino Fundamental;Ensino Médio;SC (UF);20/10/2022
+DEPUTADO ELICORRÊA;2022;20223669;Individual;R$ 1,563,585,89;DF;Atenção Básica à Saúde;Ensino Médio;PR (UF);10/08/2022
+DEPUTADO ELICORRÊA;2022;20223160;Individual;R$ 60,481,62;DF;Ensino Fundamental;Segurança Pública;PE (UF);17/05/2022
+GUILHERME MUSSI;2022;20225195;Comissão;R$ 1,000,687,97;RS;Infraestrutura Urbana;Infraestrutura Urbana;DF (UF);19/05/2022
+ELICORRÊA;2022;20227186;Bancada;R$ 1,180,517,49;SP;Segurança Pública;Vigilância Epidemiológica;SC (UF);16/11/2022
+DEPUTADO BACELAR;2022;20225473;Individual;R$ 4,668,456,26;GO;Assistência Hospitalar e Ambulatorial;Saneamento Básico;RJ (UF);25/11/2022
+DEPUTADO DANIEL ALMEIDA;2022;20229886;Comissão;R$ 141,907,84;PE;Atenção Básica à Saúde;Ensino Superior;BA (UF);14/02/2022
+CARLOS ZARATTINI;2022;20224049;Comissão;R$ 3,957,023,92;SC;Educação Infantil;Infraestrutura Urbana;RS (UF);14/07/2022
+ALENCAR SANTANA;2022;20228929;Individual;R$ 55,754,51;RS;Vigilância Epidemiológica;Ensino Médio;RS (UF);21/02/2022
+DEPUTADO FELIPE BORNIER;2022;20228732;Individual;R$ 2,049,586,64;PE;Ensino Fundamental;Assistência Hospitalar e Ambulatorial;SP (UF);19/07/2022
+BACELAR;2022;20229513;Comissão;R$ 1,566,990,23;RJ;Infraestrutura Urbana;Saneamento Básico;SC (UF);03/10/2022
+GUILHERME MUSSI;2022;20224058;Comissão;R$ 3,520,693,73;GO;Saneamento Básico;Segurança Pública;SP (UF);22/03/2022
+HERCÍLIO DINIZ;2022;20223776;Bancada;R$ 2,907,429,72;PR;Ensino Superior;Ensino Fundamental;DF (UF);03/05/2022
+FELIPE BORNIER;2022;20226520;Individual;R$ 4,059,824,87;SP;Ensino Superior;Ensino Fundamental;GO (UF);14/06/2022
+GUILHERME MUSSI;2022;20225991;Comissão;R$ 1,327,175,88;DF;Ensino Superior;Vigilância Epidemiológica;PR (UF);11/07/2022
+FELIPE BORNIER;2022;20226413;Comissão;R$ 1,090,756,86;RS;Educação Infantil;Educação Infantil;RJ (UF);21/09/2022
+DEPUTADO JULIO CESAR RIBEIRO;2022;20224237;Bancada;R$ 4,352,685,62;SP;Vigilância Epidemiológica;Ensino Fundamental;RS (UF);18/09/2022
+HERCÍLIO DINIZ FILHO;2022;20222101;Bancada;R$ 4,736,837,47;PE;Educação Infantil;Atenção Básica à Saúde;MG (UF);18/12/2022
+DEPUTADO DANIEL ALMEIDA;2022;20229343;Comissão;R$ 3,731,998,58;PR;Saneamento Básico;Segurança Pública;GO (UF);28/01/2022
+DANIEL ALMEIDA;2022;20223399;Bancada;R$ 1,779,275,14;SC;Vigilância Epidemiológica;Segurança Pública;GO (UF);05/01/2022
+BACELAR;2022;20227232;Bancada;R$ 158,282,22;BA;Segurança Pública;Infraestrutura Urbana;PE (UF);26/11/2022
+ELICORRÊA;2022;20228317;Comissão;R$ 1,926,330,52;SC;Ensino Superior;Assistência Hospitalar e Ambulatorial;DF (UF);21/08/2022
+ELICORRÊA;2022;20222327;Bancada;R$ 2,153,350,49;DF;Educação Infantil;Vigilância Epidemiológica;RS (UF);14/01/2022
+JULIO CESAR RIBEIRO;2022;20229133;Comissão;R$ 3,482,745,34;SC;Saneamento Básico;Ensino Superior;GO (UF);26/06/2022
+GUILHERME MUSSI;2022;20224060;Bancada;R$ 4,769,321,80;RS;Ensino Fundamental;Segurança Pública;RJ (UF);06/07/2022
+DANIEL ALMEIDA;2022;20224949;Bancada;R$ 238,344,68;SP;Vigilância Epidemiológica;Assistência Hospitalar e Ambulatorial;RJ (UF);24/03/2022
+GUILHERME MUSSI FILHO;2022;20225539;Bancada;R$ 901,768,37;SC;Ensino Fundamental;Assistência Hospitalar e Ambulatorial;PE (UF);04/09/2022
+HERCÍLIO DINIZ;2022;20227361;Individual;R$ 3,775,437,74;BA;Segurança Pública;Vigilância Epidemiológica;SC (UF);10/12/2022
+CARLOS ZARATTINI;2022;20229491;Individual;R$ 108,172,04;RS;Ensino Superior;Ensino Médio;SC (UF);07/08/2022
+JULIO CESAR RIBEIRO;2022;20227140;Comissão;R$ 2,089,054,72;GO;Saneamento Básico;Ensino Médio;GO (UF);09/07/2022
+BACELAR;2022;20223474;Individual;R$ 4,533,921,03;GO;Ensino Médio;Educação Infantil;RS (UF);08/03/2022
+DANIEL ALMEIDA;2022;20227957;Bancada;R$ 2,535,492,11;PE;Ensino Superior;Saneamento Básico;PR (UF);16/04/2022
+ELICORRÊA;2022;20221609;Individual;R$ 3,035,496,92;SC;Segurança Pública;Ensino Médio;SC (UF);21/07/2022
+EDUARDO BARBOSA;2022;20226277;Bancada;R$ 470,874,72;SC;Ensino Superior;Educação Infantil;BA (UF);13/03/2022
+CARLOS ZARATTINI FILHO;2022;20221891;Bancada;R$ 2,986,840,24;DF;Atenção Básica à Saúde;Ensino Médio;RJ (UF);02/07/2022
+BACELAR;2022;20221953;Bancada;R$ 1,246,982,30;RJ;Segurança Pública;Assistência Hospitalar e Ambulatorial;BA (UF);15/10/2022
+DEPUTADO ALENCAR SANTANA;2022;20222132;Bancada;R$ 3,785,605,24;MG;Assistência Hospitalar e Ambulatorial;Ensino Médio;GO (UF);18/09/2022
+DANIEL ALMEIDA FILHO;2022;20228316;Comissão;R$ 787,491,77;SP;Ensino Médio;Saneamento Básico;DF (UF);13/07/2022
+HERCÍLIO DINIZ FILHO;2022;20224530;Comissão;R$ 3,021,048,90;DF;Assistência Hospitalar e Ambulatorial;Assistência Hospitalar e Ambulatorial;GO (UF);22/02/2022
+GUILHERME MUSSI;2022;20223509;Comissão;R$ 4,349,422,47;RS;Vigilância Epidemiológica;Ensino Médio;DF (UF);18/08/2022
+FELIPE BORNIER FILHO;2022;20222051;Comissão;R$ 4,481,308,09;RS;Atenção Básica à Saúde;Segurança Pública;SC (UF);02/12/2022
+ELICORRÊA;2022;20221388;Comissão;R$ 872,998,02;RS;Assistência Hospitalar e Ambulatorial;Atenção Básica à Saúde;GO (UF);12/10/2022
+DANIEL ALMEIDA FILHO;2022;20229078;Individual;R$ 3,572,096,34;RJ;Ensino Superior;Vigilância Epidemiológica;PE (UF);25/08/2022
+DEPUTADO DANIEL ALMEIDA;2022;20226658;Comissão;R$ 916,101,02;RJ;Segurança Pública;Infraestrutura Urbana;BA (UF);09/08/2022
+FELIPE BORNIER;2022;20227095;Individual;R$ 4,252,570,83;PR;Ensino Superior;Segurança Pública;RJ (UF);28/04/2022
+HERCÍLIO DINIZ FILHO;2022;20227242;Comissão;R$ 3,048,426,06;SP;Atenção Básica à Saúde;Segurança Pública;MG (UF);10/08/2022
+EDUARDO BARBOSA;2022;20225260;Bancada;R$ 2,461,071,98;PR;Saneamento Básico;Atenção Básica à Saúde;DF (UF);01/06/2022
+GUILHERME MUSSI;2022;20228899;Individual;R$ 4,937,058,37;PR;Ensino Médio;Segurança Pública;PR (UF);03/06/2022
+DEPUTADO CARLOS ZARATTINI;2022;20226315;Individual;R$ 1,694,543,15;SP;Segurança Pública;Atenção Básica à Saúde;PR (UF);25/04/2022
+GUILHERME MUSSI;2022;20227819;Individual;R$ 1,998,123,69;SC;Atenção Básica à Saúde;Ensino Fundamental;SP (UF);18/09/2022
+CARLOS ZARATTINI;2022;20226922;Comissão;R$ 713,238,78;RS;Ensino Médio;Atenção Básica à Saúde;DF (UF);25/11/2022
+ALENCAR SANTANA;2022;20221167;Individual;R$ 4,904,273,52;RS;Educação Infantil;Atenção Básica à Saúde;SP (UF);05/10/2022
+FELIPE BORNIER FILHO;2022;20222189;Comissão;R$ 3,756,048,26;BA;Assistência Hospitalar e Ambulatorial;Segurança Pública;PE (UF);14/07/2022
+DANIEL ALMEIDA;2022;20228750;Individual;R$ 4,991,393,08;SC;Ensino Médio;Vigilância Epidemiológica;RS (UF);09/07/2022
+ELICORRÊA;2022;20227770;Bancada;R$ 4,137,799,05;SC;Vigilância Epidemiológica;Ensino Médio;DF (UF);17/05/2022
+DEPUTADO DANIEL ALMEIDA;2022;20229565;Individual;R$ 2,530,298,99;BA;Educação Infantil;Segurança Pública;SP (UF);18/03/2022
+EDUARDO BARBOSA;2022;20226190;Bancada;R$ 1,555,265,05;PR;Atenção Básica à Saúde;Infraestrutura Urbana;PE (UF);27/02/2022
+ALENCAR SANTANA FILHO;2022;20221814;Comissão;R$ 3,301,299,20;SC;Segurança Pública;Ensino Médio;BA (UF);10/02/2022
+ELICORRÊA;2022;20224203;Bancada;R$ 1,905,868,83;RS;Vigilância Epidemiológica;Ensino Superior;SC (UF);19/04/2022
+HERCÍLIO DINIZ;2022;20228895;Comissão;R$ 3,437,587,81;PE;Educação Infantil;Ensino Superior;DF (UF);03/06/2022
+DEPUTADO HERCÍLIO DINIZ;2022;20225923;Individual;R$ 2,479,200,50;PE;Educação Infantil;Segurança Pública;MG (UF);01/07/2022
+GUILHERME MUSSI;2022;20224834;Comissão;R$ 663,870,65;RS;Vigilância Epidemiológica;Segurança Pública;GO (UF);10/07/2022
+JULIO CESAR RIBEIRO;2022;20228713;Bancada;R$ 4,360,605,33;GO;Infraestrutura Urbana;Segurança Pública;SC (UF);03/07/2022
+EDUARDO BARBOSA;2022;20224522;Comissão;R$ 2,988,356,38;PE;Educação Infantil;Segurança Pública;RJ (UF);13/05/2022
+FELIPE BORNIER FILHO;2022;20226861;Individual;R$ 3,628,651,44;RJ;Assistência Hospitalar e Ambulatorial;Ensino Médio;SC (UF);25/02/2022
+ELICORRÊA;2022;20222144;Bancada;R$ 496,489,07;SP;Assistência Hospitalar e Ambulatorial;Segurança Pública;RJ (UF);21/04/2022
+CARLOS ZARATTINI;2022;20221779;Bancada;R$ 3,842,425,69;SP;Ensino Médio;Educação Infantil;DF (UF);15/07/2022
+FELIPE BORNIER;2022;20223576;Bancada;R$ 3,267,270,00;RS;Atenção Básica à Saúde;Assistência Hospitalar e Ambulatorial;RS (UF);01/12/2022
+DEPUTADO GUILHERME MUSSI;2022;20229966;Comissão;R$ 1,954,525,47;DF;Infraestrutura Urbana;Segurança Pública;GO (UF);08/03/2022
+BACELAR;2022;20224167;Comissão;R$ 710,034,65;SP;Atenção Básica à Saúde;Infraestrutura Urbana;SP (UF);04/06/2022
+GUILHERME MUSSI;2022;20229014;Comissão;R$ 1,216,199,54;MG;Vigilância Epidemiológica;Atenção Básica à Saúde;RJ (UF);28/07/2022
+HERCÍLIO DINIZ;2022;20228236;Bancada;R$ 3,936,446,06;SP;Ensino Fundamental;Ensino Médio;SC (UF);16/07/2022
+DEPUTADO EDUARDO BARBOSA;2022;20225166;Bancada;R$ 461,448,98;DF;Educação Infantil;Assistência Hospitalar e Ambulatorial;GO (UF);14/07/2022
+GUILHERME MUSSI;2022;20222928;Bancada;R$ 1,716,827,18;MG;Ensino Fundamental;Assistência Hospitalar e Ambulatorial;PE (UF);21/02/2022
+ELICORRÊA;2022;20224379;Bancada;R$ 530,612,04;PE;Saneamento Básico;Saneamento Básico;MG (UF);01/12/2022
+EDUARDO BARBOSA;2022;20224649;Comissão;R$ 2,689,796,64;DF;Vigilância Epidemiológica;Ensino Médio;RJ (UF);01/05/2022
+ALENCAR SANTANA;2022;20229366;Comissão;R$ 1,760,552,70;MG;Segurança Pública;Saneamento Básico;MG (UF);28/11/2022
+EDUARDO BARBOSA;2022;20226502;Individual;R$ 4,244,189,72;RS;Segurança Pública;Infraestrutura Urbana;SP (UF);20/11/2022
+HERCÍLIO DINIZ;2022;20228368;Individual;R$ 4,580,357,03;PE;Ensino Médio;Ensino Médio;MG (UF);25/03/2022
+ALENCAR SANTANA;2022;20225682;Comissão;R$ 293,165,53;RJ;Ensino Superior;Segurança Pública;GO (UF);28/01/2022
+DANIEL ALMEIDA;2022;20224546;Bancada;R$ 1,491,096,03;RS;Saneamento Básico;Educação Infantil;MG (UF);06/04/2022
+BACELAR;2022;20223617;Comissão;R$ 1,631,322,31;DF;Atenção Básica à Saúde;Educação Infantil;GO (UF);02/10/2022

@@ -106,6 +106,74 @@ class ColetorEmendasTransparencia(ETLBase):
         except (ValueError, AttributeError):
             return 0.0
 
+    def buscar_documentos_emenda(self, codigo_emenda: str) -> List[Dict]:
+        """
+        Busca documentos relacionados à emenda
+        Endpoint: /api-de-dados/emendas/documentos/{codigo}
+        """
+        try:
+            import requests
+            
+            url = f"{self.base_url}/documentos/{codigo_emenda}"
+            params = {"pagina": 1}
+            
+            documentos = []
+            while True:
+                response = requests.get(url, headers=self.headers, params=params, timeout=30)
+                
+                if response.status_code == 200:
+                    data = response.json()
+                    if isinstance(data, list):
+                        docs_pagina = data
+                    elif isinstance(data, dict) and 'dados' in data:
+                        docs_pagina = data['dados']
+                    else:
+                        docs_pagina = []
+                    
+                    if not docs_pagina:
+                        break
+                        
+                    documentos.extend(docs_pagina)
+                    params["pagina"] += 1
+                    time.sleep(0.5)
+                else:
+                    break
+            
+            return documentos
+            
+        except Exception as e:
+            print(f"      ❌ Erro ao buscar documentos: {e}")
+            return []
+
+    def extrair_campos_completos(self, emenda_data: Dict) -> Dict:
+        """
+        Extrai todos os campos financeiros e de otimização da API
+        """
+        campos_extraidos = {}
+        
+        # Campos financeiros adicionais do Portal da Transparência
+        campos_extraidos['valor_resto_inscrito'] = self.limpar_valor_monetario(
+            emenda_data.get('valorRestoInscrito', '0')
+        )
+        campos_extraidos['valor_resto_cancelado'] = self.limpar_valor_monetario(
+            emenda_data.get('valorRestoCancelado', '0')
+        )
+        campos_extraidos['valor_resto_pago'] = self.limpar_valor_monetario(
+            emenda_data.get('valorRestoPago', '0')
+        )
+        
+        # Campos de otimização com códigos da API
+        campos_extraidos['codigo_funcao_api'] = emenda_data.get('codigoFuncao')
+        campos_extraidos['codigo_subfuncao_api'] = emenda_data.get('codigoSubfuncao')
+        
+        # Campos de documentação
+        codigo_emenda = str(emenda_data.get('codigoEmenda', ''))
+        documentos = self.buscar_documentos_emenda(codigo_emenda)
+        campos_extraidos['documentos_url'] = f"{self.base_url}/documentos/{codigo_emenda}" if documentos else None
+        campos_extraidos['quantidade_documentos'] = len(documentos)
+        
+        return campos_extraidos
+
     def buscar_todas_emendas_deputado(self, nome_deputado: str, ano: int) -> List[Dict]:
         """
         Busca TODAS as emendas de um deputado em um ano
@@ -314,6 +382,9 @@ class ColetorEmendasTransparencia(ETLBase):
             subfuncao = emenda_data.get('subfuncao', '')
             localidade = emenda_data.get('localidadeDoGasto', '')
             
+            # Extrair campos completos da API
+            campos_completos = self.extrair_campos_completos(emenda_data)
+            
             # Criar emenda
             emenda = EmendaParlamentar(
                 api_camara_id=str(codigo_emenda),
@@ -332,7 +403,20 @@ class ColetorEmendasTransparencia(ETLBase):
                 autor=nome_autor,
                 partido_autor=None,  # Não disponível nesta API
                 uf_autor=localidade.split('(')[-1].replace(')', '') if '(' in localidade else None,
-                url_documento=None  # Não disponível nesta API
+                url_documento=None,  # Não disponível nesta API
+                
+                # Novos campos financeiros do Portal da Transparência
+                valor_resto_inscrito=campos_completos['valor_resto_inscrito'],
+                valor_resto_cancelado=campos_completos['valor_resto_cancelado'],
+                valor_resto_pago=campos_completos['valor_resto_pago'],
+                
+                # Campos de otimização com códigos da API
+                codigo_funcao_api=campos_completos['codigo_funcao_api'],
+                codigo_subfuncao_api=campos_completos['codigo_subfuncao_api'],
+                
+                # Campos de documentação
+                documentos_url=campos_completos['documentos_url'],
+                quantidade_documentos=campos_completos['quantidade_documentos']
             )
             
             db.add(emenda)
@@ -432,10 +516,30 @@ class ColetorEmendasTransparencia(ETLBase):
     def coletar_emendas_periodo(self, ano: int, limite: int = 500, db: Session = None) -> Dict[str, int]:
         """
         Coleta emendas orçamentárias do Portal da Transparência
+        Respeitando configuração centralizada de filtro temporal
         """
         print(f"\n💰 COLETANDO EMENDAS ORÇAMENTÁRIAS - Portal da Transparência")
         print("=" * 70)
-        print(f"📅 Ano: {ano}")
+        print(f"📅 Ano solicitado: {ano}")
+        
+        # VERIFICAÇÃO USANDO CONFIGURAÇÃO CENTRALIZADA
+        from .config import deve_apenas_legislatura_atual_emendas, get_ano_inicio_legislatura_emendas, get_descricao_filtro_emendas
+        
+        if deve_apenas_legislatura_atual_emendas():
+            ano_inicio_legislatura = get_ano_inicio_legislatura_emendas()
+            
+            if ano < ano_inicio_legislatura:
+                print(f"⚠️ ANO {ano} IGNORADO - Anterior à legislatura atual ({ano_inicio_legislatura}+)")
+                print(f"📋 Filtro ativo: Apenas legislatura atual")
+                print(f"📋 Descrição: {get_descricao_filtro_emendas()}")
+                return {
+                    'emendas_encontradas': 0,
+                    'emendas_salvas': 0,
+                    'motivo_ignorado': f'Ano {ano} anterior à legislatura atual ({ano_inicio_legislatura}+)'
+                }
+            else:
+                print(f"✅ ANO {ano} PERMITIDO - Dentro da legislatura atual ({ano_inicio_legislatura}+)")
+        
         print(f"🎯 Limite: {limite} emendas")
         
         # Usar sessão fornecida ou criar nova
