@@ -218,3 +218,4 @@ backend/scripts/manutencao/
 #storage json
 backend/src/service-account-key.json
 backend/temp/service-account-key.json
+config/service-account-key.json

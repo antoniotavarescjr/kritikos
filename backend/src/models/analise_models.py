@@ -7,7 +7,7 @@ Implementa persistência completa do fluxo de agentes Kritikos.
 from datetime import datetime
 from typing import Optional, List, Dict, Any
 
-from sqlalchemy import Column, Integer, String, Text, Boolean, DateTime, ForeignKey, DECIMAL, JSON
+from sqlalchemy import Column, Integer, String, Text, Boolean, DateTime, ForeignKey, DECIMAL, JSON, ARRAY
 from sqlalchemy.orm import relationship
 from sqlalchemy.dialects.postgresql import JSONB
 
@@ -41,7 +41,7 @@ class AnaliseProposicao(Base):
     inovacao_eficiencia = Column(Integer, nullable=True)
     sustentabilidade_fiscal = Column(Integer, nullable=True)
     penalidade_oneracao = Column(Integer, nullable=True)
-    ods_identificados = Column(JSONB, nullable=True)
+    ods_identificados = Column(ARRAY(Integer), nullable=True)
     resumo_analise = Column(Text, nullable=True)
     
     # Controle

@@ -195,6 +195,22 @@ def analyze_proposal_par(summary: str, proposicao_id: Optional[int] = None) -> s
         )
         
         analysis = response.text.strip()
+        
+        # Limpeza robusta do JSON
+        # Remover formatação markdown
+        analysis = analysis.replace('```json', '').replace('```', '').strip()
+        
+        # Remover quebras de linha e espaços extras
+        lines = [line.strip() for line in analysis.split('\n') if line.strip()]
+        analysis = ' '.join(lines)
+        
+        # Encontrar início e fim do JSON
+        json_start = analysis.find('{')
+        json_end = analysis.rfind('}') + 1
+        
+        if json_start != -1 and json_end > json_start:
+            analysis = analysis[json_start:json_end]
+        
         print(f"DEBUG: Análise PAR gerada: {analysis[:100]}...")
         
         # Salvar no banco se proposicao_id foi fornecido

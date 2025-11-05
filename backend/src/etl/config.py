@@ -114,6 +114,62 @@ PERFORMANCE_CONFIG = {
 # Configurações de ambiente
 AMBIENTE = 'hackathon'  # 'hackathon', 'desenvolvimento', 'producao'
 
+# Configurações de Análise com Agents
+ANALISE_CONFIG = {
+    'limite_proposicoes': 10,  # Limite de proposições por execução (configurável)
+    'habilitado': True,  # Habilitar/desabilitar análise
+    'dias_para_reanalise': 7,  # Reanalisar após X dias
+    'versao_analise': '1.0',  # Versão da metodologia
+    'descricao': 'Análise de Proposições com Agents Kritikos',
+    'tipos_prioritarios': ['PEC', 'PLP', 'PL', 'MPV'],  # Tipos com prioridade
+    'ignorar_triviais': True,  # Ignorar proposições triviais em análises futuras
+    'salvar_logs': True,  # Salvar logs detalhados de processamento
+    'timeout_analise': 300,  # Timeout por proposição (segundos)
+    'retry_attempts': 3  # Tentativas em caso de erro
+}
+
+def get_analise_config(chave: str = None) -> Any:
+    """
+    Obtém configurações de análise de forma centralizada
+    
+    Args:
+        chave: Chave específica (opcional)
+    
+    Returns:
+        Valor da configuração solicitada ou dicionário completo
+    """
+    if chave:
+        return ANALISE_CONFIG.get(chave)
+    
+    return ANALISE_CONFIG
+
+def get_limite_analise_proposicoes() -> int:
+    """
+    Retorna o limite configurado de proposições para análise
+    
+    Returns:
+        int: Limite de proposições por execução
+    """
+    return ANALISE_CONFIG.get('limite_proposicoes', 10)
+
+def analise_habilitada() -> bool:
+    """
+    Verifica se a análise com agents está habilitada
+    
+    Returns:
+        bool: True se estiver habilitada
+    """
+    return ANALISE_CONFIG.get('habilitado', False)
+
+def get_versao_analise() -> str:
+    """
+    Retorna a versão atual da análise
+    
+    Returns:
+        str: Versão da metodologia de análise
+    """
+    return ANALISE_CONFIG.get('versao_analise', '1.0')
+
 def get_config(tipo: str, chave: str = None) -> Any:
     """
     Função utilitária para obter configurações de forma centralizada

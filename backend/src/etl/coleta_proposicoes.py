@@ -18,6 +18,7 @@ from models.politico_models import Deputado
 from utils.common_utils import setup_logging
 from utils.cache_utils import CacheManager
 from utils.gcs_utils import get_gcs_manager
+from utils.texto_utils import TextoProposicaoUtils
 
 logger = logging.getLogger(__name__)
 
@@ -62,6 +63,9 @@ class ColetorProposicoes:
         # Inicializar GCS Manager
         self.gcs_manager = get_gcs_manager()
         self.gcs_disponivel = self.gcs_manager is not None and self.gcs_manager.is_available()
+        
+        # Inicializar utilitário de texto
+        self.texto_utils = TextoProposicaoUtils()
         
         if self.gcs_disponivel:
             logger.info("✅ GCS disponível para armazenamento")
@@ -207,16 +211,26 @@ class ColetorProposicoes:
                 # Fallback: buscar via API (apenas se necessário)
                 autores = self._buscar_autores_proposicao(api_id)
             
-            # Desabilitar download de documentos (muitos erros 403)
-            documento_html = None
-            url_inteiro_teor = dados_proposicao.get('urlInteiroTeor', '')
-            # if url_inteiro_teor and salvar_gcs:
-            #     documento_html = self._baixar_documento_proposicao(url_inteiro_teor)
+            # Baixar texto completo usando o novo utilitário
+            texto_completo = None
+            uri_proposicao = dados_proposicao.get('uri', '')
+            if uri_proposicao:
+                logger.info(f"🔍 Buscando texto completo para {api_id}...")
+                texto_completo = self.texto_utils.obter_texto_completo(uri_proposicao, str(api_id))
+                if texto_completo:
+                    logger.info(f"✅ Texto obtido: {len(texto_completo)} caracteres")
+                else:
+                    logger.warning(f"⚠️ Não foi possível obter texto completo para {api_id}")
             
-            # Desabilitar GCS temporariamente para evitar rate limiting
+            # Salvar no GCS se disponível
             gcs_url = None
-            # if salvar_gcs:
-            #     gcs_url = self._salvar_proposicao_gcs(dados_proposicao, autores, documento_html)
+            if salvar_gcs and texto_completo:
+                logger.info(f"💾 Salvando texto no GCS para {api_id}...")
+                gcs_url = self._salvar_texto_completo_gcs(dados_proposicao, texto_completo)
+                if gcs_url:
+                    logger.info(f"✅ Texto salvo no GCS: {gcs_url}")
+                else:
+                    logger.warning(f"⚠️ Falha ao salvar texto no GCS para {api_id}")
             
             # Mapear campos com tratamento de encoding
             proposicao = Proposicao(
@@ -562,6 +576,42 @@ class ColetorProposicoes:
         except Exception as e:
             logger.error(f"❌ Erro ao obter próxima versão: {e}")
             return "v1"
+    
+    def _salvar_texto_completo_gcs(self, dados_proposicao: Dict, texto_completo: str) -> Optional[str]:
+        """
+        Salva texto completo da proposição no GCS.
+        
+        Args:
+            dados_proposicao: Dados da proposição
+            texto_completo: Texto completo extraído do PDF
+            
+        Returns:
+            URL do texto no GCS ou None se erro
+        """
+        if not self.gcs_disponivel or not texto_completo:
+            return None
+        
+        try:
+            api_id = dados_proposicao.get('id')
+            tipo = dados_proposicao.get('siglaTipo', '')
+            ano = dados_proposicao.get('ano', datetime.now().year)
+            
+            # Path para salvar texto completo
+            filename_texto = f"{tipo}-{api_id}-texto-completo.txt"
+            blob_path = f"proposicoes/{ano}/{tipo}/texto-completo/{filename_texto}"
+            
+            # Salvar texto no GCS
+            if self.gcs_manager.upload_text(texto_completo, blob_path, compress=True):
+                url_gcs = f"https://storage.googleapis.com/{self.gcs_manager.bucket_name}/{blob_path}"
+                logger.info(f"✅ Texto completo salvo no GCS: {tipo} {api_id}")
+                return url_gcs
+            else:
+                logger.warning(f"⚠️ Falha ao salvar texto completo para {api_id}")
+                return None
+                
+        except Exception as e:
+            logger.error(f"❌ Erro ao salvar texto completo no GCS: {e}")
+            return None
     
     def _salvar_proposicao_gcs(self, dados_proposicao: Dict, autores: List[Dict], documento_html: Optional[str] = None) -> Optional[str]:
         """
