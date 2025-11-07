@@ -64,12 +64,17 @@ class TextoProposicaoUtils:
         Obtém a URL do texto completo a partir da URI da proposição.
         
         Args:
-            uri_proposicao: URI da API da proposição
+            uri_proposicao: URI da API da proposição ou URL direta do PDF
             
         Returns:
             URL do texto completo ou None
         """
         try:
+            # Se já for uma URL do site da Câmara, retornar diretamente
+            if 'camara.leg.br/proposicoesWeb/prop_mostrarintegra' in uri_proposicao:
+                logger.debug(f"URL direta do inteiro teor detectada: {uri_proposicao}")
+                return uri_proposicao
+            
             logger.debug(f"Buscando URL inteiro teor para: {uri_proposicao}")
             
             response = self.session.get(uri_proposicao, timeout=self.timeout)

@@ -116,7 +116,7 @@ AMBIENTE = 'hackathon'  # 'hackathon', 'desenvolvimento', 'producao'
 
 # Configurações de Análise com Agents
 ANALISE_CONFIG = {
-    'limite_proposicoes': 10,  # Limite de proposições por execução (configurável)
+    'limite_proposicoes': 1000,  # Limite de proposições por execução (configurável)
     'habilitado': True,  # Habilitar/desabilitar análise
     'dias_para_reanalise': 7,  # Reanalisar após X dias
     'versao_analise': '1.0',  # Versão da metodologia

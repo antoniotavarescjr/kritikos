@@ -1,0 +1,40 @@
+DEBUG - DISCREPÂNCIA ENTRE CONTAGEM E VERIFICAÇÃO
+============================================================
+Data/Hora: 2025-11-07 00:05:02
+
+Gap total: 4,327
+Faltantes na amostra: 0
+
+Arquivos por tipo:
+  PEC: 0
+  PLP: 2
+  PL: 1,000
+  MPV: 1
+  PLV: 0
+  SUG: 0
+  PDC: 0
+  REQ: 0
+  RIC: 0
+  RCP: 0
+  RCN: 0
+  RQC: 0
+  RQS: 0
+  SNC: 0
+  SRE: 0
+
+Proposições por tipo:
+  PEC: 18
+  PLP: 191
+  PL: 5,068
+  MPV: 37
+  PLV: 8
+  SUG: 8
+  PDC: 0
+  REQ: 0
+  RIC: 0
+  RCP: 0
+  RCN: 0
+  RQC: 0
+  RQS: 0
+  SNC: 0
+  SRE: 0
