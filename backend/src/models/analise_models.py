@@ -103,7 +103,7 @@ class ScoreDeputado(Base):
     
     # Controle
     data_calculo = Column(DateTime, default=datetime.utcnow)
-    versao_calculo = Column(String(20), default='1.0')
+    # versao_calculo = Column(String(20), default='1.0')  # Temporariamente comentado
     
     # Relacionamentos
     deputado = relationship("Deputado", back_populates="score")

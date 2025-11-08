@@ -32,14 +32,14 @@ GCS_CONFIG = {
 # Configurações de coleta para Hackathon 2025
 HACKATHON_CONFIG = {
     'ano_limite': 2025,  # Limitar coleta apenas a 2025
-    'data_inicio_hackathon': '2025-07-01',  # Início do período do hackathon
+    'data_inicio_hackathon': '2025-01-01',  # Início do período do hackathon
     
     # Configurações de deputados
     'deputados': {
         'limite_total': 9999,  # Coletar todos os deputados
         'apenas_em_exercicio': True,
         'buscar_detalhes_completos': True,
-        'periodo_inicio': '2025-07-01'  # Foco em dados recentes
+        'periodo_inicio': '2025-01-01'  # Foco em dados recentes
     },
     
     # Configurações de gastos
@@ -48,14 +48,14 @@ HACKATHON_CONFIG = {
         'meses_para_coletar': [7, 8, 9, 10, 11, 12],  # Meses do hackathon em diante
         'limite_por_deputado': 200,  # Aumentar limite para capturar todos os gastos
         'valor_minimo': 0.01,  # Ignorar gastos muito pequenos
-        'data_inicio': '2025-07-01'  # Início do período
+        'data_inicio': '2025-01-01'  # Início do período
     },
     
     # Configurações de proposições (HABILITADO - Integração Completa)
     'proposicoes': {
         'habilitado': True,  # HABILITADO - Integração com GCS
         'ano_coleta': 2025,  # Foco em dados de 2025
-        'data_inicio': '2025-06-01',  # Período do hackathon
+        'data_inicio': '2025-01-01',  # Período do hackathon
         'salvar_gcs': True,  # Garantir salvamento no storage
         'tipos_relevantes': ['PEC', 'PLP', 'PL', 'MPV', 'PLV', 'SUG'],
         'limite_deputados_api': 50,  # Limite para coleta por API
@@ -69,7 +69,7 @@ HACKATHON_CONFIG = {
     'emendas': {
         'habilitado': False,  # DESLIGADO - Foco em deputados primeiro
         'ano_coleta': 2025,
-        'data_inicio': '2025-07-01',
+        'data_inicio': '2025-01-01',
         'limite_total': 0  # Desabilitado
     },
     
@@ -218,7 +218,7 @@ VALIDATION_CONFIG = {
 # Configurações centralizadas de coleta com limitador de data
 COLETA_CONFIG = {
     # Data limite principal para todas as coletas
-    'data_inicio_padrao': '2025-06-01',  # Requisito principal: 06/2025 para cá
+    'data_inicio_padrao': '2025-01-01',  # Requisito principal: 06/2025 para cá
     'data_fim_padrao': None,  # None = data atual
     'limpar_dados_antigos': True,  # Limpar dados anteriores à data início
     
@@ -254,7 +254,7 @@ COLETA_CONFIG = {
         'respeitar_data_inicio': True,
         'descricao': 'Proposições Legislativas com GCS',
         'ano_coleta': 2025,
-        'data_inicio': '2025-06-01'
+        'data_inicio': '2025-01-01'
     },
 }
 

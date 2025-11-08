@@ -3,6 +3,33 @@
 version: '3.8'
 
 services:
+  kritikos-api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.api
+    container_name: kritikos-api
+    ports:
+      - "${PORT:-8000}:8000"
+    env_file:
+      - .env
+    environment:
+      # Sobrescrever apenas as URLs de rede para o ambiente Docker
+      - DATABASE_URL=postgresql://kritikos_user:kritikos_password@db:5432/kritikos_dev
+      - REDIS_URL=redis://redis:6379/0
+      - CELERY_BROKER_URL=redis://redis:6379/1
+      - CELERY_RESULT_BACKEND=redis://redis:6379/2
+      - TEST_REDIS_URL=redis://redis:6379/15
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    volumes:
+      - ./backend/logs:/app/logs
+    restart: unless-stopped
+    networks:
+      - kritikos-network
+
   db:
     image: postgres:17
     container_name: kritikos-db
@@ -14,6 +41,36 @@ services:
       - "${POSTGRES_PORT}:5432"
     volumes:
       - kritikos-db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+    networks:
+      - kritikos-network
+
+  redis:
+    image: redis:7-alpine
+    container_name: kritikos-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - kritikos-redis-data:/data
+    command: redis-server --appendonly yes
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - kritikos-network
 
 volumes:
   kritikos-db-data:
+  kritikos-redis-data:
+
+networks:
+  kritikos-network:
+    driver: bridge

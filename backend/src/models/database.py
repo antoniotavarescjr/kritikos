@@ -21,3 +21,7 @@ def get_db():
         yield db
     finally:
         db.close()
+
+def get_db_session():
+    """Retorna uma sessão do banco de dados para uso direto"""
+    return SessionLocal()
